@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/patients_list"
+        android:title="@string/patients">
+        <menu>
+            <item
+                android:id="@+id/dd"
+                android:icon="@drawable/ic_profile_image"
+                android:title="@string/profile_name"></item>
+            <item
+                android:id="@+id/d"
+                android:icon="@drawable/ic_profile_image"
+                android:title="@string/profile_name"></item>
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/friends_list"
+        android:title="@string/friends">
+        <menu>
+            <item
+                android:id="@+id/nav_sync_button"
+                android:icon="@drawable/ic_profile_image"
+                android:title="@string/profile_name"></item>
+            <item
+                android:id="@+id/nav_log_out_button"
+                android:icon="@drawable/ic_profile_image"
+                android:title="@string/profile_name"></item>
+        </menu>
+    </item>
+</menu>

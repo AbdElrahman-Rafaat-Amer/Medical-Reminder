@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Medical Reminder</string>
+
+    <string name="booki">BookI</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="read_it_together">Read it together</string>
+    <string name="skip">Skip</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="another_sign_up">Or sign up with</string>
+    <string name="sign_in">Sign in</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="password_error">Password can not be empty</string>
+    <string name="email_error">" Email can not be empty"</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="user_name">User name</string>
+    <string name="user_name_error">User name can not be empty</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="patients">Patients</string>
+    <string name="friends">Friends</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_logout">Logout</string>
+</resources>
