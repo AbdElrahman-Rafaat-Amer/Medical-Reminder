@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout.widget.ConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#435097"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="66dp"
+                    android:layout_height="76dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/profile"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.074"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.314" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <com.vivekkaushik.datepicker.DatePickerTimeline
+            android:id="@+id/dateTimeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:disabledColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
+
+        <TextView
+            android:id="@+id/datePickerTxtView"
+            android:layout_width="178dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/datetxtview"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTimeline" />
+
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="470dp"-->
+        <!--            android:layout_height="404dp"-->
+        <!--            android:layout_marginTop="224dp"-->
+        <!--            -->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:layout_editor_absoluteX="2dp">-->
+        <!--            &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/datePickerTxtView"
+            android:layout_marginTop="5dp" />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/menuFloating"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="349dp"
+            android:layout_margin="@dimen/_30sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintlayout.widget.ConstraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/constraintlayout.widget.ConstraintLayout">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingAddMed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:fab_icon="@drawable/ic_addmedicine"
+                app:fab_title="addMed"></com.getbase.floatingactionbutton.FloatingActionButton>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingAddHealthCareTaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:fab_icon="@drawable/ic_addhealthtaker"
+                app:fab_title="Create group"></com.getbase.floatingactionbutton.FloatingActionButton>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

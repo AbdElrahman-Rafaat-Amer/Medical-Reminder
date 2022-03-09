@@ -1,9 +1,8 @@
 package com.medication.medicalreminder;
 
 
-import android.app.UiModeManager;
+
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -24,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.AutoTransition;
@@ -35,23 +37,18 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.medication.medicalreminder.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.content.res.Configuration.UI_MODE_NIGHT_NO;
-
-//import com.facebook.FacebookSdk;
-//import com.facebook.appevents.AppEventsLogger;
 
 public class MainActivity extends AppCompatActivity implements PatientAdapterInterface, FriendsAdapterInterface {
 
     private static final String TAG = "TAG";
 
     //Main Activity Design
-    private FrameLayout frameLayout;
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private View navigationHeaderView;
@@ -78,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
     private CardView cardViewFiendsAnimation;
     private RecyclerView recyclerViewFriends;
     private ImageView showListArrowFriendsImage;
+    ActivityMainBinding binding;
 
 
     @Override
@@ -90,9 +88,28 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         //////
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    Log.i("TAG", "onCreate: bottomNavigation.setOnItemSelectedListener go to home");
+                    replaceFragment((new HomeFragment()));
+                    break;
+                case R.id.medicine:
+                    Log.i("TAG", "onCreate: bottomNavigation.setOnItemSelectedListener go to medicine");
+                    replaceFragment((new MedecineFragment()));
+                    break;
+            }
+            return true;
+        });
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Database").child("test");
-        reference.setValue("first Try");
+
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Database").child("hager");
+        reference.setValue("inshalaah");
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
@@ -100,15 +117,6 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
             Log.i("TAG", "Mail: " + account.getEmail());
 
         }
-
-        Button logout = findViewById(R.id.button);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
 
         patients.add(new Patient("ahmed@gmail.com", "passwordAhmed", "Ahmed", R.drawable.ic_capsule));
         patients.add(new Patient("abdo@gmail.com", "passwordabdo", "abdo", R.drawable.ic_facebook));
@@ -118,19 +126,19 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         patients.add(new Patient("ghada@gmail.com", "passwordghada", "ghada", R.drawable.ic_twitter));
         patients.add(new Patient("asmaa@gmail.com", "passwordasmaa", "asmaa", R.drawable.ic_google));
 
-        frameLayout = findViewById(R.id.fragment_container);
         navigationView = findViewById(R.id.nav_view);
         drawer = findViewById(R.id.drawer_layout);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
+       // toolbar = findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
+       // ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
+        //drawer.addDrawerListener(toggle);
+        //toggle.syncState();
+      //   getSupportActionBar().hide();
         navigationHeaderView = navigationView.getHeaderView(0);
         //Patient
         addNewPatientConstraintLayout = navigationHeaderView.findViewById(R.id.add_new_patient_ConstraintLayout);
-        recyclerViewPatients = findViewById(R.id.patients_recycler_view);
+
+        recyclerViewPatients = navigationHeaderView.findViewById(R.id.patients_recycler_view);
         cardViewPatientsAnimation = navigationHeaderView.findViewById(R.id.card_view_patients_recycler_view);
         show_list_arrow_patients = navigationHeaderView.findViewById(R.id.show_list_arrow_patients);
         linearLayoutVisibilityCheckerPatients = navigationHeaderView.findViewById(R.id.linear_layout_visibility_checker_patient);
@@ -162,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
 
         //Friends
         addNewFriendConstraintLayout = navigationHeaderView.findViewById(R.id.add_new_friends_ConstraintLayout);
-        recyclerViewFriends = findViewById(R.id.friends_recycler_view);
+        recyclerViewFriends = navigationHeaderView.findViewById(R.id.friends_recycler_view);
         cardViewFiendsAnimation = navigationHeaderView.findViewById(R.id.card_view_friends_recycler_view);
         show_list_arrow_Friends = navigationHeaderView.findViewById(R.id.show_list_arrow_friends);
         linearLayoutVisibilityCheckerFriends = navigationHeaderView.findViewById(R.id.linear_layout_visibility_checker_friends);
@@ -212,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                 }
             }
         });
+
 
     /*    navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,6 +313,19 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
             }
         });*/
 
+
+
+
+
+
+    }
+
+
+    private void replaceFragment( Fragment fragment){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.commit();
     }
 
     @Override

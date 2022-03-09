@@ -24,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures{
+        viewBinding true;
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -57,9 +61,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.5.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
-    
     implementation 'com.facebook.android:facebook-login:[8.1)'
 
+    def nav_version = "2.4.1"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
 
 
 

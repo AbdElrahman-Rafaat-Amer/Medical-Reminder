@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_add.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_home.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_add.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_capsule.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_medicine.xml" value="0.103125" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/calendar.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/expandable_custom_view.xml" value="0.18" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/navigation_drawer_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

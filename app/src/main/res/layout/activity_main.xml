@@ -6,43 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    >
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
 
         <FrameLayout
-            android:id="@+id/fragment_container"
+            android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/google_logout" />
-
-        </FrameLayout>
-    </RelativeLayout>
+           />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.966"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"/>
+        app:headerLayout="@layout/navigation_header" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
