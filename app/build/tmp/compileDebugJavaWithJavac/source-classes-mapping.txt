@@ -1,0 +1,22 @@
+com/medication/medicalreminder/BuildConfig.java
+ com.medication.medicalreminder.BuildConfig
+com/medication/medicalreminder/GoogleUserFragment.java
+ com.medication.medicalreminder.GoogleUserFragment
+com/medication/medicalreminder/LoginActivity.java
+ com.medication.medicalreminder.LoginActivity
+ com.medication.medicalreminder.LoginActivity$1
+ com.medication.medicalreminder.LoginActivity$2
+ com.medication.medicalreminder.LoginActivity$3
+com/medication/medicalreminder/MainActivity.java
+ com.medication.medicalreminder.MainActivity
+ com.medication.medicalreminder.MainActivity$1
+com/medication/medicalreminder/SplashScreenActivity.java
+ com.medication.medicalreminder.SplashScreenActivity
+ com.medication.medicalreminder.SplashScreenActivity$1
+com/medication/medicalreminder/RegisterActivity.java
+ com.medication.medicalreminder.RegisterActivity
+ com.medication.medicalreminder.RegisterActivity$1
+ com.medication.medicalreminder.RegisterActivity$2
+ com.medication.medicalreminder.RegisterActivity$3
+ com.medication.medicalreminder.RegisterActivity$4
+ com.medication.medicalreminder.RegisterActivity$5
