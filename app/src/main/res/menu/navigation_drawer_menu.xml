@@ -19,9 +19,20 @@
         </menu>
     </item>
 
+    <group
+        android:enabled="true"
+        android:menuCategory="system">
+        <item
+            android:id="@+id/sw"
+            android:icon="@drawable/ic_facebook"
+            android:title="TODO"></item>
+    </group>
+
 
     <item
         android:id="@+id/friends_list"
+        android:checkable="true"
+        android:checked="true"
         android:title="@string/friends">
         <menu>
             <item

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.material.textfield.TextInputLayout;
 
 
@@ -23,11 +26,14 @@ public class LoginActivity extends AppCompatActivity {
     private ImageButton googleImageButton, twitterImageButton, facebookImageButton;
     private ImageView backImageView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
+
+        Log.i("TAG", "onCreate: you are in LoginActivity");
 
         forgotPasswordTextView = findViewById(R.id.forgot_password_text_view);
         skipTextView = findViewById(R.id.textView_skip_login);
@@ -43,9 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         signingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("TAG", "signingButton.setOnClickListener: beforeCondition");
                 if (isValidateEmail() & isValidatePassword()) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
+                    Log.i("TAG", "signingButton.setOnClickListener: LoginActivity going to MainActivity");
                 }
 
             }
@@ -55,12 +63,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
+                Log.i("TAG", "skipTextView.setOnClickListener: LoginActivity going to MainActivity");
             }
         });
 
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("TAG", "backImageView.setOnClickListener: LoginActivity going to RegisterActivity");
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
             }
@@ -98,55 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        finish();
     }
 
-    /*
-    private void callStartAn(){
-        new CountDownTimer(10000, 7000) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                bookITextView.setVisibility(GONE);
-                loadingProgressBar.setVisibility(GONE);
-                rootView.setBackgroundColor(ContextCompat.getColor(LoginActivity.this, R.color.colorSplashText));
-                bookIconImageView.setImageResource(R.drawable.bg_gradient);
-                startAnimation();
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
-    }
-    private void startAnimation() {
-
-
-        ViewPropertyAnimator viewPropertyAnimator = bookIconImageView.animate();
-        viewPropertyAnimator.x(50f);
-        viewPropertyAnimator.y(100f);
-        viewPropertyAnimator.setDuration(1000);
-        viewPropertyAnimator.setListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                afterAnimationView.setVisibility(VISIBLE);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
-    }*/
 }
