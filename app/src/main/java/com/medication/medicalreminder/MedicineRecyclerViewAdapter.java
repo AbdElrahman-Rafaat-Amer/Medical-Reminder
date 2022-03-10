@@ -1,6 +1,7 @@
 package com.medication.medicalreminder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -31,12 +36,14 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
         TextView medName;
         TextView takenDate;
         ImageView imgView;
+        ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View convertView) {
             super(convertView);
             row = convertView;
             medName = row.findViewById(R.id.medicineTxtView);
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
+            constraintLayout = row.findViewById(R.id.custom_raw_constraint_layout);
 
         }
         public View getRow() {
@@ -66,9 +73,27 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        MedicinePojoo medicinePojoo = mediceneArray.get(position);
         //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
         holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
         holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //JSONObject jsonObject = new JSONObject();
+                
+                    //jsonObject.put("medObject",medicinePojoo);
+                    Intent displayIntent = new Intent(context , DisplayMedActivity.class);
+                    displayIntent.putExtra("medicine", medicinePojoo.getMedicineName());
+                    Log.i("TAG", "medicine pojo" + medicinePojoo);
+                   // Log.i("TAG", "json obj" + jsonObject);
+//                    Log.i("TAG", "json obj string" + jsonObject.toString());
+                    context.startActivity(displayIntent);
+                
+
+            }
+        });
+
     }
     @Override
     public int getItemCount() {

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayMedActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="169dp"
+        android:background="@color/mainColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/medName"
+            app:layout_constraintEnd_toStartOf="@+id/medName"
+            app:layout_constraintStart_toStartOf="@+id/medName"
+            app:layout_constraintTop_toBottomOf="@+id/medName">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:background="@drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/backButton"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageButton
+                android:id="@+id/editButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@+id/deleteButton"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/medIcon"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/ic_medicine"
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toStartOf="@+id/medName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/medStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="72dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/medIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="med Strength" />
+
+            <TextView
+                android:id="@+id/medName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/medIcon"
+                app:layout_constraintStart_toStartOf="@+id/medStrength"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="med Name"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pageConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="558dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <TextView
+            android:id="@+id/reminderTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderDays"
+            tools:text="8:00 AM :  " />
+
+        <TextView
+            android:id="@+id/dose2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/reminderTime2"
+            app:layout_constraintStart_toStartOf="@+id/dose3"
+            app:layout_constraintTop_toBottomOf="@id/reminderTime1"
+            tools:text="2 Pill(s)" />
+
+        <TextView
+            android:id="@+id/reminderTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderTime1"
+            tools:text="12:00 PM :  " />
+
+        <TextView
+            android:id="@+id/dose1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/reminderTime1"
+            app:layout_constraintStart_toStartOf="@+id/dose2"
+            app:layout_constraintTop_toBottomOf="@id/reminderLength"
+            tools:text="1 Pill(s)" />
+
+
+        <TextView
+            android:id="@+id/reminderTime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderTime2"
+            tools:text="12:00 PM :  " />
+
+        <TextView
+            android:id="@+id/dose3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/reminderTime3"
+            app:layout_constraintTop_toBottomOf="@id/reminderTime2"
+            tools:text="1 Pill(s)" />
+
+
+        <TextView
+            android:id="@+id/remindersText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/reminders"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/mainColor"
+            />
+
+        <TextView
+            android:id="@+id/reminderDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/remindersText"
+            tools:text="Every day, " />
+
+        <TextView
+            android:id="@+id/reminderLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/reminderDays"
+            app:layout_constraintTop_toBottomOf="@id/remindersText"
+            tools:text=" take for 10 days" />
+
+        <Button
+            android:id="@+id/suspendButton"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/mainColor"
+            android:text="@string/suspend"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/remindersText"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/refillButton"
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/mainColor"
+            android:text="@string/refill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/RefillText"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            />
+
+
+        <TextView
+            android:id="@+id/RefillText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/PrescriptionRefill"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderTime3"
+            android:textColor="@color/mainColor"
+            />
+
+        <TextView
+            android:id="@+id/pillsLeftText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/PillsLeft"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RefillText" />
+
+        <TextView
+            android:id="@+id/pillsLeftNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pillsLeftText"
+            app:layout_constraintTop_toBottomOf="@id/RefillText"
+            app:layout_constraintTop_toTopOf="@id/pillsLeftText"
+            tools:text="6" />
+
+        <TextView
+            android:id="@+id/remindToRefillText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/remindToRefill"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pillsLeftText"
+            android:layout_marginTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/remindToRefillNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/remindToRefillText"
+            app:layout_constraintTop_toTopOf="@+id/remindToRefillText"
+            tools:text=" 3 pills " />
+
+
+        <TextView
+            android:id="@+id/howToUseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/HowToUse"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/remindToRefillText"
+            android:textColor="@color/mainColor"
+            />
+
+        <TextView
+            android:id="@+id/instructionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/howToUseText"
+            tools:text="Instructions goes here" />
+
+        <Button
+            android:id="@+id/addDoseButton"
+            android:layout_width="239dp"
+            android:layout_height="51dp"
+            android:backgroundTint="@color/mainColor"
+            android:text="@string/addDose"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -1,5 +1,6 @@
 package com.medication.medicalreminder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,23 +66,21 @@ public class HomeFragment extends Fragment {
         Log.i("TAG", "onCreateView: ,Locale.getDefault() " + Locale.getDefault());
         datePickerTimeline.setActiveDate(Calendar.getInstance(TimeZone.getDefault(),Locale.getDefault()));
         dealWithDatePickerTimeline();
-        homeRecylerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                btnAddMedecine.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //Code To Add Medicine
-                    }
-                });
-            }
-        });
 
         btnAddHealthTaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Code To Add HealthTaker
+            }
+        });
+        Log.i("TAG", "onCreateView: BEFORE add medecine button");
+
+        btnAddMedecine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("TAG", "onCreateView: inside add medecine button");
+                Intent addMedIntent = new Intent(getActivity(), AddMedActivity.class);
+                startActivity(addMedIntent);
             }
         });
 

@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/drawable-v24/ic_addmedicine.xml" value="0.2703125" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/drawable/arrow_down.xml" value="0.10989583333333333" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/drawable/ic_delete.xml" value="0.10989583333333333" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/activity_display_med.xml" value="0.1" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/activity_edit_med.xml" value="0.1" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/add_med_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/fragment_med_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/fragment_medecine.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/fragment_reminder_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidProject/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_add.xml" value="0.103125" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_home.xml" value="0.103125" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine.xml" value="0.103125" />
@@ -17,6 +28,14 @@
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/navigation_drawer_menu.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/activity_display_med.xml" value="0.4" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/activity_edit_med.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/add_med_activity.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/fragment_med_info.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/fragment_reminder_info.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/AndroidProject/app/src/main/res/layout/fragment_set_time.xml" value="0.1" />
       </map>
     </option>
   </component>

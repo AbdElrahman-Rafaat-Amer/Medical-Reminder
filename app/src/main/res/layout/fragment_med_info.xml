@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedInfoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/pleaseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addNameTextView"
+        android:text="Please fill all the blanks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp"
+        />
+
+
+
+    <TextView
+        android:id="@+id/addNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What med would you like to add?"
+        android:textSize="19sp"
+
+        app:layout_constraintTop_toBottomOf="@id/pleaseTextView"
+        app:layout_constraintBottom_toTopOf="@id/addNameEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/mainColor"
+        />
+
+    <EditText
+        android:id="@+id/addNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="83dp"
+        android:ems="10"
+        android:hint="med name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addNameTextView"
+        />
+
+
+    <TextView
+        android:id="@+id/medFormTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="what form is the med?"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="@+id/addNameTextView"
+        app:layout_constraintStart_toStartOf="@+id/addNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/addNameEditText"
+        android:textColor="@color/mainColor"
+        />
+
+
+    <Spinner
+        android:id="@+id/medFormSpinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medFormTextView"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/medStrengthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="what strength is the med?"
+
+        app:layout_constraintEnd_toEndOf="@+id/medFormTextView"
+        app:layout_constraintStart_toStartOf="@+id/medFormTextView"
+        app:layout_constraintTop_toBottomOf="@id/medFormSpinner"
+        android:textColor="@color/mainColor"
+        android:textSize="19sp"
+        />
+
+    <NumberPicker
+        android:id="@+id/strengthNumPicker"
+        android:layout_width="69dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
+        app:layout_constraintEnd_toStartOf="@id/doseNumPicker"
+        tools:layout_editor_absoluteX="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <NumberPicker
+        android:id="@+id/doseNumPicker"
+        android:layout_width="69dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/strengthNumPicker"
+        app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
+        />
+
+    <TextView
+        android:id="@+id/medNeedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Do you need to take this med every day?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/strengthNumPicker"
+        android:textSize="18sp"
+        android:textColor="@color/mainColor"
+        />
+
+    <Button
+        android:id="@+id/yesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="yes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medNeedTextView"
+        />
+
+    <Button
+        android:id="@+id/noButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="NO"
+        app:layout_constraintBottom_toBottomOf="@id/yesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medNeedTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
