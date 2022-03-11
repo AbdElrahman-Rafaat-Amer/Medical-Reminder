@@ -22,6 +22,25 @@
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/navigation_drawer_menu.xml" value="0.1" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/activity_add_mactivity.xml" value="0.2203125" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/activity_add_medication.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_dayily.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_days_number.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_dose_time.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_first.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_med_form.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_name.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_refill.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_refill_tow.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_rfill_three.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_strength.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_first.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_second.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_third.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_once.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_tow_first.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_tow_second.xml" value="0.22735507246376813" />
+        <entry key="..\:/androidProjectClone/app/src/main/res/layout/item.xml" value="0.22735507246376813" />
       </map>
     </option>
   </component>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.medication.medicalreminder.firstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+
+        <action
+            android:id="@+id/first_fragments_des"
+            app:destination="@id/medFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medFormFragment"
+        android:name="com.medication.medicalreminder.MedFormFragment"
+        android:label="fragment_med_form"
+        tools:layout="@layout/fragment_med_form" >
+        <action
+            android:id="@+id/medform_fragment_des"
+            app:destination="@id/strengthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/strengthFragment"
+        android:name="com.medication.medicalreminder.StrengthFragment"
+        android:label="fragment_strength"
+        tools:layout="@layout/fragment_strength" >
+        <action
+            android:id="@+id/strength_fragment_des"
+            app:destination="@id/dayilyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dayilyFragment"
+        android:name="com.medication.medicalreminder.dayilyFragment"
+        android:label="fragment_dayily"
+        tools:layout="@layout/fragment_dayily" >
+        <action
+            android:id="@+id/dayily_fragment_des"
+            app:destination="@id/daysNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/daysNumberFragment"
+        android:name="com.medication.medicalreminder.DaysNumberFragment"
+        android:label="fragment_days_number"
+        tools:layout="@layout/fragment_days_number" >
+        <action
+            android:id="@+id/days_number_fragment_des"
+            app:destination="@id/timeOnceFragment" />
+        <action
+            android:id="@+id/number_days_Tow_fragmet_des"
+            app:destination="@id/timeTowFirstFragment" />
+        <action
+            android:id="@+id/action_daysNumberFragment_to_thirdFirstFragment"
+            app:destination="@id/thirdFirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/refillFragment"
+        android:name="com.medication.medicalreminder.RefillFragment"
+        android:label="fragment_refill"
+        tools:layout="@layout/fragment_refill" />
+    <fragment
+        android:id="@+id/timeOnceFragment"
+        android:name="com.medication.medicalreminder.TimeOnceFragment"
+        android:label="fragment_time_once"
+        tools:layout="@layout/fragment_time_once" >
+        <action
+            android:id="@+id/time_once_fragment_des"
+            app:destination="@id/refillFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeTowFirstFragment"
+        android:name="com.medication.medicalreminder.timeTowFirstFragment"
+        android:label="fragment_time_tow_first"
+        tools:layout="@layout/fragment_time_tow_first" >
+        <action
+            android:id="@+id/action_timeTowFirstFragment_to_timeTowSecondFragment"
+            app:destination="@id/timeTowSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeTowSecondFragment"
+        android:name="com.medication.medicalreminder.TimeTowSecondFragment"
+        android:label="fragment_time_tow_second"
+        tools:layout="@layout/fragment_time_tow_second" >
+        <action
+            android:id="@+id/action_timeTowSecondFragment_to_refillTowFragment"
+            app:destination="@id/refillTowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFirstFragment"
+        android:name="com.example.addmedicationgraph.ThirdFirstFragment"
+        android:label="fragment_third_first"
+        tools:layout="@layout/fragment_third_first" >
+        <action
+            android:id="@+id/action_thirdFirstFragment_to_thirdSecondFragment"
+            app:destination="@id/thirdSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdSecondFragment"
+        android:name="com.example.addmedicationgraph.ThirdSecondFragment"
+        android:label="fragment_third_second"
+        tools:layout="@layout/fragment_third_second" >
+        <action
+            android:id="@+id/action_thirdSecondFragment_to_thirdThirdFragment"
+            app:destination="@id/thirdThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdThirdFragment"
+        android:name="com.example.addmedicationgraph.ThirdThirdFragment"
+        android:label="fragment_third_third"
+        tools:layout="@layout/fragment_third_third" >
+        <action
+            android:id="@+id/action_thirdThirdFragment_to_rfillThreeFragment"
+            app:destination="@id/rfillThreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/refillTowFragment"
+        android:name="com.example.addmedicationgraph.RefillTowFragment"
+        android:label="fragment_refill_tow"
+        tools:layout="@layout/fragment_refill_tow" />
+    <fragment
+        android:id="@+id/rfillThreeFragment"
+        android:name="com.example.addmedicationgraph.RfillThreeFragment"
+        android:label="fragment_rfill_three"
+        tools:layout="@layout/fragment_rfill_three" />
+
+</navigation>

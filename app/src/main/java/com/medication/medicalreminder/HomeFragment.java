@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.i("TAG", "onCreateView: inside add medecine button");
-                Intent addMedIntent = new Intent(getActivity(), AddMedActivity.class);
+                Intent addMedIntent = new Intent(getActivity(), AddMActivity.class);
                 startActivity(addMedIntent);
             }
         });
