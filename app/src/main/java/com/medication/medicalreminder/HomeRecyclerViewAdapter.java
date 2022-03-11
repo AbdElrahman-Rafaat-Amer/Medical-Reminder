@@ -17,15 +17,20 @@ import java.util.List;
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
      List <MedicinePojoo>  mediceneArray;
+     List<MedicinePojoo> dataList;
+
+    public HomeRecyclerViewAdapter() {
+    }
 
     public HomeRecyclerViewAdapter(ArrayList<MedicinePojoo> mediceneArray, Context context) {
         this.context = context;
-        this.mediceneArray = mediceneArray;
+        this.mediceneArray= mediceneArray;
+        /*this.mediceneArray = mediceneArray;
         Log.i("TAG", "RecyclerViewAdapter: this.mediceneArray " + this.mediceneArray);
         Log.i("TAG", "RecyclerViewAdapter: mediceneArray " + mediceneArray);
         Log.i("TAG", "RecyclerViewAdapter: mediceneArray.size() " + mediceneArray.size());
+         */
     }
-
     class ViewHolder extends RecyclerView.ViewHolder {
         View row;
         TextView medName;
@@ -69,6 +74,9 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
           //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
             holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
             holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
+           //MedicinePojoo medicinePojoo = dataList.get(position);
+            //holder.medName.setText(medicinePojoo.getMedicineName());
+
         }
         @Override
         public int getItemCount() {

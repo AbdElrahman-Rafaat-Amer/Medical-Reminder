@@ -1,5 +1,6 @@
 package com.medication.medicalreminder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicinePojoo {
@@ -14,6 +15,9 @@ private  String medicineName;
         this.medicineImage = medicineImage;
 
 
+    }
+
+    public MedicinePojoo() {
     }
 
     public List<MedicinePojoo> getMedicineList() {
