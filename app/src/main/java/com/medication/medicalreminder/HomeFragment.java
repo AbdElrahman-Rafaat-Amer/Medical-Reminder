@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
         Log.i("TAG", "onCreateView: ,Locale.getDefault() " + Locale.getDefault());
        /* datePickerTimeline.setActiveDate(Calendar.getInstance(TimeZone.getDefault(),Locale.getDefault()));
         dealWithDatePickerTimeline();
-
+*/
         btnAddHealthTaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-*/
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Medicines").child("Medicine Two");
        // MedicinePojoo medicinePojoo = new MedicinePojoo("Conjestal","18-10-2022",20);
         //   reference.setValue("inshalaah");
