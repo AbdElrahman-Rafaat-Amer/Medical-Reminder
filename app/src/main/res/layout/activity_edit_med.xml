@@ -11,9 +11,7 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:fillViewport="true"
@@ -148,12 +146,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
                         android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toTopOf="@+id/remonderTimesSpinner"
+                        app:layout_constraintBottom_toTopOf="@+id/reminders_spinner"
                         app:layout_constraintStart_toEndOf="@id/reminderTimesText"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                     <Spinner
-                        android:id="@+id/remonderTimesSpinner"
+                        android:id="@+id/reminders_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -161,6 +159,7 @@
                         android:layout_marginEnd="30dp"
                         android:background="@android:drawable/btn_dropdown"
                         android:spinnerMode="dropdown"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/reminderTimesText" />
@@ -174,8 +173,9 @@
                         android:backgroundTint="@color/mainColor"
                         android:onClick="popTime"
                         android:text="@string/set_time"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/remonderTimesSpinner" />
+                        app:layout_constraintTop_toBottomOf="@+id/reminders_spinner" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -242,6 +242,7 @@
                         android:layout_height="103dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="4dp"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/setStrengthText"
                         tools:layout_editor_absoluteX="10dp" />
@@ -252,9 +253,11 @@
                         android:layout_height="103dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="4dp"
+                        android:visibility="gone"
                         app:layout_constraintStart_toEndOf="@+id/strengthNumPicker"
                         app:layout_constraintTop_toBottomOf="@id/setStrengthText"
                         tools:layout_editor_absoluteX="10dp" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -280,7 +283,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/InstrucrionsArrow"
+                        android:id="@+id/instructions_arrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="false"
@@ -308,6 +311,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="20dp"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView"
                         tools:layout_editor_absoluteX="66dp">
@@ -387,7 +391,9 @@
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@id/enterAmountText"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
 
                     <TextView
                         android:id="@+id/enterAmountText"
@@ -396,6 +402,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/enter_amount"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/PrecRefill" />
 
@@ -407,6 +414,7 @@
                         android:layout_marginTop="10dp"
                         android:hint="@string/amount_of_meds"
                         android:inputType="number"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/enterAmountText" />
 
@@ -417,6 +425,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/get_refill_reminder"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/amountEditText" />
 
@@ -428,6 +437,7 @@
                         android:layout_marginTop="10dp"
                         android:hint="@string/meds_remaining"
                         android:inputType="number"
+                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/enterRemainText" />
 
@@ -486,7 +496,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine1" />
+                                    android:background="@drawable/ic_medicine1"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -502,7 +513,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine2" />
+                                    android:background="@drawable/ic_medicine2"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -518,7 +530,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine3" />
+                                    android:background="@drawable/ic_medicine3"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -534,7 +547,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine4" />
+                                    android:background="@drawable/ic_medicine4"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -550,7 +564,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine5" />
+                                    android:background="@drawable/ic_medicine5"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -566,7 +581,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine6" />
+                                    android:background="@drawable/ic_medicine6"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -582,7 +598,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine7" />
+                                    android:background="@drawable/ic_medicine7"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -598,7 +615,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine8" />
+                                    android:background="@drawable/ic_medicine8"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
 
@@ -625,28 +643,27 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--<ImageView
-                        android:id="@+id/arrow"
+                    <ImageView
+                        android:id="@+id/icons_arrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="false"
                         android:layout_marginTop="3dp"
                         android:src="@drawable/arrow_down"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/timeLapse"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:padding="16dp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/trialId"
-                        />-->
+                    <!-- <TextView
+                         android:id="@+id/timeLapse"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="25dp"
+                         android:padding="16dp"
+                         android:textStyle="bold"
+                         android:visibility="gone"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@id/trialId"
+                         />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
