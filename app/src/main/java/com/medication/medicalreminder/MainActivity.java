@@ -1,10 +1,9 @@
 package com.medication.medicalreminder;
 
 
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -33,25 +34,35 @@ import androidx.transition.TransitionManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.medication.medicalreminder.addhealthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 public class MainActivity extends AppCompatActivity implements PatientAdapterInterface, FriendsAdapterInterface {
 
-    private static final String TAG = "TAG";
+    private static final String TAG = "MainActivity";
 
     //Main Activity Design
-    //private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private View navigationHeaderView;
+    private ImageView profileImage;
+    private AlertDialog alertDialog;
+
 
     //Current User
     private TextView profileNameCurrentUser, profileEmailCurrentUser;
@@ -77,18 +88,23 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
     private ImageView showListArrowFriendsImage;
     ActivityMainBinding binding;
 
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseUser user = firebaseAuth.getCurrentUser();
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         //////
+        CollapsingToolbarLayout toolbar = findViewById(R.id.toolbar);
+        
+        profileImage = findViewById(R.id.profile_image_main_user);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "You clicked me", Toast.LENGTH_SHORT).show();
+            }
+        });
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
@@ -109,10 +125,43 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
             return true;
         });
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //    Log.i(TAG, "onChildAdded: ");
+                Log.i(TAG, "onChildAdded: previousChildName " + previousChildName);
+                Log.i(TAG, "onChildAdded: snapshot " + snapshot.getKey());
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Log.i(TAG, "onChildChanged: previousChildName " + previousChildName);
+                Log.i(TAG, "onChildChanged: snapshot.getValue() " + snapshot.getValue());
+                Log.i(TAG, "onChildChanged: snapshot.getKey() " + snapshot.getKey());
+                //  DataSnapshot dataSnapshot = snapshot.getChildren();
+                String UID = (String) snapshot.getValue();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Database").child("hager");
-        reference.setValue("inshalaah");
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(UID);
+                getAllData(databaseReference);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                Log.i(TAG, "onChildRemoved: ");
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Log.i(TAG, "onChildMoved: ");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i(TAG, "onCancelled: ");
+            }
+        });
+
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
@@ -129,26 +178,26 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         patients.add(new Patient("ghada@gmail.com", "passwordghada", "ghada", R.drawable.ic_twitter));
         patients.add(new Patient("asmaa@gmail.com", "passwordasmaa", "asmaa", R.drawable.ic_google));
 
+
         navigationView = findViewById(R.id.nav_view);
         drawer = findViewById(R.id.drawer_layout);
-       // toolbar = findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
-       // ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
-        //drawer.addDrawerListener(toggle);
-        //toggle.syncState();
-      //   getSupportActionBar().hide();
+
+
         navigationHeaderView = navigationView.getHeaderView(0);
+        Log.i(TAG, "onCreate: navigationHeaderView " + navigationHeaderView);
         //Patient
         addNewPatientConstraintLayout = navigationHeaderView.findViewById(R.id.add_new_patient_ConstraintLayout);
-
         recyclerViewPatients = navigationHeaderView.findViewById(R.id.patients_recycler_view);
         cardViewPatientsAnimation = navigationHeaderView.findViewById(R.id.card_view_patients_recycler_view);
-        show_list_arrow_patients = navigationHeaderView.findViewById(R.id.show_list_arrow_patients);
+        show_list_arrow_patients = navigationHeaderView.findViewById(R.id.card_view_patients_recycler_view).findViewById(R.id.show_list_arrow_patients);
         linearLayoutVisibilityCheckerPatients = navigationHeaderView.findViewById(R.id.linear_layout_visibility_checker_patient);
         show_list_arrow_patients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(TAG, "onCreate: onClick before if ");
                 if (linearLayoutVisibilityCheckerPatients.getVisibility() == View.GONE) {
+                    Log.i(TAG, "onCreate: onClick in if ");
+                    Log.i(TAG, "onCreate: linearLayoutVisibilityCheckerPatients in if " + linearLayoutVisibilityCheckerPatients);
                     linearLayoutVisibilityCheckerPatients.setVisibility(View.VISIBLE);
                     patientAdapter = new PatientAdapter(MainActivity.this, patients);
                     LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this);
@@ -157,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                     recyclerViewPatients.setAdapter(patientAdapter);
                     show_list_arrow_patients.setImageResource(R.drawable.ic_up_arrow);
                 } else {
+                    Log.i(TAG, "onCreate: onClick in else ");
                     linearLayoutVisibilityCheckerPatients.setVisibility(View.GONE);
                     show_list_arrow_patients.setImageResource(R.drawable.ic_down_arrow);
                 }
@@ -166,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         addNewPatientConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(TAG, "onCreate: addNewPatientConstraintLayout in else ");
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
@@ -199,14 +250,25 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         addNewFriendConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                Log.i(TAG, "onClick: inviteFriends going to AddHealthTaker");
+                startActivity(new Intent(MainActivity.this, AddHealthTaker.class));
             }
         });
+
 
         //CurrentUser
         circleImageViewCurrentUser = navigationHeaderView.findViewById(R.id.circleImageView_current_user);
         profileNameCurrentUser = navigationHeaderView.findViewById(R.id.profile_name_current_user);
         profileEmailCurrentUser = navigationHeaderView.findViewById(R.id.profile_email_current_user);
+
+        circleImageViewCurrentUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Cirecle Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        profileNameCurrentUser.setText("Name Clicked");
+        profileEmailCurrentUser.setText("Email Clicked");
         changeModeImageView = navigationHeaderView.findViewById(R.id.circleImageView_mode_application);
 
         changeModeImageView.setOnClickListener(new View.OnClickListener() {
@@ -224,126 +286,8 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
             }
         });
 
-
-    /*    navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Patient
-                addNewPatientConstraintLayout = v.findViewById(R.id.add_new_patient_ConstraintLayout);
-                recyclerViewPatients = findViewById(R.id.patients_recycler_view);
-                cardViewPatientsAnimation = v.findViewById(R.id.card_view_patients_recycler_view);
-                show_list_arrow_patients = v.findViewById(R.id.show_list_arrow_patients);
-                linearLayoutVisibilityCheckerPatients = v.findViewById(R.id.linear_layout_visibility_checker_patient);
-                show_list_arrow_patients.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (linearLayoutVisibilityCheckerPatients.getVisibility() == View.GONE) {
-                            linearLayoutVisibilityCheckerPatients.setVisibility(View.VISIBLE);
-                            patientAdapter = new PatientAdapter(MainActivity.this, patients);
-                            LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this);
-                            manager.setOrientation(LinearLayoutManager.VERTICAL);
-                            recyclerViewPatients.setLayoutManager(manager);
-                            recyclerViewPatients.setAdapter(patientAdapter);
-                            show_list_arrow_patients.setImageResource(R.drawable.ic_up_arrow);
-                        } else {
-                            linearLayoutVisibilityCheckerPatients.setVisibility(View.GONE);
-                            show_list_arrow_patients.setImageResource(R.drawable.ic_down_arrow);
-                        }
-                        TransitionManager.beginDelayedTransition(cardViewPatientsAnimation, new AutoTransition());
-                    }
-                });
-                addNewPatientConstraintLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    }
-                });
-
-
-                //Friends
-                addNewFriendConstraintLayout = v.findViewById(R.id.add_new_friends_ConstraintLayout);
-                recyclerViewFriends = findViewById(R.id.friends_recycler_view);
-                cardViewFiendsAnimation = v.findViewById(R.id.card_view_friends_recycler_view);
-                show_list_arrow_Friends = v.findViewById(R.id.show_list_arrow_friends);
-                linearLayoutVisibilityCheckerFriends = v.findViewById(R.id.linear_layout_visibility_checker_friends);
-                showListArrowFriendsImage = v.findViewById(R.id.show_list_arrow_friends_image);
-                show_list_arrow_Friends.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (linearLayoutVisibilityCheckerFriends.getVisibility() == View.GONE) {
-                            linearLayoutVisibilityCheckerFriends.setVisibility(View.VISIBLE);
-                            friendsAdapter = new FriendsAdapter(MainActivity.this, patients);
-                            LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this);
-                            manager.setOrientation(LinearLayoutManager.VERTICAL);
-                            recyclerViewFriends.setLayoutManager(manager);
-                            recyclerViewFriends.setAdapter(friendsAdapter);
-                            showListArrowFriendsImage.setImageResource(R.drawable.ic_up_arrow);
-                        } else {
-                            linearLayoutVisibilityCheckerFriends.setVisibility(View.GONE);
-                            showListArrowFriendsImage.setImageResource(R.drawable.ic_down_arrow);
-                        }
-                        TransitionManager.beginDelayedTransition(cardViewFiendsAnimation, new AutoTransition());
-                    }
-                });
-                addNewFriendConstraintLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-                    }
-                });
-
-                //CurrentUser
-                circleImageViewCurrentUser = v.findViewById(R.id.circleImageView_current_user);
-                profileNameCurrentUser = v.findViewById(R.id.profile_name_current_user);
-                profileEmailCurrentUser = v.findViewById(R.id.profile_email_current_user);
-                changeModeImageView = v.findViewById(R.id.circleImageView_mode_application);
-
-                changeModeImageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                            // on below line we are changing the theme to light mode.
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                            //  changeModeImageView.setImageResource(R.drawable.ic_facebook);
-                        } else {
-                            // on below line we are changing the theme to dark mode.
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                            // changeModeImageView.setImageResource(R.drawable.ic_twitter);
-                        }
-                    }
-                });
-
-            }
-        });*/
-
-
-
-
-
-
     }
 
-
-    private void replaceFragment( Fragment fragment){
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commit();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-      /*  if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            // on below line we are changing the theme to light mode.
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            changeModeImageView.setImageResource(R.drawable.ic_facebook);
-        } else {
-            // on below line we are changing the theme to dark mode.
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            changeModeImageView.setImageResource(R.drawable.ic_twitter);
-        }*/
-    }
 
     @Override
     public void changeUser(Patient patient) {
@@ -370,5 +314,57 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         circleImageViewCurrentUser.setImageResource(patient.getProfileImageTest());
         profileEmailCurrentUser.setText(patient.getEmail());
         profileNameCurrentUser.setText(patient.getName());
+    }
+
+
+    private void getAllData(DatabaseReference reference) {
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // name[0] = snapshot.getValue(UserPojo.class).getUserName();
+                if (snapshot.exists()) {
+                    UserPojo userPojo = snapshot.getValue(UserPojo.class);
+                    String name = userPojo.getUserName();
+                    showAlertDialog(name);
+                    Log.i(TAG, "onDataChange: naem-----------------" + name);
+                    Log.i(TAG, "getALLDATA: getALLDATA\n userName : " + userPojo.getUserName() + "\tEmail : " + userPojo.getEmail()
+                            + "\tPassword : " + userPojo.getPassword() + "\tAccessUID : " + userPojo.getAccessUID());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void showAlertDialog(String name) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage(name + " Send you invitation to access his list of medicines and care him");
+        builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "Success, You can switch account now and see hos list", Toast.LENGTH_SHORT).show();
+            }
+        }).setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "You refused invitation of " + name + "To take care of him", Toast.LENGTH_SHORT).show();
+                FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).child("accessUID").setValue("NULL");
+                alertDialog.hide();
+            }
+        });
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment);
+        fragmentTransaction.commit();
     }
 }

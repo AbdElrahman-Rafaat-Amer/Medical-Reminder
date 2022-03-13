@@ -8,6 +8,9 @@ public class Medication {
     private int strength;
     private String reputation;
     private List<Date> medicationTime;
+    private int amount;
+    int refillNumber;
+
 
     public String getName() {
         return name;

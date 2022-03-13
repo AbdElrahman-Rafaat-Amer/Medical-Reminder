@@ -3,7 +3,6 @@
     <string name="facebook_app_id">3270591816599957</string>
     <string name="fb_login_protocol_scheme">fb3270591816599957</string>
 
-
     <string name="booki">BookI</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="read_it_together">Read it together</string>
@@ -25,18 +24,25 @@
     <string name="patients">Patients</string>
     <string name="friends">Friends</string>
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="google_logout">Logout</string>
     <string name="profile_email">Email</string>
     <string name="accounts">Accounts</string>
     <string name="add_new_account">Add Account</string>
+    <string name="try_sign_with_google">You are trying to sign with google</string>
+    <string name="password_length_error">Password can not be less than 8 characters</string>
+    <string name="enter_friend_mail">enter email of your friend to invite him</string>
+    <string name="invite_friend">Invite friend to take care of you</string>
+    <string name="send_invitation">Send invitation</string>
+    <string name="email_badFormat">This is not valid email</string>
+    <string name="email_not_found">This email is not registered or can not accept your request now</string>
+    <string name="reserved_healthTaker">This health taker is <unavailable></unavailable> now, He might take care of another person</string>
+    <string name="added_done">Success adding</string>
     <string name="medicineTxtView" />
     <string name="takenTime" />
     <string name="datetxtview" />
     <string name="medicineRecyclerView" />
     <string name="nestedscrool" />
-
     <string name="reminders">Reminders</string>
     <string name="suspend">suspend</string>
     <string name="refill">refill</string>
@@ -63,8 +69,6 @@
     <string name="done">Done</string>
     <string name="txt">haaaaaaaaaaa</string>
 
-    <!--<string name="default_web_client_id" translatable="false">758307842688-c583krtr7nje1cfcvketkbtrk17kkge2.apps.googleusercontent.com</string>
--->
     <string-array name="reminder_times">
         <item>Once daily</item>
         <item>Twice daily</item>

@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.medication.medicalreminder.model.MedicinePojoo;
+
 import java.util.ArrayList;
 import java.util.List;
 

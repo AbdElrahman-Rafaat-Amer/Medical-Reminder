@@ -52,7 +52,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_edit_text"
+        android:id="@+id/email_edit_text_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_edit_text"
+        android:id="@+id/password_edit_text_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
         app:endIconTint="@color/white"
         app:errorEnabled="true"
         app:errorTextColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/email_edit_text">
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_text_textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -109,7 +109,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/signin_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text"></CheckBox>
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text_textInputLayout"></CheckBox>
 
     <TextView
         android:id="@+id/forgot_password_text_view"
@@ -122,7 +122,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/signin_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text_textInputLayout" />
 
     <Button
         android:id="@+id/signin_button"
@@ -134,7 +134,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text_textInputLayout"></Button>
 
     <TextView
         android:id="@+id/textView"

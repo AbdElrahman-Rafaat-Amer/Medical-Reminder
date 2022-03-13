@@ -1,52 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_edit_med.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/toolbar.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/USER/Desktop/Medical-Reminder/app/src/main/res/layout/activity_main.xml" value="0.19972826086956522" />
-        <entry key="..\:/Users/USER/Desktop/Medical-Reminder/app/src/main/res/layout/add_med_activity.xml" value="0.19972826086956522" />
-        <entry key="..\:/Users/USER/Desktop/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.14" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_add.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_home.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_add.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_capsule.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_medicine.xml" value="0.103125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/calendar.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/display_home_dialog.xml" value="0.25" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/expandable_custom_view.xml" value="0.18" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_display_home_dialog.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.16304347826086957" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_updates.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/menu/navigation_drawer_menu.xml" value="0.1" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/activity_add_mactivity.xml" value="0.2203125" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/activity_add_medication.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_dayily.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_days_number.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_dose_time.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_first.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_med_form.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_name.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_refill.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_refill_tow.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_rfill_three.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_strength.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_first.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_second.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_third_third.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_once.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_tow_first.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_time_tow_second.xml" value="0.22735507246376813" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/item.xml" value="0.22735507246376813" />
-      </map>
-    </option>
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

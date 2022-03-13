@@ -52,7 +52,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_name_edit_text"
+        android:id="@+id/user_name_edit_text_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,6 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_signUP">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_name_edit_text_TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -74,7 +75,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_edit_text"
+        android:id="@+id/email_edit_text_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,9 +85,10 @@
         android:textColorHint="@color/white"
         app:errorEnabled="true"
         app:errorTextColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/user_name_edit_text">
+        app:layout_constraintTop_toBottomOf="@+id/user_name_edit_text_textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edit_text_TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -95,7 +97,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_edit_text"
+        android:id="@+id/password_edit_text_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,9 +109,10 @@
         app:endIconTint="@color/white"
         app:errorEnabled="true"
         app:errorTextColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/email_edit_text">
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_text_textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edit_text_TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -128,7 +131,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text_textInputLayout"></Button>
 
     <TextView
         android:id="@+id/textView"
