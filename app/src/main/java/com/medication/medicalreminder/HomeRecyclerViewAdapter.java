@@ -16,8 +16,7 @@ import java.util.List;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
-     List <MedicinePojoo>  mediceneArray;
-     List<MedicinePojoo> dataList;
+    List <MedicinePojoo>  mediceneArray;
 
     public HomeRecyclerViewAdapter() {
     }
@@ -25,12 +24,12 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     public HomeRecyclerViewAdapter(ArrayList<MedicinePojoo> mediceneArray, Context context) {
         this.context = context;
         this.mediceneArray= mediceneArray;
-        /*this.mediceneArray = mediceneArray;
-        Log.i("TAG", "RecyclerViewAdapter: this.mediceneArray " + this.mediceneArray);
-        Log.i("TAG", "RecyclerViewAdapter: mediceneArray " + mediceneArray);
-        Log.i("TAG", "RecyclerViewAdapter: mediceneArray.size() " + mediceneArray.size());
-         */
     }
+
+    public void setList(ArrayList<MedicinePojoo> spesificList) {
+        this.mediceneArray=spesificList;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         View row;
         TextView medName;
@@ -60,27 +59,27 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             return imgView;
         }
     }
-        @NonNull
+    @NonNull
 
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View view = inflater.inflate(R.layout.custom_row_show_medicine_home, parent, false);
-            ViewHolder viewHolder = new ViewHolder(view);
-            return viewHolder;
-        }
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-          //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
-            holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
-            holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
-           //MedicinePojoo medicinePojoo = dataList.get(position);
-            //holder.medName.setText(medicinePojoo.getMedicineName());
-
-        }
-        @Override
-        public int getItemCount() {
-            Log.i("TAG", "getItemCount: " + mediceneArray.size());
-            return mediceneArray.size();
-        }
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.custom_row_show_medicine_home, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
+        holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
+        holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
+        //MedicinePojoo medicinePojoo = dataList.get(position);
+        //holder.medName.setText(medicinePojoo.getMedicineName());
+
+    }
+    @Override
+    public int getItemCount() {
+        Log.i("TAG", "getItemCount: " + mediceneArray.size());
+        return mediceneArray.size();
+    }
+}

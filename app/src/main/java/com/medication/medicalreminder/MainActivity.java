@@ -102,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                     Log.i("TAG", "onCreate: bottomNavigation.setOnItemSelectedListener go to medicine");
                     replaceFragment((new MedecineFragment()));
                     break;
+                case R.id.updates:
+                    replaceFragment((new UpdatesFragment()));
+                    break;
             }
             return true;
         });
