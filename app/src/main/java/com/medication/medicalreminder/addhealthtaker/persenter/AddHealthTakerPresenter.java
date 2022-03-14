@@ -20,7 +20,7 @@ public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface
 
     @Override
     public void sendInvitationRequest(String email) {
-        repositoryInterface.addHealthTaker(email,this);
+       // repositoryInterface.addHealthTaker(email,this);
     }
 
     @Override

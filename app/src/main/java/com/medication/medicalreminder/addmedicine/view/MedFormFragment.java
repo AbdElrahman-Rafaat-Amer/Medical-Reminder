@@ -1,30 +1,39 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.addmedicine.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.model.Medicine;
 
 
-public class MedFormFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MedFormFragment extends Fragment  {
 
     private static final int EXTRA_AGE = 0;
-    // create array of Strings
-    // and store name of courses
+
     String[] items = new String[]{
             "Pill", "Solution",
             "Injection", "Powder",
             "Drops", "Inhaler","Other" };
 
+    Medicine medicine ;
 
-    Spinner dropDown;
+
 
     public MedFormFragment() {
         // Required empty public constructor
@@ -44,26 +53,31 @@ public class MedFormFragment extends Fragment implements AdapterView.OnItemSelec
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_med_form, container, false);
-        Button buttonPill = view.findViewById(R.id.pill);
-        buttonPill.setOnClickListener(btnView -> {
+        medicine= Medicine.getInstance();
+
+        Button buttonForm = view.findViewById(R.id.pill);
+
+        buttonForm.setText(medicine.getName());
+
+        buttonForm.setOnClickListener(btnView -> {
          if (getActivity() != null) {
 
-             Bundle bundle = new Bundle();
-             bundle.putInt(String.valueOf(EXTRA_AGE),20);
+             medicine.setForm(buttonForm.getText().toString());
              NavController navController = Navigation.findNavController(btnView);
-             navController.navigate(R.id.strengthFragment,bundle);
+             navController.navigate(R.id.strengthFragment);
 
 
         }
         });
+
+
         Button buttonSol = view.findViewById(R.id.Solution);
         buttonSol.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
-                Bundle bundle = new Bundle();
-                bundle.putInt(String.valueOf(EXTRA_AGE),20);
+               medicine.setForm(buttonSol.getText().toString());
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.strengthFragment,bundle);
+                navController.navigate(R.id.strengthFragment);
 
 
             }
@@ -72,10 +86,9 @@ public class MedFormFragment extends Fragment implements AdapterView.OnItemSelec
         buttonInje.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
-                Bundle bundle = new Bundle();
-                bundle.putInt(String.valueOf(EXTRA_AGE),20);
+                medicine.setForm(buttonInje.getText().toString());
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.strengthFragment,bundle);
+                navController.navigate(R.id.strengthFragment);
 
 
             }
@@ -83,11 +96,9 @@ public class MedFormFragment extends Fragment implements AdapterView.OnItemSelec
         Button buttonPoweder = view.findViewById(R.id.Poweder);
         buttonPoweder.setOnClickListener(btnView -> {
             if (getActivity() != null) {
-
-                Bundle bundle = new Bundle();
-                bundle.putInt(String.valueOf(EXTRA_AGE),20);
+                medicine.setForm(buttonPoweder.getText().toString());
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.strengthFragment,bundle);
+                navController.navigate(R.id.strengthFragment);
 
 
             }
@@ -96,10 +107,9 @@ public class MedFormFragment extends Fragment implements AdapterView.OnItemSelec
         buttonDrop.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
-                Bundle bundle = new Bundle();
-                bundle.putInt(String.valueOf(EXTRA_AGE),20);
+                medicine.setForm(buttonDrop.getText().toString());
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.strengthFragment,bundle);
+                navController.navigate(R.id.strengthFragment);
 
 
             }
@@ -108,13 +118,5 @@ public class MedFormFragment extends Fragment implements AdapterView.OnItemSelec
         return view;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 }

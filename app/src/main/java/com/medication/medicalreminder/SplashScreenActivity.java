@@ -51,8 +51,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         Log.i("TAG", "onCreate: SplashScreenActivity ----------------------------------------------------------------------------");
-        Log.i("TAG", "onCreate: user.getUid() " + user.getUid());
-        Log.i("TAG", "onCreate: user.getEmail() " + user.getEmail());
+      // Log.i("TAG", "onCreate: user.getUid() " + user.getUid());
+      //  Log.i("TAG", "onCreate: user.getEmail() " + user.getEmail());
         Log.i("TAG", "onCreate: SplashScreenActivity ----------------------------------------------------------------------------");
 
    /*     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");

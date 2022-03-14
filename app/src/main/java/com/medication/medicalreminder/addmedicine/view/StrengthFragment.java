@@ -1,15 +1,22 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.addmedicine.view;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.model.Medicine;
+
+import java.util.ArrayList;
 
 
 public class StrengthFragment extends Fragment {
@@ -19,6 +26,7 @@ public class StrengthFragment extends Fragment {
     private NumberPicker numberPickerOne;
     private  NumberPicker numberPickerTow;
     private String valueBundel="";
+    Medicine medicine;
 
 
 
@@ -40,6 +48,9 @@ public class StrengthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_strength, container, false);
+
+        medicine= medicine.getInstance();
+
         numberPickerTow= view.findViewById(R.id.strengthNumPicker);
         numberPickerTow.setMaxValue(100);
         numberPickerTow.setMinValue(0);
@@ -51,7 +62,7 @@ public class StrengthFragment extends Fragment {
             }
         });
         numberPickerOne = view.findViewById(R.id.doseNumPicker);
-        numberPickerOne.setMinValue(0);
+       numberPickerOne.setMinValue(0);
         numberPickerOne.setMaxValue(2);
         numberPickerOne.setDisplayedValues( new String[] { "g", "IU", "mcg","meq","mg" } );
        numberPickerOne.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -64,15 +75,13 @@ public class StrengthFragment extends Fragment {
 
 
 
-        Button button = view.findViewById(R.id.bttnNext);
-        button.setOnClickListener(btnView -> {
+        Button strength = view.findViewById(R.id.bttnNext);
+        strength.setOnClickListener(btnView -> {
             if (getActivity() != null) {
+                medicine.setStrength(value+valueS);
 
-                Bundle bundle = new Bundle();
-               // bundle.putInt(String.valueOf(EXTRA_AGE),20);
-                bundle.putString(valueBundel,value+""+valueS);
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.dayilyFragment,bundle);
+                navController.navigate(R.id.reasonFragment);
 
 
             }

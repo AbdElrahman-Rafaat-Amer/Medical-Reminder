@@ -2,71 +2,53 @@ package com.medication.medicalreminder.model;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
+
 import com.medication.medicalreminder.Medication;
-import com.medication.medicalreminder.UserPojo;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 import com.medication.medicalreminder.roomdatabase.LocalSource;
 
 import java.util.List;
 
-public class Repository implements RepositoryInterface {
+public class Repository implements RepositoryInterface{
 
-    private static Repository repository = null;
-    private Context context;
+    private Context context ;
+    LocalSource localSource ;
+    private static  Repository repository = null;
     private FirebaseOperationInterface remoteSource;
-    private LocalSource localSource;
 
-    private Repository(Context context, LocalSource localSource, FirebaseOperationInterface remoteSource) {
-        this.context = context;
-        this.remoteSource = remoteSource;
-        this.localSource = localSource;
+    public Repository ( Context context , LocalSource localSource) {
+        this.context = context ;
+        this.localSource = localSource ;
+
     }
 
-    public static Repository getInstance(Context context, LocalSource localSource, FirebaseOperationInterface remoteSource) {
-        if (repository == null) {
-            repository = new Repository(context, localSource, remoteSource);
+    public static Repository getInstance(Context context, LocalSource localSource) {
+        if(repository == null){
+            repository = new Repository(context, localSource);
         }
         return repository;
     }
 
-    @Override
-    public void insertUserRepository(UserPojo userPojo) {
 
+
+    @Override
+    public LiveData<List<Medicine>> getStoredMedicine() {
+        return localSource.getAllMedicine();
     }
 
     @Override
-    public void insertMedicineRepository() {
-
+    public void insertMedicine(Medicine medicine) {
+          localSource.insert(medicine);
     }
 
     @Override
-    public void updateMedicineRepository(String UID) {
-
+    public void deleteMedicine(Medicine medicine) {
+         localSource.delete(medicine);
     }
 
-    @Override
-    public void deleteMedicineRepository(String UID) {
 
-    }
 
-    @Override
-    public UserPojo getUserByEmailRepository(String email) {
-        return null;
-    }
-
-    @Override
-    public List<Medication> getAllMedicineRepository(String UID) {
-        return null;
-    }
-
-    @Override
-    public Medication getSpecificMedicineRepository(String UID) {
-        return null;
-    }
-
-    @Override
-    public void addHealthTaker(String email, NetworkDelegate networkDelegate) {
-        remoteSource.addHealthTaker(email, networkDelegate);
-    }
 }

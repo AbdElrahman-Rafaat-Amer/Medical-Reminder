@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
             return true;
         });
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

@@ -26,8 +26,8 @@ import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.RepositoryInterface;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
+import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 import com.medication.medicalreminder.roomdatabase.LocalSource;
-import com.medication.medicalreminder.roomdatabase.LocalSourceConcreteClass;
 
 public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerViewInterface {
 
@@ -51,8 +51,8 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
             }
         });
 
-        presenterInterface = new AddHealthTakerPresenter(AddHealthTaker.this,
-                Repository.getInstance(this, LocalSourceConcreteClass.getInstance(this), FirebaseOperation.getInstance()));
+       // presenterInterface = new AddHealthTakerPresenter(AddHealthTaker.this,
+              //  Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
 
         inviteFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override

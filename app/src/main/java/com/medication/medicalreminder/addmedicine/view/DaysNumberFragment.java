@@ -1,22 +1,27 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.addmedicine.view;
 
 import android.os.Bundle;
+
+import androidx.core.view.OneShotPreDrawListener;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.model.Medicine;
 
 
 public class DaysNumberFragment extends Fragment {
 
 
-    private static final String EXTRA_AGE = "";
-    private String numberOfDays = "";
-
+    Medicine medicine;
     public DaysNumberFragment() {
         // Required empty public constructor
     }
@@ -35,16 +40,15 @@ public class DaysNumberFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_days_number, container, false);
 
+        medicine = Medicine.getInstance();
         Button once = view.findViewById(R.id.onceDaily);
         once.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
-                String onceText= (String) once.getText();
-                Bundle bundle = new Bundle();
-                //bundle.putInt(String.valueOf(valueBoo),);
-                bundle.putString(numberOfDays,onceText);
+                medicine.setOften("Once daily");
+
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.timeOnceFragment,bundle);
+                navController.navigate(R.id.allTimeFragment);
 
 
             }
@@ -53,27 +57,20 @@ public class DaysNumberFragment extends Fragment {
         twice.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
-                String twiceText= (String) twice.getText();
-                Bundle bundle = new Bundle();
-                //bundle.putInt(String.valueOf(valueBoo),);
-                bundle.putString(numberOfDays,twiceText);
+                medicine.setOften("Twice Daily");
+
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.timeTowFirstFragment,bundle);
-
-
+                navController.navigate(R.id.allTimeFragment);
             }
         });
         Button threeTimes = view.findViewById(R.id.threeTimesAday);
         threeTimes.setOnClickListener(btnView -> {
             if (getActivity() != null) {
 
+                 medicine.setOften("3 times Daily");
 
-                String threeTimesTextText= (String) threeTimes.getText();
-                Bundle bundle = new Bundle();
-                //bundle.putInt(String.valueOf(valueBoo),);
-                bundle.putString(numberOfDays,threeTimesTextText);
                 NavController navController = Navigation.findNavController(btnView);
-                navController.navigate(R.id.thirdFirstFragment,bundle);
+                navController.navigate(R.id.allTimeFragment);
 
             }
         });
