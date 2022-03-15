@@ -68,6 +68,7 @@
     <string name="med_icon">Med Icon</string>
     <string name="done">Done</string>
     <string name="txt">haaaaaaaaaaa</string>
+    <string name="pick_time_for_dose">"Enter your dose number "</string>
 
     <string-array name="reminder_times">
         <item>Once daily</item>

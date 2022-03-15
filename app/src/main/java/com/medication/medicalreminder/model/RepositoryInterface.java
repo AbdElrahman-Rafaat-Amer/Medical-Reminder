@@ -11,6 +11,7 @@ public interface RepositoryInterface {
     LiveData<List<Medicine>> getStoredMedicine ();
     void insertMedicine (Medicine medicine);
     void deleteMedicine (Medicine medicine);
+    void AddMedToFirebase(Medicine medicine);
 
 
 }

@@ -8,6 +8,7 @@ public class MedicinePresenter implements MedicinePresenterInterface{
 
     private RepositoryInterface repo ;
 
+
     public MedicinePresenter(RepositoryInterface repo ){
         this.repo = repo;
 
@@ -17,4 +18,11 @@ public class MedicinePresenter implements MedicinePresenterInterface{
     public void addMedicine(Medicine medicine) {
         repo.insertMedicine(medicine);
     }
+
+    @Override
+    public void addMedToFireBase(Medicine medicine) {
+        repo.AddMedToFirebase(medicine);
+    }
+
+
 }

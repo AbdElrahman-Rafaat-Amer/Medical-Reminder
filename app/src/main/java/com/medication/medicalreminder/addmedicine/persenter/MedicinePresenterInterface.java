@@ -7,4 +7,5 @@ public interface MedicinePresenterInterface {
 
 
     void addMedicine(Medicine medicine);
+    void addMedToFireBase(Medicine medicine);
 }

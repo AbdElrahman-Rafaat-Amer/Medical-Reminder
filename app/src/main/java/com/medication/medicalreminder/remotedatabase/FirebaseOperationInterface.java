@@ -2,6 +2,7 @@ package com.medication.medicalreminder.remotedatabase;
 
 import com.medication.medicalreminder.Medication;
 import com.medication.medicalreminder.UserPojo;
+import com.medication.medicalreminder.model.Medicine;
 
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface FirebaseOperationInterface {
     Medication getSpecificMedicine(String UID);
 
     void addHealthTaker(String email, NetworkDelegate networkDelegate);
+
+    void addMedToFireBase(Medicine medicine);
 
 }

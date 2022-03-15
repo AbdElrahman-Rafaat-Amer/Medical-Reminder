@@ -18,6 +18,7 @@ import com.medication.medicalreminder.addmedicine.persenter.MedicinePresenter;
 import com.medication.medicalreminder.addmedicine.persenter.MedicinePresenterInterface;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
+import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
 
@@ -49,14 +50,17 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
         super.onViewCreated(view, savedInstanceState);
         medicine= Medicine.getInstance();
         save = view.findViewById(R.id.lastSaveButton);
-        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext())));
+        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()));
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Medicine object = new Medicine( 1,medicine.getName(),medicine.getForm(),medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
+                Medicine object = new Medicine( 0,medicine.getName(),medicine.getForm(),medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
                         medicine.getOften(), medicine.getTime(), medicine.getStartDate(), medicine.getEndDate(), medicine.getMedLeft(), medicine.getRefillLimit(), medicine.getImage()
                 );
                 addMed(object);
+              // MedicinePojoo medicinePojo = new MedicinePojoo("aya","last",7);
+                Medicine medicineToFireBase = object;
+                AddToFireBase(medicineToFireBase);
             }
         });
 
@@ -68,4 +72,11 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
     public void addMed(Medicine medicine) {
         presenter.addMedicine(medicine);
     }
+
+    @Override
+    public void AddToFireBase(Medicine medicine) {
+        presenter.addMedToFireBase(medicine);
+    }
+
+
 }

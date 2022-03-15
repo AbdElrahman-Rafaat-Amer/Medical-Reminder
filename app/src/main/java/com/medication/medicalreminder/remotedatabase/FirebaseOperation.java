@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.Medication;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.UserPojo;
+import com.medication.medicalreminder.model.Medicine;
 
 import java.util.List;
 
@@ -106,4 +107,15 @@ public class FirebaseOperation implements FirebaseOperationInterface {
             }
         });
     }
+
+    @Override
+    public void addMedToFireBase(Medicine medicine) {
+
+        DatabaseReference referencee = FirebaseDatabase.getInstance().getReference("lastMedObject").child("Med").push();
+        String  Mid = referencee.getKey();
+        referencee.child("key").setValue(Mid);
+        referencee.setValue(medicine);
+    }
+
+
 }
