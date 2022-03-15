@@ -1,6 +1,7 @@
 package com.medication.medicalreminder.model;
 
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -47,6 +48,11 @@ public class Medicine {
     @ColumnInfo(name = "image")
     int image;
 
+   @Nullable
+   @ColumnInfo(name="uid")
+   String Uid ;
+
+
 
     private static Medicine instance = null;
 
@@ -59,7 +65,16 @@ public class Medicine {
         return instance;
     }
 
-    public Medicine(int id, String name, String form, String strength, String reason, String isDaily, String often, String time, String startDate, String endDate, int medLeft, int refillLimit, int image) {
+    @Nullable
+    public String getUid() {
+        return Uid;
+    }
+
+    public void setUid(@Nullable String uid) {
+        Uid = uid;
+    }
+
+    public Medicine(int id, String name, String form, String strength, String reason, String isDaily, String often, String time, String startDate, String endDate, int medLeft, int refillLimit, int image, String Uid) {
         this.id = id;
         this.name = name;
         this.form = form;
@@ -73,6 +88,7 @@ public class Medicine {
         this.medLeft = medLeft;
         this.refillLimit = refillLimit;
         this.image = image;
+        this.Uid = Uid;
     }
 
     public int getId() {

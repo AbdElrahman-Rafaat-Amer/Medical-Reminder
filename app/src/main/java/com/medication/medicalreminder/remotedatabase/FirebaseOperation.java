@@ -14,8 +14,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.Medication;
 import com.medication.medicalreminder.R;
-import com.medication.medicalreminder.UserPojo;
 import com.medication.medicalreminder.model.Medicine;
+import com.medication.medicalreminder.model.UserPojo;
 
 import java.util.List;
 
@@ -111,10 +111,12 @@ public class FirebaseOperation implements FirebaseOperationInterface {
     @Override
     public void addMedToFireBase(Medicine medicine) {
 
-        DatabaseReference referencee = FirebaseDatabase.getInstance().getReference("lastMedObject").child("Med").push();
-        String  Mid = referencee.getKey();
-        referencee.child("key").setValue(Mid);
+        DatabaseReference referencee = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").push();
+        String  MedUid = referencee.getKey();
+       medicine.setUid(MedUid);
         referencee.setValue(medicine);
+      // referencee.child("Uid").setValue(MedUid);
+
     }
 
 

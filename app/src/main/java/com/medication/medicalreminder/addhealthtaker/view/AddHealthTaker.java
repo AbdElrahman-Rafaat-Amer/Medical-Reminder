@@ -19,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.R;
-import com.medication.medicalreminder.UserPojo;
 import com.medication.medicalreminder.addhealthtaker.persenter.AddHealthTakerPresenter;
 import com.medication.medicalreminder.addhealthtaker.persenter.AddHealthTakerPresenterInterface;
 import com.medication.medicalreminder.model.Repository;

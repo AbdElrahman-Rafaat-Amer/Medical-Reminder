@@ -49,9 +49,13 @@ public class EndDateFragment extends Fragment {
         medicine = Medicine.getInstance();
         pickerEnd = view.findViewById(R.id.endDate);
         endDate = view.findViewById(R.id.endButton);
+
+        medicine.setImage(R.drawable.ic_launcher_background);
+
         endDate.setOnClickListener(btnView -> {
-            medicine.setStartDate( pickerEnd.getDayOfMonth()+"/"+ (pickerEnd.getMonth() + 1)+"/"+pickerEnd.getYear());
-            medicine.setImage(R.drawable.ic_launcher_background);
+
+            medicine.setEndDate( pickerEnd.getDayOfMonth()+"-"+ (pickerEnd.getMonth() + 1)+"-"+pickerEnd.getYear());
+
             NavController navController = Navigation.findNavController(btnView);
             navController.navigate(R.id.saveFragment);
 

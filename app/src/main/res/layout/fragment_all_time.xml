@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="dose ?"
+                android:text="dose?"
                 android:textColor="@color/bluee"
                 android:textSize="18dp"
                 android:textStyle="bold" />

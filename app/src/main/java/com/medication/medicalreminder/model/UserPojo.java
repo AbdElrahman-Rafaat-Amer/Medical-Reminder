@@ -1,9 +1,12 @@
 package com.medication.medicalreminder.model;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.List;
 
 @Entity(tableName = "user")
 public class UserPojo {
@@ -16,19 +19,28 @@ public class UserPojo {
     @NonNull
     private String email;
 
+   @Nullable
     private String accessUID;
 
-    public UserPojo(String userName, String password, String email, String accessUID) {
+   @Nullable
+   List<Medicine> medicineList;
+
+
+    public UserPojo(@NonNull String userName, @NonNull String password, @NonNull String email, @Nullable String accessUID, @Nullable List<Medicine> medicineList) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.accessUID = accessUID;
+        this.medicineList = medicineList;
     }
 
-    public UserPojo(String userName, String password, String email) {
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
+    @Nullable
+    public List<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(@Nullable List<Medicine> medicineList) {
+        this.medicineList = medicineList;
     }
 
     public UserPojo() {
@@ -58,11 +70,12 @@ public class UserPojo {
         this.email = email;
     }
 
+    @Nullable
     public String getAccessUID() {
         return accessUID;
     }
 
-    public void setAccessUID(String accessUID) {
+    public void setAccessUID(@Nullable String accessUID) {
         this.accessUID = accessUID;
     }
 }

@@ -54,7 +54,7 @@ public class StartDateFragment extends Fragment {
         startDate = view.findViewById(R.id.startButton);
         startDate.setOnClickListener(btnView -> {
 
-            medicine.setStartDate( pickerStart.getDayOfMonth()+"/"+ (pickerStart.getMonth() + 1)+"/"+pickerStart.getYear());
+            medicine.setStartDate( pickerStart.getDayOfMonth()+"-"+ (pickerStart.getMonth() + 1)+"-"+pickerStart.getYear());
 
             NavController navController = Navigation.findNavController(btnView);
             navController.navigate(R.id.endDateFragment);

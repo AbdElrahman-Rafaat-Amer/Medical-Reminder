@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.medication.medicalreminder.model.UserPojo;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     if (task.isSuccessful()) {
                                         Log.i("TAG", "signingButton for if first one task.isSuccessful()  " + task.isSuccessful());
-                                        UserPojo user = new UserPojo(userName, password, email);
+                                        UserPojo user = new UserPojo(userName, password, email,"NULL",null);
                                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
