@@ -17,6 +17,7 @@ import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.UserPojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseOperation implements FirebaseOperationInterface {
@@ -116,6 +117,36 @@ public class FirebaseOperation implements FirebaseOperationInterface {
        medicine.setUid(MedUid);
         referencee.setValue(medicine);
       // referencee.child("Uid").setValue(MedUid);
+
+    }
+
+    @Override
+    public void getAllMedicine(NetworkDelegate networkDelegate) {
+
+        List<Medicine> storedMedicine = new ArrayList<>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList");
+                //.getReference("Users").child("medicineList");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                for(DataSnapshot snapshot1: datasnapshot.getChildren()){
+                    Medicine medicine= snapshot1.getValue(Medicine.class);
+                    storedMedicine.add(medicine);
+                }
+                Log.i("TAG", "onDataChange Read from Firebase: " + storedMedicine);
+                Log.i("TAG", "onDataChange Size of list " + storedMedicine.size());
+
+
+                networkDelegate.onSuccessGetMediciene(storedMedicine);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+
+        });
+        Log.i("TAG", "getAllMedicine: " + storedMedicine.size());
 
     }
 

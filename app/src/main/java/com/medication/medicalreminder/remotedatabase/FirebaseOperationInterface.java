@@ -26,4 +26,10 @@ public interface FirebaseOperationInterface {
 
     void addMedToFireBase(Medicine medicine);
 
+    void getAllMedicine(NetworkDelegate networkDelegate);
+
+
+
+
+
 }

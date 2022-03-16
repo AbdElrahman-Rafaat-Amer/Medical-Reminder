@@ -46,6 +46,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.addhealthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.databinding.ActivityMainBinding;
+import com.medication.medicalreminder.displaymedicine.view.HomeFragment;
+import com.medication.medicalreminder.displaymedicine.view.MedecineFragment;
 import com.medication.medicalreminder.model.UserPojo;
 
 import java.util.ArrayList;
@@ -146,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(UID);
                 getAllData(databaseReference);
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 Log.i(TAG, "onChildRemoved: ");
@@ -255,7 +256,6 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                 startActivity(new Intent(MainActivity.this, AddHealthTaker.class));
             }
         });
-
 
         //CurrentUser
         circleImageViewCurrentUser = navigationHeaderView.findViewById(R.id.circleImageView_current_user);

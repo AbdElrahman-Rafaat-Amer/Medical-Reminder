@@ -18,8 +18,20 @@ public interface MedicineDAO {
 
     @Insert
     void  insertMedicine (Medicine medicine);
-
     @Delete
     void  deleteMedicine (Medicine medicine);
+
+    @Query("SELECT startDate FROM medicines ")
+    String  getStartDate();
+
+    @Query("SELECT startDate FROM medicines ")
+    String getEnddate();
+
+    @Query("SELECT time FROM medicines ")
+    String getTime();
+
+
+
+
 
 }

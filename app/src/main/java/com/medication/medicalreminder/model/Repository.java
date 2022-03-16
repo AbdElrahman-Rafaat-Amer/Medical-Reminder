@@ -56,5 +56,26 @@ public class Repository implements RepositoryInterface{
         remoteSource.addMedToFireBase(medicine);
     }
 
+    @Override
+    public void getStoredMedicineFireBase(NetworkDelegate networkDelegate) {
+        remoteSource.getAllMedicine(networkDelegate);
+
+    }
+
+    @Override
+    public void getStartDate() {
+        localSource.getStartDate();
+    }
+
+    @Override
+    public void getEnddate() {
+        localSource.getEnddate();
+    }
+
+    @Override
+    public void getTime() {
+        localSource.getTime();
+    }
+
 
 }

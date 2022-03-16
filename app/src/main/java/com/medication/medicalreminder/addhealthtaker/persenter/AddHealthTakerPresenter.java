@@ -3,8 +3,11 @@ package com.medication.medicalreminder.addhealthtaker.persenter;
 import android.util.Log;
 
 import com.medication.medicalreminder.addhealthtaker.view.AddHealthTakerViewInterface;
+import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.RepositoryInterface;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
+
+import java.util.List;
 
 public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface, NetworkDelegate {
 
@@ -36,5 +39,9 @@ public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface
     @Override
     public void onFailureInvitation(String errorMessage) {
         viewInterface.receiveInvitationRequest(errorMessage);
+    }
+
+    @Override
+    public void onSuccessGetMediciene(List<Medicine> successMessage) {
     }
 }

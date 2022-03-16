@@ -11,24 +11,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.medication.medicalreminder.model.MedicinePojoo;
+import com.medication.medicalreminder.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
-    List <MedicinePojoo>  mediceneArray;
+    List <Medicine>  mediceneArray = new ArrayList<>();
 
-    public HomeRecyclerViewAdapter() {
-    }
 
-    public HomeRecyclerViewAdapter(ArrayList<MedicinePojoo> mediceneArray, Context context) {
+
+    public HomeRecyclerViewAdapter(List<Medicine> mediceneArray, Context context) {
         this.context = context;
         this.mediceneArray= mediceneArray;
     }
 
-    public void setList(ArrayList<MedicinePojoo> spesificList) {
+    public void setList(List<Medicine> spesificList) {
         this.mediceneArray=spesificList;
     }
 
@@ -40,11 +40,13 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         public ViewHolder(@NonNull View convertView) {
             super(convertView);
             row = convertView;
-            medName = row.findViewById(R.id.medicineTxtView);
+            medName = row.findViewById(R.id.medcineTxtView);
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
-
+            //imgView.setImageResource(700);
         }
+
+
         public View getRow() {
             return row;
         }
@@ -73,8 +75,33 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
-        holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
-        holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
+        holder.getMedName().setText(mediceneArray.get(position).getName());
+        holder.getImgView().setImageResource(mediceneArray.get(position).getImage());
+        String date = mediceneArray.get(position).getTime();
+        /*String newDate="";
+        String date = mediceneArray.get(position).getTime();
+        StringTokenizer stringTokenizer= new StringTokenizer(date,",");
+
+        while (stringTokenizer.hasMoreTokens()) {
+            //StringTokenizer stringTokenizer1= new StringTokenizer(date,":");
+
+            int x = Integer.parseInt((String) stringTokenizer.nextElement());
+            if (x == 24) {
+                newDate = newDate + "\n" + 12 + " AM";
+
+            } else {
+                if (x > 12) {
+                    x = x - 12;
+                    newDate = newDate + "\n" + x + " PM";
+
+                } else
+                    newDate = newDate + "\n" + x + " PM";
+
+            }
+        }*/
+
+        holder.getTakenDate().setText(date);
+      //  Log.i("TAG", "onBindViewHolder: " + newDate);
         //MedicinePojoo medicinePojoo = dataList.get(position);
         //holder.medName.setText(medicinePojoo.getMedicineName());
 

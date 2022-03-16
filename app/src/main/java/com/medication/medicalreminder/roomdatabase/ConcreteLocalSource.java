@@ -15,6 +15,7 @@ public class ConcreteLocalSource implements LocalSource{
     private static ConcreteLocalSource localSource = null;
     private LiveData<List<Medicine>> storedMedicine;
 
+
     public ConcreteLocalSource(Context context) {
         AppDatabase db = AppDatabase.getInstance(context.getApplicationContext());
         dao = db.medicineDAO();
@@ -50,6 +51,18 @@ public class ConcreteLocalSource implements LocalSource{
         }).start();
     }
 
+    @Override
+    public void getStartDate() {
+        dao.getStartDate();
+    }
+    @Override
+    public void getEnddate() {
+        dao.getEnddate();
+    }
+    @Override
+    public void getTime() {
+        dao.getTime();
+    }
     @Override
     public LiveData<List<Medicine>> getAllMedicine() {
         return storedMedicine;

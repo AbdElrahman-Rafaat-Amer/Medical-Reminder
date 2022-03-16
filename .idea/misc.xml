@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine1.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine2.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine3.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine4.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine5.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine6.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable-v24/ic_medicine7.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.11822916666666666" />
         <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_all_time.xml" value="0.19375" />
         <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_days_number.xml" value="0.19375" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_first.xml" value="0.22135416666666666" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_reason2.xml" value="0.22135416666666666" />
       </map>
     </option>
   </component>

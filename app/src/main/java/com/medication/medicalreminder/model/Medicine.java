@@ -191,8 +191,9 @@ public class Medicine {
         return image;
     }
 
-    public void setImage(int image) {
+    public int setImage(int image) {
         this.image = image;
+        return image;
     }
 
     @Override
