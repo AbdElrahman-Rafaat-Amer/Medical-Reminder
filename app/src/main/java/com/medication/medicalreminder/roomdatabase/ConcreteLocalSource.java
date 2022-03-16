@@ -1,6 +1,7 @@
 package com.medication.medicalreminder.roomdatabase;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -43,12 +44,25 @@ public class ConcreteLocalSource implements LocalSource{
 
     @Override
     public void delete(Medicine medicine) {
+        Log.i("TAG", "DELETE inside local source activity");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 dao.deleteMedicine(medicine);
             }
         }).start();
+    }
+
+    @Override
+    public void update(Medicine medicine) {
+        Log.i("TAG", "UPDATE inside local source activity");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dao.updateMedicine(medicine);
+            }
+        }).start();
+
     }
 
     @Override

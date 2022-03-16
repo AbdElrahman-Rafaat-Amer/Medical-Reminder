@@ -1,10 +1,12 @@
 package com.medication.medicalreminder.editmedicine.persenter;
 
 
-import com.medication.medicalreminder.model.MedicinePojoo;
+import com.medication.medicalreminder.model.Medicine;
 
 public interface EditMedicinePresenterInterface {
 
-    void updateMedicine(String UID);
+    void update(Medicine medicine);
+
+    void updateFireBase(Medicine medicine);
 
 }

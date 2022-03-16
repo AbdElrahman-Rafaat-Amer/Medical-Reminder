@@ -1,11 +1,11 @@
 package com.medication.medicalreminder.editmedicine.view;
 
 
-import com.medication.medicalreminder.model.MedicinePojoo;
-
-import java.util.List;
+import com.medication.medicalreminder.model.Medicine;
 
 public interface EditMedicinesViewInterface {
 
-    void updateMedicines(String message);
+    void updateMedicines(Medicine medicine);
+
+    void updateFireBase(Medicine medicine);
 }

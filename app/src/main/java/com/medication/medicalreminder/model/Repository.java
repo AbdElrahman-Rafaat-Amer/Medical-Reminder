@@ -1,6 +1,7 @@
 package com.medication.medicalreminder.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -48,7 +49,13 @@ public class Repository implements RepositoryInterface{
 
     @Override
     public void deleteMedicine(Medicine medicine) {
-         localSource.delete(medicine);
+        localSource.delete(medicine);
+    }
+
+    @Override
+    public void updateMedicine(Medicine medicine) {
+        Log.i("TAG", "inside repo");
+        localSource.update(medicine);
     }
 
     @Override

@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.medication.medicalreminder.displaymedicine.view.DisplayMedView;
+import com.medication.medicalreminder.editmedicine.view.EditMedicineView;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.MedicinePojoo;
 
@@ -85,15 +88,21 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent displayIntent = new Intent(context , DisplayMedView.class);
+                Gson gson = new Gson();
+                String json = gson.toJson(medicine);
+                displayIntent.putExtra(EditMedicineView.JSON,json);
+                context.startActivity(displayIntent);
+
                 //JSONObject jsonObject = new JSONObject();
 
                 //jsonObject.put("medObject",medicinePojoo);
-                Intent displayIntent = new Intent(context , DisplayMedActivity.class);
+              /*  Intent displayIntent = new Intent(context , DisplayMedView.class);
                 displayIntent.putExtra("medicine", medicine.getName());
                 Log.i("TAG", "medicine pojo" + medicine);
-                // Log.i("TAG", "json obj" + jsonObject);
-//                    Log.i("TAG", "json obj string" + jsonObject.toString());
-                context.startActivity(displayIntent);
+                 Log.i("TAG", "json obj" + jsonObject);
+                  Log.i("TAG", "json obj string" + jsonObject.toString());
+                context.startActivity(displayIntent);*/
 
 
             }

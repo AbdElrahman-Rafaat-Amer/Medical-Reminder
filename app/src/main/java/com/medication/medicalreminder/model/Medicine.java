@@ -52,6 +52,9 @@ public class Medicine {
    @ColumnInfo(name="uid")
    String Uid ;
 
+    int strengthNum;
+    String strengthDose;
+
 
 
     private static Medicine instance = null;
@@ -89,6 +92,22 @@ public class Medicine {
         this.refillLimit = refillLimit;
         this.image = image;
         this.Uid = Uid;
+    }
+
+    public int getStrengthNum() {
+        return strengthNum;
+    }
+
+    public void setStrengthNum(int strengthNum) {
+        this.strengthNum = strengthNum;
+    }
+
+    public String getStrengthDose() {
+        return strengthDose;
+    }
+
+    public void setStrengthDose(String strengthDose) {
+        this.strengthDose = strengthDose;
     }
 
     public int getId() {

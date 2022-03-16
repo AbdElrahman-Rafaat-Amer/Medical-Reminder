@@ -1,10 +1,14 @@
 package com.medication.medicalreminder.remotedatabase;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 import android.content.res.Resources;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +22,7 @@ import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.UserPojo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FirebaseOperation implements FirebaseOperationInterface {
@@ -44,14 +49,42 @@ public class FirebaseOperation implements FirebaseOperationInterface {
     }
 
     @Override
-    public void updateMedicine(String UID) {
-
+    public void updateMedicine(Medicine medicine) {
+        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Ghada").child("MyUser");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList");
+        HashMap hashMap = new HashMap();
+        hashMap.put(medicine.getUid(), medicine); //add to firebase using the KEY
+        reference.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+            @Override
+            public void onSuccess(Object o) {
+                Toast.makeText(getApplicationContext(), "Medicine have been updated",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
-    public void deleteMedicine(String UID) {
+    public void deleteMedicineFB(Medicine medicine) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList");
+        Query query = reference.orderByChild("uid").equalTo(medicine.getUid());
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                        Medicine pojo = snap.getValue(Medicine.class);
+                        Log.i("TAG", pojo.getName());
+                        snap.getRef().removeValue();
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
 
     @Override
     public UserPojo getUserByEmail(String email) {

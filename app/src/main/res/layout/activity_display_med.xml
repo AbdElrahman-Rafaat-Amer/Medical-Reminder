@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayMedActivity">
+    tools:context=".displaymedicine.view.DisplayMedView">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -113,18 +113,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/reminderDays"
-            tools:text="8:00 AM :  " />
-
-        <TextView
-            android:id="@+id/dose2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/reminderTime2"
-            app:layout_constraintStart_toStartOf="@+id/dose3"
-            app:layout_constraintTop_toBottomOf="@id/reminderTime1"
-            tools:text="2 Pill(s)" />
+            tools:text="8:00 AM  "
+            android:textSize="17sp"
+            />
 
         <TextView
             android:id="@+id/reminderTime2"
@@ -134,18 +125,8 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/reminderTime1"
-            tools:text="12:00 PM :  " />
-
-        <TextView
-            android:id="@+id/dose1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/reminderTime1"
-            app:layout_constraintStart_toStartOf="@+id/dose2"
-            app:layout_constraintTop_toBottomOf="@id/reminderLength"
-            tools:text="1 Pill(s)" />
+            tools:text="12:00 PM  "
+            android:textSize="17sp"/>
 
 
         <TextView
@@ -156,17 +137,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/reminderTime2"
-            tools:text="12:00 PM :  " />
-
-        <TextView
-            android:id="@+id/dose3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/reminderTime3"
-            app:layout_constraintTop_toBottomOf="@id/reminderTime2"
-            tools:text="1 Pill(s)" />
+            tools:text="12:00 PM   "
+            android:textSize="17sp"
+            />
 
 
         <TextView
@@ -190,7 +163,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/remindersText"
-            tools:text="Every day, " />
+            tools:text="Every day, "
+            android:visibility="gone"
+            />
 
         <TextView
             android:id="@+id/reminderLength"
@@ -200,7 +175,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/reminderDays"
             app:layout_constraintTop_toBottomOf="@id/remindersText"
-            tools:text=" take for 10 days" />
+            tools:text=" take for 10 days"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/suspendButton"
@@ -298,6 +275,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/remindToRefillText"
             android:textColor="@color/mainColor"
+            android:visibility="gone"
             />
 
         <TextView
@@ -308,7 +286,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/howToUseText"
-            tools:text="Instructions goes here" />
+            tools:text="Instructions goes here"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/addDoseButton"
@@ -321,6 +301,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
+            android:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

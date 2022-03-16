@@ -12,6 +12,7 @@ public interface LocalSource {
 
     void insert (Medicine medicine);
     void delete (Medicine medicine);
+    void update(Medicine medicine);
      void getStartDate();
 
      void  getEnddate();

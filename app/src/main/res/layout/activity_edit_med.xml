@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditMedActivity">
+    tools:context=".editmedicine.view.EditMedicineView">
 
     <include
         android:id="@+id/toolbar"
@@ -140,15 +140,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Switch
-                        android:id="@+id/reminderSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toTopOf="@+id/reminders_spinner"
-                        app:layout_constraintStart_toEndOf="@id/reminderTimesText"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                     <Spinner
                         android:id="@+id/reminders_spinner"
@@ -165,7 +156,7 @@
                         app:layout_constraintTop_toBottomOf="@id/reminderTimesText" />
 
                     <Button
-                        android:id="@+id/timeButton"
+                        android:id="@+id/timeButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -173,9 +164,72 @@
                         android:backgroundTint="@color/mainColor"
                         android:onClick="popTime"
                         android:text="@string/set_time"
-                        android:visibility="gone"
+
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/reminders_spinner" />
+                        app:layout_constraintTop_toBottomOf="@+id/reminders_spinner"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        />
+
+                    <Button
+                        android:id="@+id/timeButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/mainColor"
+                        android:onClick="popTime2"
+                        android:text="@string/set_time"
+                        app:layout_constraintStart_toEndOf="@id/timeButton1"
+                        app:layout_constraintTop_toBottomOf="@+id/reminders_spinner"
+                        app:layout_constraintEnd_toStartOf="@id/timeButton3"
+                        android:visibility="gone"
+                        android:textColor="@color/white"
+                        />
+
+                    <Button
+                        android:id="@+id/timeButton3"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/mainColor"
+                        android:onClick="popTime3"
+                        android:text="@string/set_time"
+                        app:layout_constraintStart_toEndOf="@id/timeButton2"
+                        app:layout_constraintTop_toBottomOf="@+id/reminders_spinner"
+                        android:visibility="gone"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/start_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="72dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Start Date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/timeButton1"
+                        android:textColor="@color/mainColor"
+                        android:visibility="gone"
+                        />
+
+                    <TextView
+                        android:id="@+id/end_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/timeButton1"
+                        app:layout_constraintStart_toEndOf="@id/start_date_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="End Date"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="72dp"
+                        android:textColor="@color/mainColor"
+                        android:visibility="gone"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -496,8 +550,11 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine1"
-                                    android:visibility="gone" />
+                                    android:src="@drawable/ic_medicine1"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:visibility="gone"
+                                    />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -513,7 +570,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine2"
+                                    android:src="@drawable/ic_medicine2"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -530,7 +588,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine3"
+                                    android:src="@drawable/ic_medicine3"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -547,7 +606,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine4"
+                                    android:src="@drawable/ic_medicine4"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -564,7 +624,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine5"
+                                    android:src="@drawable/ic_medicine5"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -581,7 +642,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine6"
+                                    android:src="@drawable/ic_medicine6"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -598,7 +660,8 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine7"
+                                    android:src="@drawable/ic_medicine7"
+                                    android:background="?android:attr/selectableItemBackground"
                                     android:visibility="gone" />
                             </LinearLayout>
 
@@ -615,8 +678,10 @@
                                     android:layout_marginStart="15dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="15dp"
-                                    android:background="@drawable/ic_medicine8"
-                                    android:visibility="gone" />
+                                    android:src="@drawable/ic_medicine8"
+                                    android:visibility="gone"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    />
                             </LinearLayout>
 
 
@@ -654,16 +719,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- <TextView
-                         android:id="@+id/timeLapse"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_marginTop="25dp"
-                         android:padding="16dp"
-                         android:textStyle="bold"
-                         android:visibility="gone"
-                         app:layout_constraintStart_toStartOf="parent"
-                         app:layout_constraintTop_toBottomOf="@id/trialId"
-                         />-->
+                        android:id="@+id/timeLapse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:padding="16dp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/trialId"
+                        />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

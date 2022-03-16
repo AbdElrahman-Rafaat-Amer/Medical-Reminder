@@ -51,6 +51,8 @@
         <activity
             android:name=".addmedicine.view.AddMActivity"
             android:exported="false" />
+        <activity android:name=".displaymedicine.view.DisplayMedView"/>
+        <activity android:name=".editmedicine.view.EditMedicineView"/>
     </application>
 
 </manifest>

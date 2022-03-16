@@ -12,9 +12,9 @@ public interface FirebaseOperationInterface {
 
     void insertMedicine();
 
-    void updateMedicine(String UID);
+    void updateMedicine(Medicine medicine);
 
-    void deleteMedicine(String UID);
+    void deleteMedicineFB(Medicine medicine);
 
     UserPojo getUserByEmail(String email);
 

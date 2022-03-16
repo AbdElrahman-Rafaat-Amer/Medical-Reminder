@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 
 import com.medication.medicalreminder.model.Medicine;
@@ -29,6 +30,9 @@ public interface MedicineDAO {
 
     @Query("SELECT time FROM medicines ")
     String getTime();
+
+    @Update
+    void updateMedicine(Medicine medicine);
 
 
 
