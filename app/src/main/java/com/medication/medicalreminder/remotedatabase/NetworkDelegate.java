@@ -11,4 +11,6 @@ public interface NetworkDelegate {
     void onFailureInvitation(String errorMessage);
 
     void onSuccessGetMediciene(List<Medicine> successMessage);
+
+    void onSuccessInsert(long id);
 }

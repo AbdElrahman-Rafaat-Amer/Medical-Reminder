@@ -44,6 +44,11 @@ public class MedicinePresenter implements MedicinePresenterInterface , NetworkDe
     }
 
     @Override
+    public void onSuccessInsert(long id) {
+
+    }
+
+    @Override
     public void onFailureInvitation(String errorMessage) {
 
     }

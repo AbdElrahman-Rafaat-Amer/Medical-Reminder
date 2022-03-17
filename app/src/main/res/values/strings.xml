@@ -52,7 +52,7 @@
     <string name="refill">refill</string>
     <string name="PrescriptionRefill">Prescription Refill</string>
     <string name="PillsLeft">"Pills Left: "</string>
-    <string name="remindToRefill">"Remind Me to Refill When I Have: "</string>
+    <string name="remindToRefill">"Remind Me to Refill When I Have Left : "</string>
     <string name="HowToUse">How to use</string>
     <string name="addDose">add dose</string>
     <string name="med_name">Medication Name</string>
@@ -73,19 +73,12 @@
     <string name="done">Done</string>
     <string name="txt">haaaaaaaaaaa</string>
     <string name="pick_time_for_dose">"Enter your dose number "</string>
+    <string name="remind_refill_at">Remind me to refill at </string>
 
     <string-array name="reminder_times">
-        <item>Once daily</item>
-        <item>Twice daily</item>
-        <item>3 Times a day</item>
-        <item>4 Times a day</item>
-        <item>5 Times a day</item>
-        <item>Every 12 hours</item>
-        <item>Every 8 hours</item>
-        <item>Every 6 hours</item>
-        <item>Every 3 hours</item>
-        <item>Every 2 hours</item>
-        <item>Every hour</item>
+        <item>Once Daily</item>
+        <item>Twice Daily</item>
+        <item>3 times Daily</item>
     </string-array>
 
     <string-array name="doseStrength">

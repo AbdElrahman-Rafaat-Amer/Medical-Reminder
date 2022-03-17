@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RepositoryInterface {
     LiveData<List<Medicine>> getStoredMedicine ();//room
-    void insertMedicine (Medicine medicine);
+    void insertMedicine (Medicine medicine, NetworkDelegate networkDelegate);
     void deleteMedicine (Medicine medicine);
     void updateMedicine (Medicine medicine);
     void AddMedToFirebase(Medicine medicine);

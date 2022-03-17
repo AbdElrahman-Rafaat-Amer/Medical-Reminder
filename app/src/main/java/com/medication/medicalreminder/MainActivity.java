@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+
         CollapsingToolbarLayout toolbar = findViewById(R.id.toolbar);
         
         profileImage = findViewById(R.id.profile_image_main_user);
@@ -143,10 +146,10 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
                 Log.i(TAG, "onChildChanged: snapshot.getValue() " + snapshot.getValue());
                 Log.i(TAG, "onChildChanged: snapshot.getKey() " + snapshot.getKey());
                 //  DataSnapshot dataSnapshot = snapshot.getChildren();
-                String UID = (String) snapshot.getValue();
+//                String UID = (String) snapshot.getValue();
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(UID);
-                getAllData(databaseReference);
+  //              DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(UID);
+     //           getAllData(databaseReference);
             }
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {

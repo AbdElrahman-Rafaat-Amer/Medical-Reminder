@@ -43,8 +43,9 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
-    public void insertMedicine(Medicine medicine) {
-          localSource.insert(medicine);
+    public void insertMedicine(Medicine medicine, NetworkDelegate networkDelegate) {
+        Log.i("TAG", "inside insert repo id is "+networkDelegate.toString());
+        localSource.insert(medicine, networkDelegate);
     }
 
     @Override

@@ -67,7 +67,7 @@
                     <EditText
                         android:id="@+id/medNameEditText"
                         android:layout_width="315dp"
-                        android:layout_height="38dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:ems="15"
                         android:hint="@string/med_name"
@@ -315,91 +315,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/instructionsCardview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="15dp"
-                android:elevation="20dp"
-                android:padding="500dp"
-                app:cardCornerRadius="10dp"
-
-                app:cardElevation="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/StrengthCardview"
-                tools:targetApi="p">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/instructions_arrow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="false"
-                        android:layout_marginTop="4dp"
-                        android:src="@drawable/arrow_down"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/Instructions"
-                        android:textColor="@color/mainColor"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView"
-                        tools:layout_editor_absoluteX="66dp">
-
-                        <RadioButton
-                            android:id="@+id/beforeRadioBtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/before_eating"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/whileRadioBtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/while_ating"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/afterRadioBtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/after_eating"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/doesntRadioBtn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/doesnt_matter"
-                            android:textSize="12sp" />
-                    </RadioGroup>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.card.MaterialCardView
@@ -416,7 +331,7 @@
 
                 app:cardElevation="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/instructionsCardview"
+                app:layout_constraintTop_toBottomOf="@id/StrengthCardview"
                 tools:targetApi="p">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -494,6 +409,34 @@
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/enterRemainText" />
+
+                    <TextView
+                        android:id="@+id/refill_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/remainEditText"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/remind_refill_at"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="15dp"
+                        />
+                    <TextView
+                        android:id="@+id/refill_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/remainEditText"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toEndOf="@id/refill_time_text"
+                        android:layout_marginStart="10dp"
+                        tools:text="15:00"
+                        android:textColor="@color/mainColor"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="15dp"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -736,5 +679,92 @@
     </ScrollView>
 </RelativeLayout>
 
+<!--
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/instructionsCardview"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginStart="15dp"
+android:layout_marginTop="15dp"
+android:layout_marginEnd="30dp"
+android:layout_marginBottom="15dp"
+android:elevation="20dp"
+android:padding="500dp"
+app:cardCornerRadius="10dp"
+
+app:cardElevation="20dp"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/StrengthCardview"
+tools:targetApi="p">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/instructions_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/arrow_down"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/Instructions"
+        android:textColor="@color/mainColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="66dp">
+
+        <RadioButton
+            android:id="@+id/beforeRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/before_eating"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/whileRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/while_ating"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/afterRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/after_eating"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/doesntRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/doesnt_matter"
+            android:textSize="12sp" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+-->
 
 

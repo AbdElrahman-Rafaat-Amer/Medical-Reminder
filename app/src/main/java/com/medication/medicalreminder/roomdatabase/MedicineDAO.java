@@ -18,7 +18,7 @@ public interface MedicineDAO {
     LiveData<List<Medicine>> getAllMedicine();
 
     @Insert
-    void  insertMedicine (Medicine medicine);
+    long  insertMedicine (Medicine medicine);
     @Delete
     void  deleteMedicine (Medicine medicine);
 

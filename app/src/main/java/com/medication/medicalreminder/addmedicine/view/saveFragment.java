@@ -1,15 +1,19 @@
 package com.medication.medicalreminder.addmedicine.view;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.medication.medicalreminder.R;
@@ -27,6 +31,7 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
     Button save ;
     Medicine medicine;
     MedicinePresenterInterface presenter;
+    Medicine medicineToFireBase;
 
     public saveFragment() {
         // Required empty public constructor
@@ -50,7 +55,7 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
         super.onViewCreated(view, savedInstanceState);
         medicine= Medicine.getInstance();
         save = view.findViewById(R.id.lastSaveButton);
-        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()));
+        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()),this);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,13 +63,15 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
                 Medicine object = new Medicine( 0,medicine.getName(),medicine.getForm(),medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
                         medicine.getOften(), medicine.getTime(), medicine.getStartDate(), medicine.getEndDate(), medicine.getMedLeft(), medicine.getRefillLimit(), medicine.getImage()
                   ,medicine.getUid());
+                medicineToFireBase = object;
 
                 addMed(object);
+
               // MedicinePojoo medicinePojo = new MedicinePojoo("aya","last",7);
 
-                Medicine medicineToFireBase = object;
 
-                AddToFireBase(medicineToFireBase);
+
+                //AddToFireBase(medicineToFireBase);
             }
         });
 
@@ -74,13 +81,26 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
 
     @Override
     public void addMed(Medicine medicine) {
+
         presenter.addMedicine(medicine);
+
     }
 
     @Override
     public void AddToFireBase(Medicine medicine) {
         presenter.addMedToFireBase(medicine);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void sendId(long id) {
+        medicineToFireBase.setId(Math.toIntExact( id));
+        Log.i("TAG","med name inside send id " + medicineToFireBase.getName());
+        Log.i("TAG"," inside send id is " + id);
+        //Toast.makeText(getActivity(), "this is the return id " + id, Toast.LENGTH_LONG).show();
+        AddToFireBase(medicineToFireBase);
+    }
+
 
 
 }

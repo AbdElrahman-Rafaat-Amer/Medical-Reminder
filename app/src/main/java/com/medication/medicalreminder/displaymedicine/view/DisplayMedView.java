@@ -29,7 +29,7 @@ import java.util.StringTokenizer;
 public class DisplayMedView extends AppCompatActivity implements DisplayMedInterface{
     private static final String TAG = "TAG";
     ImageButton editBtn, deleteBtn, backButton;
-    TextView medName, reminder1, reminder2, reminder3, leftMed, refillLimit, medStrength;
+    TextView medName, reminder1, reminder2, reminder3, leftMed, refillLimit, medStrength, medForm;
     ImageView medIcon;
     DisplayMedPresenterInterface presenterInterface;
 
@@ -49,6 +49,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         medStrength = findViewById(R.id.medStrength);
         backButton = findViewById(R.id.backButton);
         editBtn = findViewById(R.id.editButton);
+        medForm = findViewById(R.id.form_text);
 
         presenterInterface = new DisplayMedPresenter(Repository.getInstance(getApplicationContext(), ConcreteLocalSource.getInstance(getApplicationContext()),FirebaseOperation.getInstance()),
                 FirebaseOperation.getInstance());
@@ -59,12 +60,13 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         //Medicine medicine = (Medicine) getIntent().getSerializableExtra("med pojo");
         medName.setText(medicine.getName());
         medIcon.setImageResource(medicine.getImage());
+        medForm.setText(medicine.getForm());
        String times = medicine.getTime();
         Log.i("TAG", "time is " + times);
 
         //String[] timesArray = medicine.getTime().split(",");
         List<String> tokens = new ArrayList<>();
-        StringTokenizer tokenizer = new -StringTokenizer(times, ",");
+        StringTokenizer tokenizer = new StringTokenizer(times, ",");
         while (tokenizer.hasMoreElements()) {
             tokens.add(tokenizer.nextToken());
         }
@@ -74,7 +76,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         }
         if(tokens.size() == 2){
             reminder1.setText(tokens.get(0));
-            reminder2.setText(tokens.get(0));
+            reminder2.setText(tokens.get(1));
         }
         if(tokens.size()== 3){
             reminder1.setText(tokens.get(0));
@@ -119,6 +121,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                                 deleteMedicine(medicine);
                                 //----firebase---///
                                 deleteFromFirebase(medicine);
+                                finish();
 
                             }
                         })

@@ -40,6 +40,11 @@ public class HomeMedicienePresenter implements HomeMedicienePresenterInterface  
     }
 
     @Override
+    public void onSuccessInsert(long id) {
+
+    }
+
+    @Override
     public void onFailureInvitation(String errorMessage) {
 
     }

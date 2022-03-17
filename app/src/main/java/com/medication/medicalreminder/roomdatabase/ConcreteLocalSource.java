@@ -7,14 +7,17 @@ import androidx.lifecycle.LiveData;
 
 
 import com.medication.medicalreminder.model.Medicine;
+import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 
 import java.util.List;
 
 public class ConcreteLocalSource implements LocalSource{
+    long id;
 
     private MedicineDAO dao;
     private static ConcreteLocalSource localSource = null;
     private LiveData<List<Medicine>> storedMedicine;
+    NetworkDelegate networkDelegate;
 
 
     public ConcreteLocalSource(Context context) {
@@ -33,13 +36,19 @@ public class ConcreteLocalSource implements LocalSource{
 
 
     @Override
-    public void insert(Medicine medicine) {
+    public void insert(Medicine medicine, NetworkDelegate networkDelegate) {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                dao.insertMedicine(medicine);
+               id = dao.insertMedicine(medicine);
+                Log.i("TAG", "inside insert local source id is "+ id);
+               networkDelegate.onSuccessInsert(id);
             }
         }).start();
+
+
+
     }
 
     @Override

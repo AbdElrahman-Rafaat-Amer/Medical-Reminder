@@ -44,4 +44,9 @@ public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface
     @Override
     public void onSuccessGetMediciene(List<Medicine> successMessage) {
     }
+
+    @Override
+    public void onSuccessInsert(long id) {
+
+    }
 }
