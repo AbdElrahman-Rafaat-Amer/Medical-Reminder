@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.medication.medicalreminder.MedicineRecyclerViewAdapter;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.displaymedicine.persenter.MedicinePresenter;
 import com.medication.medicalreminder.displaymedicine.persenter.MedicinePresenterInterface;
