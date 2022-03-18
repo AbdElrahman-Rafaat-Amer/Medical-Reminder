@@ -10,18 +10,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.medication.medicalreminder.HomeRecyclerViewAdapter;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.addmedicine.view.AddMActivity;
 import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePresenter;
 import com.medication.medicalreminder.model.Medicine;
-import com.medication.medicalreminder.model.MedicinePojoo;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
@@ -42,7 +39,6 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
     FloatingActionsMenu btnMenuFloating;
     FloatingActionButton btnAddMedecine;
     FloatingActionButton btnAddHealthTaker;
-    ArrayList<MedicinePojoo> medicieneArray = new ArrayList<>();
     RecyclerView recyclerView;
     HomeRecyclerViewAdapter recyclerViewAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -68,7 +64,6 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
 
         // Check of internet
          presenter.getStoredMedicineFireBase();
-
         //ROOM
         /*presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
             @Override
@@ -78,6 +73,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         });
 */
 
+        
         Calendar startDate = Calendar.getInstance();
 
         startDate.add(Calendar.MONTH, -1);
@@ -139,14 +135,13 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         spesificList.clear();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy",Locale.US);
         try {
+            //list.clear();
             Log.i("TAG", "size list inside getDate : " + list.size());
             for (int i = 0; i < list.size();i++) {
                 Medicine medicinePojoo1=list.get(i);
                 Log.i("TAG", "getMedicene: " +list.get(i));
                 Date  startDatePojo = sdf.parse(medicinePojoo1.getStartDate());
                 Date endDatePojo= sdf.parse(medicinePojoo1.getEndDate());
-                //Calendar calendar = Calendar.getInstance();
-                // String date = DateFormat.getDateInstance().format(calendar.getTime());
                 Date dateSelected = sdf.parse(datee);
                 Log.i("TAG", "selectedDate: " + dateSelected);
                 Log.i("TAG", "Startdate  pojo: " + startDatePojo);
@@ -190,10 +185,6 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         getMedicene(formatter.format(today));
     }
 
-    @Override
-    public void showMedicine(MedicinePojoo medicine) {
-
-    }
 
     @Override
     public void showErrorMessage(String message) {

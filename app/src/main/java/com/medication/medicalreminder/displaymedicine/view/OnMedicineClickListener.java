@@ -1,9 +1,9 @@
 package com.medication.medicalreminder.displaymedicine.view;
 
 
-import com.medication.medicalreminder.model.MedicinePojoo;
+import com.medication.medicalreminder.model.Medicine;
 
 public interface OnMedicineClickListener {
 
-    void showMedicine(MedicinePojoo medicine);
+    void showMedicine(Medicine medicine);
 }

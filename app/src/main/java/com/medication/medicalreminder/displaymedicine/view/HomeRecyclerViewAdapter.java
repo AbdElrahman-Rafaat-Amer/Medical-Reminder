@@ -1,4 +1,4 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.displaymedicine.view;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,11 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
@@ -101,8 +101,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }*/
 
         holder.getTakenDate().setText(date);
-      //  Log.i("TAG", "onBindViewHolder: " + newDate);
-        //MedicinePojoo medicinePojoo = dataList.get(position);
         //holder.medName.setText(medicinePojoo.getMedicineName());
 
     }

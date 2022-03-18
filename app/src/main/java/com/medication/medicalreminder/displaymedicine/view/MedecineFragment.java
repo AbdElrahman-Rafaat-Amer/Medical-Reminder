@@ -10,12 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.medication.medicalreminder.MedicineRecyclerViewAdapter;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.displaymedicine.persenter.MedicinePresenter;
 import com.medication.medicalreminder.displaymedicine.persenter.MedicinePresenterInterface;
 import com.medication.medicalreminder.model.Medicine;
-import com.medication.medicalreminder.model.MedicinePojoo;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
@@ -25,7 +23,7 @@ import java.util.List;
 
 public class MedecineFragment extends Fragment implements AllMedicinesViewInterface {
     MedicineRecyclerViewAdapter adapter;
-    ArrayList<MedicinePojoo> list = new ArrayList<MedicinePojoo>();
+    ArrayList<Medicine> list = new ArrayList<Medicine>();
     MedicinePresenterInterface presenter;
 
     public MedecineFragment() {
@@ -67,10 +65,6 @@ public class MedecineFragment extends Fragment implements AllMedicinesViewInterf
         Log.i("TAG", "showAllMedicines: done");
        adapter.setList(medicines);
        adapter.notifyDataSetChanged();
-    }
-    @Override
-    public void showMedicine(MedicinePojoo medicine) {
-
     }
     @Override
     public void showErrorMessage(String message) {

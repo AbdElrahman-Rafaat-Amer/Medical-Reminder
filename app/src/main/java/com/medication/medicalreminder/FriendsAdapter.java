@@ -26,7 +26,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         this.patients = patients;
         this.adapterInterface = (FriendsAdapterInterface) context;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,9 +47,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 adapterInterface.changeFriend(patient);
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return patients.size();
@@ -63,12 +60,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             layout = itemView.findViewById(R.id.patient_user_layout);
             patientsNameTextView = itemView.findViewById(R.id.nameTextView_patients);
             pattensProfileImageView = itemView.findViewById(R.id.circleImageView_patients);
-
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.displaymedicine.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +11,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.medication.medicalreminder.displaymedicine.view.DisplayMedView;
+import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.editmedicine.view.EditMedicineView;
 import com.medication.medicalreminder.model.Medicine;
-import com.medication.medicalreminder.model.MedicinePojoo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,10 @@ import java.util.List;
 
 public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRecyclerViewAdapter.ViewHolder> {
     Context context;
-    List<MedicinePojoo> mediceneArray;
     List<Medicine> roomMedArray = new ArrayList<>();
 
-    public MedicineRecyclerViewAdapter(List<MedicinePojoo> mediceneArray, Context context) {
-        this.context = context;
-        this.mediceneArray = mediceneArray;
-        Log.i("TAG", "RecyclerViewAdapter: this.mediceneArray " + this.mediceneArray);
-        Log.i("TAG", "RecyclerViewAdapter: mediceneArray " + mediceneArray);
-        Log.i("TAG", "RecyclerViewAdapter: mediceneArray.size() " + mediceneArray.size());
+    public MedicineRecyclerViewAdapter(ArrayList<Medicine> list, FragmentActivity activity) {
+        roomMedArray=list;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +44,6 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
             constraintLayout = row.findViewById(R.id.custom_raw_constraint_layout);
-
         }
         public View getRow() {
             return row;
@@ -78,8 +72,6 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // MedicinePojoo medicinePojoo = mediceneArray.get(position);
-
         Medicine medicine= roomMedArray.get(position);
          holder.getImgView().setImageResource(medicine.setImage(medicine.getImage()));
 
@@ -93,51 +85,16 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
                 String json = gson.toJson(medicine);
                 displayIntent.putExtra(EditMedicineView.JSON,json);
                 context.startActivity(displayIntent);
-
-                //JSONObject jsonObject = new JSONObject();
-
-                //jsonObject.put("medObject",medicinePojoo);
-              /*  Intent displayIntent = new Intent(context , DisplayMedView.class);
-                displayIntent.putExtra("medicine", medicine.getName());
-                Log.i("TAG", "medicine pojo" + medicine);
-                 Log.i("TAG", "json obj" + jsonObject);
-                  Log.i("TAG", "json obj string" + jsonObject.toString());
-                context.startActivity(displayIntent);*/
-
-
             }
         });
-//        //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
-//        holder.getMedName().setText(mediceneArray.get(position).getMedicineName());
-//        holder.getTakenDate().setText(mediceneArray.get(position).getTakenMediceneDate());
-//        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //JSONObject jsonObject = new JSONObject();
-//
-//                    //jsonObject.put("medObject",medicinePojoo);
-//                    Intent displayIntent = new Intent(context , DisplayMedActivity.class);
-//                    displayIntent.putExtra("medicine", medicinePojoo.getMedicineName());
-//                    Log.i("TAG", "medicine pojo" + medicinePojoo);
-//                   // Log.i("TAG", "json obj" + jsonObject);
-////                    Log.i("TAG", "json obj string" + jsonObject.toString());
-//                    context.startActivity(displayIntent);
-//
-//
-//            }
-//        });
-
     }
 
     public void setList(List<Medicine> roomMedArray){
         this.roomMedArray= roomMedArray;
-
     }
     @Override
     public int getItemCount() {
-        // Log.i("TAG", "getItemCount: " + mediceneArray.size());
         return roomMedArray.size();
-        //  return mediceneArray.size();
     }
 }
 

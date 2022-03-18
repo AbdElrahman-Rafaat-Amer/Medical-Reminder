@@ -19,13 +19,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toTopOf="@id/textView1"
         android:id="@+id/MedicineRecsyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_anchorGravity="center"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
