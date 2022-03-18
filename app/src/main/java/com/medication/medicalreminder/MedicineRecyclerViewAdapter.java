@@ -20,11 +20,11 @@ import com.medication.medicalreminder.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 
 public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRecyclerViewAdapter.ViewHolder> {
     Context context;
-   // List<MedicinePojoo> mediceneArray;
     List<Medicine> roomMedArray = new ArrayList<>();
 
     public MedicineRecyclerViewAdapter(List<Medicine> mediceneArray, Context context) {
@@ -82,7 +82,38 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
         holder.getImgView().setImageResource(medicine.setImage(medicine.getImage()));
 
         holder.getMedName().setText(medicine.getName());
-        holder.getTakenDate().setText(medicine.getTime());
+        //holder.getTakenDate().setText(medicine.getTime());
+        String date = medicine.getTime();
+        StringTokenizer stringTokenizer= new StringTokenizer(date,",");
+        String newDate = "";
+        while (stringTokenizer.hasMoreTokens()) {
+            //StringTokenizer stringTokenizer= new StringTokenizer(date,":");
+            String x = (String) stringTokenizer.nextElement();
+            String[] separated = x.split(":");
+            int N = Integer.parseInt(separated[0]);
+            String C =separated[1];
+            if (C.equals("0")){
+                C= "00";
+                Log.i("TAG", "onBindViewHolder: " + C);
+            }
+            Log.i("TAG", "onBindViewHolder:  seperated " + separated[0]);
+            Log.i("TAG", "onBindViewHolder: separated " + separated[1]);
+            if (N == 24) {
+                newDate = newDate + "\n" + 12 + C +" AM";
+
+            } else {
+                if (N > 12) {
+                    N = N - 12;
+
+                    newDate = newDate + "\n" + N +":"+ C + " PM";
+
+                } else
+                    newDate = newDate + "\n" + N +":"+C +" PM";
+
+            }
+        }
+        holder.getTakenDate().setText(newDate);
+
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

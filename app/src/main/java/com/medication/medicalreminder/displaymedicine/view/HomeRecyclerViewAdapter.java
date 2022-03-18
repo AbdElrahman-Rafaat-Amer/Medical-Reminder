@@ -14,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.model.Medicine;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
@@ -77,31 +81,54 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
         holder.getMedName().setText(mediceneArray.get(position).getName());
         holder.getImgView().setImageResource(mediceneArray.get(position).getImage());
-        String date = mediceneArray.get(position).getTime();
-        /*String newDate="";
+        // String date = mediceneArray.get(position).getTime();
+
+      /*  try {
+            final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+            final Date dateObj = sdf.parse(date);
+            Log.i("TAG", "objectt: " + dateObj);
+            String newDate =new SimpleDateFormat("K:mm").format(dateObj);
+            holder.getTakenDate().setText(newDate);
+
+        } catch (final ParseException e) {
+            e.printStackTrace();
+        }
+*/
+
+
+        //String newDate="";
+
         String date = mediceneArray.get(position).getTime();
         StringTokenizer stringTokenizer= new StringTokenizer(date,",");
-
+        String newDate = "";
         while (stringTokenizer.hasMoreTokens()) {
-            //StringTokenizer stringTokenizer1= new StringTokenizer(date,":");
-
-            int x = Integer.parseInt((String) stringTokenizer.nextElement());
-            if (x == 24) {
-                newDate = newDate + "\n" + 12 + " AM";
+            //StringTokenizer stringTokenizer= new StringTokenizer(date,":");
+            String x = (String) stringTokenizer.nextElement();
+            String[] separated = x.split(":");
+            int N = Integer.parseInt(separated[0]);
+            String C =separated[1];
+            if (C.equals("0")){
+                C= "00";
+                Log.i("TAG", "onBindViewHolder: " + C);
+            }
+            Log.i("TAG", "onBindViewHolder:  seperated " + separated[0]);
+            Log.i("TAG", "onBindViewHolder: separated " + separated[1]);
+            if (N == 24) {
+                newDate = newDate + "\n" + 12 + C +" AM";
 
             } else {
-                if (x > 12) {
-                    x = x - 12;
-                    newDate = newDate + "\n" + x + " PM";
+                if (N > 12) {
+                    N = N - 12;
+
+                    newDate = newDate + "\n" + N +":"+ C + " PM";
 
                 } else
-                    newDate = newDate + "\n" + x + " PM";
+                    newDate = newDate + "\n" + N +":"+C +" PM";
 
             }
-        }*/
+        }
+        holder.getTakenDate().setText(newDate);
 
-        holder.getTakenDate().setText(date);
-        //holder.medName.setText(medicinePojoo.getMedicineName());
 
     }
     @Override
