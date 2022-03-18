@@ -62,7 +62,7 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
                 medicine.setUid("");
                 Medicine object = new Medicine( 0,medicine.getName(),medicine.getForm(),medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
                         medicine.getOften(), medicine.getTime(), medicine.getStartDate(), medicine.getEndDate(), medicine.getMedLeft(), medicine.getRefillLimit(), medicine.getImage()
-                  ,medicine.getUid());
+                  ,medicine.getUid(),medicine.getTimeRefill());
                 medicineToFireBase = object;
 
                 addMed(object);

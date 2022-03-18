@@ -1,48 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/lightblue"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    app:backgroundTint="@null"
     tools:context=".StrengthFragment">
 
-    <androidx.cardview.widget.CardView
+
+
+
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
+        android:background="@color/mainColor">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="215dp"
-            android:background="@color/cardwhite"
-            android:orientation="vertical"
-            app:backgroundTint="@null">
+        <TextView
+            android:layout_width="393dp"
+            android:layout_height="39dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/baloo_bhai"
+            android:text="what is Your Medicine Strength ?"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.828"
+            tools:layout_editor_absoluteX="16dp" />
 
-            <TextView
-                android:id="@+id/medStrengthTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="What strength is the med?"
-                android:textColor="@color/lightblue"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+        <com.google.android.material.card.MaterialCardView
+        android:id="@+id/medNameCardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="20dp"
+        android:fadingEdge="horizontal|vertical"
+        android:focusable="auto"
+        android:layoutMode="clipBounds"
+        android:padding="500dp"
+        app:cardCornerRadius="10dp"
+
+        app:cardElevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="p">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="360dp"
+                android:layout_height="400dp">
 
 
                 <NumberPicker
                     android:id="@+id/strengthNumPicker"
                     android:layout_width="69dp"
                     android:layout_height="103dp"
-                    android:layout_marginStart="64dp"
+                    android:layout_marginStart="56dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
@@ -59,29 +86,28 @@
                     app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
                     tools:ignore="NotSibling" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <Button
                     android:id="@+id/bttnNext"
-                    android:layout_width="203dp"
-                    android:layout_height="51dp"
+                    android:layout_width="285dp"
+                    android:layout_height="38dp"
                     android:layout_margin="10dp"
-                    android:layout_marginStart="179dp"
-                    android:layout_marginTop="9dp"
-                    android:layout_marginEnd="107dp"
-                    android:layout_marginBottom="7dp"
+                    android:layout_marginStart="104dp"
+                    android:layout_marginEnd="205dp"
+                    android:background="@drawable/button_background_shape"
+                    android:fontFamily="@font/baloo_bhai"
                     android:text="Next"
+                    android:textColor="#ffff"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.282"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/strengthNumPicker"
+                    app:layout_constraintVertical_bias="0.938" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>

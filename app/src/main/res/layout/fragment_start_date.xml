@@ -1,72 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/lightblue"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     app:backgroundTint="@null"
     tools:context=".view.StartDateFragment">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/mainColor">
+
+    <TextView
+        android:layout_width="393dp"
+        android:layout_height="39dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
+        android:fontFamily="@font/baloo_bhai"
+        android:text="start duration ?"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="97dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardwhite"
-            android:orientation="vertical"
-            app:backgroundTint="@null">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/medNameCardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="20dp"
+        android:fadingEdge="horizontal|vertical"
+        android:focusable="auto"
+        android:layoutMode="clipBounds"
+        android:padding="500dp"
+        app:cardCornerRadius="10dp"
 
+        app:cardElevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="p">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text=" start  ?"
-                android:textColor="@color/bluee"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="360dp"
+            android:layout_height="400dp">
+
 
             <DatePicker
                 android:id="@+id/startDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="294dp"
+                android:layout_height="326dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="0dp"
+                />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/startButton"
-                    android:layout_width="179dp"
-                    android:layout_height="38dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="104dp"
-                    android:layout_marginEnd="205dp"
-                    android:text="Next"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="285dp"
+                android:layout_height="38dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="104dp"
+                android:layout_marginEnd="205dp"
+                android:background="@drawable/button_background_shape"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="Next"
+                android:textColor="#ffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.359"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.955" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -80,8 +80,8 @@
         android:label="fragment_refill_number"
         tools:layout="@layout/fragment_refill_number" >
         <action
-            android:id="@+id/action_refillNumberFragment_to_startDateFragment"
-            app:destination="@id/startDateFragment" />
+            android:id="@+id/action_refillNumberFragment_to_refilDateFragment"
+            app:destination="@id/refilDateFragment" />
     </fragment>
     <fragment
         android:id="@+id/reasonFragment"
@@ -115,5 +115,19 @@
         android:name="com.medication.medicalreminder.addmedicine.view.saveFragment"
         android:label="fragment_save"
         tools:layout="@layout/fragment_save" />
+    <fragment
+        android:id="@+id/refilDateFragment"
+        android:name="com.medication.medicalreminder.addmedicine.view.RefilDateFragment"
+        android:label="fragment_refil_date"
+        tools:layout="@layout/fragment_refil_date" >
+        <action
+            android:id="@+id/action_refilDateFragment_to_startDateFragment"
+            app:destination="@id/startDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.medication.medicalreminder.addmedicine.view.ImageFragment"
+        android:label="fragment_image"
+        tools:layout="@layout/fragment_image" />
 
 </navigation>

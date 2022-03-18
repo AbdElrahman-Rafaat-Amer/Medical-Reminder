@@ -40,13 +40,14 @@ public class pillsNumberFragment extends Fragment {
 
         medicine = Medicine.getInstance();
 
-        EditText pillNumber = view.findViewById(R.id.input_med_strength_edit);
+        EditText pillNumber = view.findViewById(R.id.pillsEdit);
         //String pillLeft = pillNumber.getText().toString().trim();
         //int finalValue=Integer.parseInt(pillLeft);
        // medicine.setMedLeft(Integer.parseInt(pillNumber.getText().toString()));
 
         Button pillNumberBtn = view.findViewById(R.id.pillNumberButton);
         pillNumberBtn.setOnClickListener(btnView -> {
+
                 medicine.setMedLeft(Integer.parseInt(pillNumber.getText().toString()));
                 NavController navController = Navigation.findNavController(btnView);
                 navController.navigate(R.id.refillNumberFragment);

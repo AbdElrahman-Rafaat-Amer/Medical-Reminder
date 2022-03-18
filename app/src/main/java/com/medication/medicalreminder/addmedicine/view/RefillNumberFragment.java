@@ -51,7 +51,7 @@ public class RefillNumberFragment extends Fragment {
 
             medicine.setRefillLimit(Integer.parseInt(refilled.getText().toString()));
             NavController navController = Navigation.findNavController(btnView);
-            navController.navigate(R.id.startDateFragment);
+            navController.navigate(R.id.refilDateFragment);
 
 
 

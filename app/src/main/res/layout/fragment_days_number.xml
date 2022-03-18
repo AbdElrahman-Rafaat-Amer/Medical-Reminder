@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/lightblue"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    app:backgroundTint="@null"
-    android:divider="?android:dividerHorizontal"
-    android:showDividers="middle"
     tools:context=".DaysNumberFragment">
-    <androidx.cardview.widget.CardView
+
+
+
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
+        android:background="@color/mainColor">
+
+        <TextView
+            android:layout_width="393dp"
+            android:layout_height="39dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/baloo_bhai"
+            android:text="How Many time  ?"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.738" />
+
+        <com.google.android.material.card.MaterialCardView
+        android:id="@+id/medNameCardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="20dp"
+        android:fadingEdge="horizontal|vertical"
+        android:focusable="auto"
+        android:layoutMode="clipBounds"
+        android:padding="500dp"
+        app:cardCornerRadius="10dp"
+
+        app:cardElevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="p">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="360dp"
+        android:layout_height="400dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="290dp"
-            android:background="@color/cardwhite"
+
             android:orientation="vertical"
             app:backgroundTint="@null">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Do you need to take this med every day?"
-                android:textColor="@color/lightblue"
-                android:textSize="18dp"
-                android:textStyle="bold" />
 
 
             <Button
@@ -41,16 +79,16 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="12dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/baloo_bhai"
                 android:text="Once daily"
-                android:textColor="#000000"
-            />
+                android:textColor="#3F51B5" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="326dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
+                android:background="@color/mainColor" />
 
             <Button
                 android:id="@+id/threeTimesAday"
@@ -58,15 +96,16 @@
                 android:layout_height="44dp"
                 android:layout_marginEnd="228dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/baloo_bhai"
                 android:text="3 times Daily"
-                android:textColor="#000000" />
+                android:textColor="#3F51B5" />
 
             <View
                 android:id="@+id/viewe"
                 android:layout_width="326dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
+                android:background="@color/mainColor" />
 
             <Button
                 android:id="@+id/twiceDaily"
@@ -75,23 +114,27 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="20dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:fontFamily="@font/baloo_bhai"
                 android:text="Twice daily"
-                android:textColor="#000000" />
+                android:textColor="#3F51B5" />
 
             <View
                 android:id="@+id/vieww"
                 android:layout_width="326dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
+                android:background="@color/mainColor" />
 
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 
 
 
-
-</LinearLayout>
+</RelativeLayout>

@@ -47,8 +47,8 @@ public class EndDateFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         medicine = Medicine.getInstance();
-        pickerEnd = view.findViewById(R.id.endDate);
-        endDate = view.findViewById(R.id.endButton);
+        pickerEnd = view.findViewById(R.id.lastDate);
+        endDate = view.findViewById(R.id.lastButton);
 
         medicine.setImage(R.drawable.ic_launcher_background);
 

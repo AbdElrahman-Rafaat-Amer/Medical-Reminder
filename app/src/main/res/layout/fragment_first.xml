@@ -1,81 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/lightblue"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    app:backgroundTint="@null"
     tools:context=".firstFragment">
 
 
 
-        <androidx.cardview.widget.CardView
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="20dp">
+            android:background="@color/mainColor">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/cardwhite"
-                    android:orientation="vertical"
-                    app:backgroundTint="@null">
+            <TextView
+                android:layout_width="393dp"
+                android:layout_height="39dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="what med would you like to add ?"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.872" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/medNameCardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="20dp"
+                android:fadingEdge="horizontal|vertical"
+                android:focusable="auto"
+                android:layoutMode="clipBounds"
+                android:padding="500dp"
+                app:cardCornerRadius="10dp"
+
+                app:cardElevation="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="360dp"
+                    android:layout_height="400dp">
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <EditText
+                        android:id="@+id/nameOfMed"
+                        android:layout_width="326dp"
+                        android:layout_height="39dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="91dp"
+                        android:layout_marginEnd="55dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.669"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.185" />
+
+                    <Button
+                        android:id="@+id/nameButton"
+                        android:layout_width="285dp"
+                        android:layout_height="38dp"
                         android:layout_margin="10dp"
-                        android:text="what med would you like to add ?"
-                        android:textColor="@color/bluee"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                        android:layout_marginStart="104dp"
+                        android:layout_marginEnd="205dp"
+                        android:background="@drawable/button_background_shape"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Next"
+                        android:textColor="#ffff"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.359"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.955" />
 
-        <EditText
-            android:id="@+id/nameOfMed"
-            android:layout_width="246dp"
-            android:layout_height= "wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginStart="91dp"
-            android:layout_marginEnd="55dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                                <Button
-                                    android:id="@+id/nameButton"
-                                    android:layout_width="179dp"
-                                    android:layout_height="38dp"
-                                    android:layout_margin="10dp"
-                                    android:layout_marginStart="104dp"
-                                    android:layout_marginEnd="205dp"
-                                    android:text="Next"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>

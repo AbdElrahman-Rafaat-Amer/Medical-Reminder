@@ -51,6 +51,8 @@ public class Medicine {
    @Nullable
    @ColumnInfo(name="uid")
    String Uid ;
+   @ColumnInfo(name ="refillTime")
+   String timeRefill ;
 
     int strengthNum;
     String strengthDose;
@@ -77,7 +79,7 @@ public class Medicine {
         Uid = uid;
     }
 
-    public Medicine(int id, String name, String form, String strength, String reason, String isDaily, String often, String time, String startDate, String endDate, int medLeft, int refillLimit, int image, String Uid) {
+    public Medicine(int id, String name, String form, String strength, String reason, String isDaily, String often, String time, String startDate, String endDate, int medLeft, int refillLimit, int image, String Uid, String timeRefill) {
         this.id = id;
         this.name = name;
         this.form = form;
@@ -92,6 +94,15 @@ public class Medicine {
         this.refillLimit = refillLimit;
         this.image = image;
         this.Uid = Uid;
+        this.timeRefill = timeRefill;
+    }
+
+    public String getTimeRefill() {
+        return timeRefill;
+    }
+
+    public void setTimeRefill(String timeRefill) {
+        this.timeRefill = timeRefill;
     }
 
     public int getStrengthNum() {

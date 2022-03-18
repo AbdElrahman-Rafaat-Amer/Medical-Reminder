@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,65 +10,97 @@
     app:backgroundTint="@null"
     tools:context=".RefillNumberFragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
 
-        <LinearLayout
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardwhite"
-            android:orientation="vertical"
-            app:backgroundTint="@null">
-
+            android:layout_height="wrap_content"
+            android:background="@color/mainColor">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="393dp"
+                android:layout_height="39dp"
                 android:layout_margin="10dp"
-                android:text="you want me to remember you when?"
-                android:textColor="@color/bluee"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="Reminder you when there is how many left?"
+                android:textColor="#ffffff"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.828" />
 
-            <EditText
-                android:id="@+id/refillEdit"
-                android:layout_width="100dp"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/medNameCardview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_gravity="center"
-                android:inputType="number"
-                android:gravity="center"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="20dp"
+                android:fadingEdge="horizontal|vertical"
+                android:focusable="auto"
+                android:layoutMode="clipBounds"
+                android:padding="500dp"
+                app:cardCornerRadius="10dp"
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                app:cardElevation="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="360dp"
+                    android:layout_height="400dp">
+
+                    <EditText
+                        android:id="@+id/refillEdit"
+                        android:layout_width="308dp"
+                        android:layout_height="46dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="91dp"
+                        android:layout_marginEnd="55dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.797"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.172"  />
+
+                    <Button
+                        android:id="@+id/refillNumberButton"
+                        android:layout_width="275dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="25dp"
+                        android:background="@drawable/button_background_shape"
+                        android:text="Next"
+                        android:textColor="#ffff"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.359"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/refillEdit"
+                        app:layout_constraintVertical_bias="0.955" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-                <Button
-                    android:id="@+id/refillNumberButton"
-                    android:layout_width="179dp"
-                    android:layout_height="38dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="104dp"
-                    android:layout_marginEnd="205dp"
-                    android:text="Next"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</RelativeLayout>

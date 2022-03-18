@@ -5,8 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllTimeFragment">
-
+    tools:context=".addmedicine.view.RefilDateFragment">
 
     <ScrollView
         android:layout_width="409dp"
@@ -29,9 +28,9 @@
                 android:layout_marginTop="84dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="what med would you like to add ?"
+                android:text="refill time ?"
                 android:textColor="#ffffff"
-                android:textSize="23dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,17 +65,18 @@
 
 
                     <TimePicker
-                        android:id="@+id/time_picker"
+                        android:id="@+id/time_picker_refill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginBottom="28dp"
                         android:timePickerMode="spinner"
-                        app:layout_constraintBottom_toTopOf="@+id/btn_next_time"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintBottom_toTopOf="@+id/btn_next_time_refill"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/btn_next_time"
+                        android:id="@+id/btn_next_time_refill"
                         android:layout_width="285dp"
                         android:layout_height="0dp"
                         android:layout_margin="10dp"
@@ -84,33 +84,15 @@
                         android:layout_marginEnd="205dp"
                         android:layout_marginBottom="25dp"
                         android:background="@drawable/button_background_shape"
-                        android:fontFamily="@font/baloo_bhai"
                         android:text="Next"
                         android:textColor="#ffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.359"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/dose_num"
+                        app:layout_constraintVertical_bias="0.955"
 
-                        app:layout_constraintVertical_bias="0.955" />
-
-                    <TextView
-                        android:id="@+id/dose_num"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginEnd="22dp"
-                        android:layout_marginBottom="257dp"
-                        android:fontFamily="@font/andika_new_basic_bold"
-                        android:text="TextView"
-                        android:textColor="#3F51B5"
-                        android:textSize="20dp"
-                        app:layout_constraintBottom_toTopOf="@+id/btn_next_time"
-                        app:layout_constraintEnd_toEndOf="@+id/time_picker"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -118,5 +100,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-</RelativeLayout>
 
+</RelativeLayout>

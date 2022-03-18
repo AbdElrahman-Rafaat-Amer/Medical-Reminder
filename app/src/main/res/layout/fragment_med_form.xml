@@ -1,128 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/lightblue"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    app:backgroundTint="@null"
     tools:context=".MedFormFragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="20dp">
 
-        <LinearLayout
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
-            android:layout_height="444dp"
-            android:background="@color/cardwhite"
-            android:orientation="vertical"
-            app:backgroundTint="@null">
+            android:layout_height="wrap_content"
+            android:background="@color/mainColor">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="what form is the med ?"
-                android:textColor="@color/lightblue"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-
-            <Button
-                android:id="@+id/pill"
-                android:layout_width="125dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Pill"
-                android:textColor="#000000" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
-
-            <Button
-                android:id="@+id/Solution"
-                android:layout_width="146dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="228dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Solution"
-                android:textColor="#000000" />
-
-            <View
-                android:id="@+id/viewe"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
-
-            <Button
-                android:id="@+id/injection"
-                android:layout_width="132dp"
+                android:layout_width="393dp"
                 android:layout_height="39dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Injection"
-                android:textColor="#000000" />
+                android:layout_margin="10dp"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="What Form your Medicine is ?"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.828" />
 
-            <View
-                android:id="@+id/vieww"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/medNameCardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="20dp"
+                android:fadingEdge="horizontal|vertical"
+                android:focusable="auto"
+                android:layoutMode="clipBounds"
+                android:padding="500dp"
+                app:cardCornerRadius="10dp"
 
-            <Button
-                android:id="@+id/Poweder"
-                android:layout_width="125dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Powder"
-                android:textColor="#000000" />
+                app:cardElevation="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
 
-            <View
-                android:id="@+id/viewt"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
-            <Button
-                android:id="@+id/Drops"
-                android:layout_width="125dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Drops"
-                android:textColor="#000000" />
-
-            <View
-                android:id="@+id/viewy"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/lightblue" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="444dp"
+                    android:orientation="vertical"
+                    app:backgroundTint="@null">
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <Button
+                        android:id="@+id/pill"
+                        android:layout_width="125dp"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Pill"
+                        android:textColor="#3F51B5"
+
+                        />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="326dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/mainColor" />
+
+                    <Button
+                        android:id="@+id/Solution"
+                        android:layout_width="146dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="228dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Solution"
+                        android:textColor="#3F51B5"
+
+                        />
+
+                    <View
+                        android:id="@+id/viewe"
+                        android:layout_width="326dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/mainColor" />
+
+                    <Button
+                        android:id="@+id/injection"
+                        android:layout_width="132dp"
+                        android:layout_height="39dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Injection"
+                        android:textColor="#3F51B5"
+
+                        />
+
+                    <View
+                        android:id="@+id/vieww"
+                        android:layout_width="326dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/mainColor" />
+
+                    <Button
+                        android:id="@+id/Poweder"
+                        android:layout_width="125dp"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Powder"
+                        android:textColor="#3F51B5"
+
+                        />
+
+                    <View
+                        android:id="@+id/viewt"
+                        android:layout_width="326dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/mainColor" />
+
+                    <Button
+                        android:id="@+id/Drops"
+                        android:layout_width="125dp"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Drops"
+                        android:textColor="#3F51B5"
+
+                        />
+
+                    <View
+                        android:id="@+id/viewy"
+                        android:layout_width="326dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/mainColor" />
+
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>
 
 
 
 
 
-</LinearLayout>
