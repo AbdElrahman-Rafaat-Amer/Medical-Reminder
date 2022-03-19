@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,13 +66,13 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         // Check of internet
          presenter.getStoredMedicineFireBase();
         //ROOM
-        /*presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
+        presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
             @Override
             public void onChanged(List<Medicine> medicines) {
                 showAllMedicines(medicines);
             }
         });
-*/
+
 
         
         Calendar startDate = Calendar.getInstance();

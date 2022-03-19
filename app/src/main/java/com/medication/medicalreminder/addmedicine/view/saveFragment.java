@@ -1,5 +1,6 @@
 package com.medication.medicalreminder.addmedicine.view;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.medication.medicalreminder.MainActivity;
 import com.medication.medicalreminder.R;
 
 import com.medication.medicalreminder.addmedicine.persenter.MedicinePresenter;
@@ -66,6 +68,7 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
                 medicineToFireBase = object;
 
                 addMed(object);
+                startActivity(new Intent(getContext(), MainActivity.class));
 
               // MedicinePojoo medicinePojo = new MedicinePojoo("aya","last",7);
 

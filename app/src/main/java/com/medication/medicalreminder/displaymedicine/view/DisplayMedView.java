@@ -98,6 +98,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                 editIntent.putExtra("json pojo", json);
                 //editIntent.putExtra("medicine", medicine);
                 startActivity(editIntent);
+                finish();
             }
         });
 

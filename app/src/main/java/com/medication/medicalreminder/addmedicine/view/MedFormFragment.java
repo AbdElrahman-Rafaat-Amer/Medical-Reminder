@@ -57,7 +57,7 @@ public class MedFormFragment extends Fragment  {
 
         Button buttonForm = view.findViewById(R.id.pill);
 
-        buttonForm.setText(medicine.getName());
+       // buttonForm.setText(medicine.getName());
 
         buttonForm.setOnClickListener(btnView -> {
          if (getActivity() != null) {

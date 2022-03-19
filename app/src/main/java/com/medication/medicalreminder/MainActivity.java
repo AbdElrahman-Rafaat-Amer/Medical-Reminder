@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+       // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 
         profileImage = findViewById(R.id.profile_image_main_user);

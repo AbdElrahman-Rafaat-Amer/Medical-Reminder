@@ -114,6 +114,7 @@ public class FirebaseOperation implements FirebaseOperationInterface {
                 Log.i("TAG", "onDataChange: ");
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
                         UserPojo userPojo = dataSnapshot.getValue(UserPojo.class);
 
                         if (userPojo.getAccessUID().equals("NULL")) {
@@ -163,6 +164,7 @@ public class FirebaseOperation implements FirebaseOperationInterface {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                storedMedicine.clear();
                 for(DataSnapshot snapshot1: datasnapshot.getChildren()){
                     Medicine medicine= snapshot1.getValue(Medicine.class);
                     storedMedicine.add(medicine);
