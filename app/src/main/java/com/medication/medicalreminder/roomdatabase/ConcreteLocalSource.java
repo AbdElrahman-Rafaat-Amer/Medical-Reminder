@@ -11,7 +11,7 @@ import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 
 import java.util.List;
 
-public class ConcreteLocalSource implements LocalSource{
+public class ConcreteLocalSource implements LocalSource {
     long id;
 
     private MedicineDAO dao;
@@ -27,8 +27,8 @@ public class ConcreteLocalSource implements LocalSource{
 
     }
 
-    public static ConcreteLocalSource getInstance(Context context){
-        if (localSource == null){
+    public static ConcreteLocalSource getInstance(Context context) {
+        if (localSource == null) {
             localSource = new ConcreteLocalSource(context);
         }
         return localSource;
@@ -41,12 +41,11 @@ public class ConcreteLocalSource implements LocalSource{
         new Thread(new Runnable() {
             @Override
             public void run() {
-               id = dao.insertMedicine(medicine);
-                Log.i("TAG", "inside insert local source id is "+ id);
-               networkDelegate.onSuccessInsert(id);
+                id = dao.insertMedicine(medicine);
+                Log.i("TAG", "inside insert local source id is " + id);
+                networkDelegate.onSuccessInsert(id);
             }
         }).start();
-
 
 
     }
@@ -78,14 +77,36 @@ public class ConcreteLocalSource implements LocalSource{
     public void getStartDate() {
         dao.getStartDate();
     }
+
+    @Override
+    public void downloadDataLocal(List<Medicine> list) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                for ( int i =0; i<list.size();i++)
+              //  ) {
+                {
+                    Medicine medicine = list.get(i);
+                      dao.insertMedicine(medicine);
+                    Log.i("TAG", "inside insert local source id is " + id);
+                }
+
+            }
+        }).start();
+
+    }
+
     @Override
     public void getEnddate() {
         dao.getEnddate();
     }
+
     @Override
     public void getTime() {
         dao.getTime();
     }
+
     @Override
     public LiveData<List<Medicine>> getAllMedicine() {
         return storedMedicine;

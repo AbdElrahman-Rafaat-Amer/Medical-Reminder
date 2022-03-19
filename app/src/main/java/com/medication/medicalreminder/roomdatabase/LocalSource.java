@@ -15,6 +15,7 @@ public interface LocalSource {
     void delete (Medicine medicine);
     void update(Medicine medicine);
      void getStartDate();
+    void downloadDataLocal(List<Medicine> list);
 
      void  getEnddate();
      void getTime();

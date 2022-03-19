@@ -38,6 +38,8 @@ public class FirebaseOperation implements FirebaseOperationInterface {
         return firebaseOperation;
     }
 
+
+
     @Override
     public void insertUser(UserPojo userPojo) {
 
@@ -184,6 +186,5 @@ public class FirebaseOperation implements FirebaseOperationInterface {
         Log.i("TAG", "getAllMedicine: " + storedMedicine.size());
 
     }
-
 
 }

@@ -48,4 +48,8 @@ public class HomeMedicienePresenter implements HomeMedicienePresenterInterface  
     public void onFailureInvitation(String errorMessage) {
 
     }
+    @Override
+    public void downloadLocalData(List<Medicine> medicines) {
+        repo.downloadDataLocal(medicines);
+    }
 }

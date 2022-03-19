@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -16,8 +17,7 @@ import java.util.List;
 public interface MedicineDAO {
     @Query("Select * From medicines")
     LiveData<List<Medicine>> getAllMedicine();
-
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)  // or OnConflictStrategy.IGNORE
     long  insertMedicine (Medicine medicine);
     @Delete
     void  deleteMedicine (Medicine medicine);

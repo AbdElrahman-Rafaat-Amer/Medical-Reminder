@@ -85,5 +85,10 @@ public class Repository implements RepositoryInterface{
         localSource.getTime();
     }
 
+    @Override
+    public void downloadDataLocal(List<Medicine> list) {
+        localSource.downloadDataLocal(list);
+    }
+
 
 }

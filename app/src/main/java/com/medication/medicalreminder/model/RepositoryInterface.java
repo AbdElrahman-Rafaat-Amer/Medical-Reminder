@@ -17,6 +17,7 @@ public interface RepositoryInterface {
      void getStartDate();
      void  getEnddate();
      void getTime();
+     void downloadDataLocal(List<Medicine> list);
 
 
 

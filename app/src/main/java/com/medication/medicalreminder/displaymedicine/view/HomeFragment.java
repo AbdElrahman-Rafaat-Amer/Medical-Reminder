@@ -1,6 +1,9 @@
 package com.medication.medicalreminder.displaymedicine.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -184,6 +187,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy",Locale.UK);
         Date today = new Date();
         getMedicene(formatter.format(today));
+        presenter.downloadLocalData(medicines);
     }
 
 
@@ -191,4 +195,5 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
     public void showErrorMessage(String message) {
 
     }
+
 }
