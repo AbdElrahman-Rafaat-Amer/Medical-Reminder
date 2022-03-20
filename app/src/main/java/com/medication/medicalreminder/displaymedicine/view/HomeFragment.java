@@ -38,7 +38,6 @@ import java.util.Locale;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
-
 public class HomeFragment extends Fragment implements AllMedicinesViewInterface {
     FloatingActionsMenu btnMenuFloating;
     FloatingActionButton btnAddMedecine;

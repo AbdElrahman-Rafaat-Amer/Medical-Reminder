@@ -35,6 +35,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -54,7 +56,12 @@ import com.medication.medicalreminder.displaymedicine.view.HomeFragment;
 import com.medication.medicalreminder.displaymedicine.view.MedecineFragment;
 import com.medication.medicalreminder.model.UserPojo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -184,6 +191,43 @@ public class MainActivity extends AppCompatActivity implements PatientAdapterInt
         navigationView = findViewById(R.id.nav_view);
         drawer = findViewById(R.id.drawer_layout);
 
+        ////////////////////////////// REFILL REMINDER /////////////////////
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        Log.i("TAG","current time " + currentTime);
+
+        int day =20;
+        int month =3;
+        int year = 2022;
+        int hour = 16;
+        int minutes = 29;
+        String timeAndDate = day +"-" + month+"-" + year+" " + hour +":" + minutes ; ;// /-03-2022 12:34";//
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        long timeInMilliseconds;
+
+        Date mDate = null;
+        try {
+            mDate = sdf.parse(timeAndDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Log.i("TAG", "Date m datee: " + mDate);
+
+        timeInMilliseconds = mDate.getTime();
+        System.out.println("Date in milli :: " + timeInMilliseconds);
+        long finalTime = timeInMilliseconds - currentTime;
+        Log.i("TAG", "final time " + finalTime);
+
+        Data data;
+        data = new Data.Builder()
+                .putString(WorkManagerRefill.DATA,"batoot")
+                .build();
+        OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(WorkManagerRefill.class)
+                .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
+                .setInputData(data)
+                .build();
+        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
+///----------------->
 
         navigationHeaderView = navigationView.getHeaderView(0);
         Log.i(TAG, "onCreate: navigationHeaderView " + navigationHeaderView);

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0072ff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Refill Refill Refill !!!!!!!!!"
+            android:textColorHint="#FFF"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Your Mediciene will finish "
+            android:textColorHint="#FFF"
+            android:textStyle="bold|italic" />
+
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="159dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="20dp"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+</LinearLayout>
