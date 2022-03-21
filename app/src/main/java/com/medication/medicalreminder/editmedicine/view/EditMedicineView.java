@@ -83,7 +83,7 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         medicine = gson.fromJson(strObj, Medicine.class);
 
 
-        refillTime.setText("15:00");
+        refillTime.setText(medicine.getTimeRefill());
         medNameEditText.setText(medicine.getName());
 
         Log.i(TAG, "time is " + medicine.getTime());
@@ -160,6 +160,7 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
                 medicine.setTime(time);
                 medicine.setStartDate(startDate.getText().toString().trim());
                 medicine.setEndDate(endDate.getText().toString().trim());
+                medicine.setTimeRefill(refillTimeText.getText().toString());
 
 
                 if (isValidName() && isValidAmount() && isValidRefillLimit()) {

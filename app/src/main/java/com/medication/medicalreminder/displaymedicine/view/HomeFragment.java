@@ -19,6 +19,7 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.addmedicine.view.AddMActivity;
 import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePresenter;
+import com.medication.medicalreminder.healthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
@@ -66,12 +67,12 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
         // Check of internet
          presenter.getStoredMedicineFireBase();
         //ROOM
-        presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
+        /*presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
             @Override
             public void onChanged(List<Medicine> medicines) {
                 showAllMedicines(medicines);
             }
-        });
+        });*/
 
 
         
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
             @Override
             public void onClick(View view) {
                 //Code To Add HealthTaker
+                startActivity(new Intent(getContext(), AddHealthTaker.class));
             }
         });
         btnAddMedecine.setOnClickListener(new View.OnClickListener() {

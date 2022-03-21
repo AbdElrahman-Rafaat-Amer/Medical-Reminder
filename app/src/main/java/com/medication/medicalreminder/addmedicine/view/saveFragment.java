@@ -63,14 +63,15 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
                   ,medicine.getUid(),medicine.getTimeRefill());
                 medicineToFireBase = object;
 
-                addMed(object);
+                //addMed(object);
+                AddToFireBase(medicineToFireBase);
                 startActivity(new Intent(getContext(), MainActivity.class));
 
               // MedicinePojoo medicinePojo = new MedicinePojoo("aya","last",7);
 
 
 
-                //AddToFireBase(medicineToFireBase);
+
             }
         });
 
