@@ -1,82 +1,31 @@
 package com.medication.medicalreminder.model;
 
-
-import androidx.annotation.Nullable;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "medicines")
+@Entity
 public class Medicine {
-
     @PrimaryKey(autoGenerate = true)
-    public int id;
-
-    @ColumnInfo(name = "name")
-    String name;
-
-    @ColumnInfo(name = "form")
-    String form;
-
-    @ColumnInfo(name = "strength")
-    String strength;
-
-    @ColumnInfo(name = "reason")
-    String reason;
-
-    @ColumnInfo(name = "isDaily")
-    String isDaily;
-
-    @ColumnInfo(name = "often")
-    String often;
-
-    @ColumnInfo(name = "time")
-    String time;
-
-    @ColumnInfo(name = "startDate")
-    String startDate;
-
-    @ColumnInfo(name = "endDate")
-    String endDate;
-
-    @ColumnInfo(name = "medLeft")
-    int medLeft;
-
-    @ColumnInfo(name = "refillLimit")
-    int refillLimit;
-
-    @ColumnInfo(name = "image")
-    int image;
-
-   @Nullable
-   @ColumnInfo(name="uid")
-   String Uid ;
-   @ColumnInfo(name ="refillTime")
-   String timeRefill ;
-
-    int strengthNum;
-    String strengthDose;
-
-
-
+    private int id;
+    private String name;
+    private String form;
+    private String strength;
+    private String reason;
+    private String isDaily;
+    private String often;
+    private String time;
+    private String startDate;
+    private String endDate;
+    private int medLeft;
+    private int refillLimit;
+    private int image;
+    private String Uid;
+    private String timeRefill;
+    private int strengthNum;
+    private String strengthDose;
     private static Medicine instance = null;
 
-    private Medicine() { }
-
-    public static Medicine getInstance() {
-        if(instance == null){
-            instance = new Medicine();
-        }
-        return instance;
-    }
-
-    @Nullable
-    public String getUid() {
-        return Uid;
-    }
-
-    public void setUid(@Nullable String uid) {
-        Uid = uid;
+    private Medicine() {
     }
 
     public Medicine(int id, String name, String form, String strength, String reason, String isDaily, String often, String time, String startDate, String endDate, int medLeft, int refillLimit, int image, String Uid, String timeRefill) {
@@ -95,6 +44,22 @@ public class Medicine {
         this.image = image;
         this.Uid = Uid;
         this.timeRefill = timeRefill;
+    }
+
+    public static Medicine getInstance() {
+        if (instance == null) {
+            instance = new Medicine();
+        }
+        return instance;
+    }
+
+
+    public String getUid() {
+        return Uid;
+    }
+
+    public void setUid(String uid) {
+        Uid = uid;
     }
 
     public String getTimeRefill() {
@@ -244,4 +209,5 @@ public class Medicine {
                 ", image=" + image +
                 '}';
     }
+
 }

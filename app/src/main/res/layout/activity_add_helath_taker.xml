@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addhealthtaker.view.AddHealthTaker">
+    tools:context=".healthtaker.view.AddHealthTaker">
 
     <ImageView
         android:id="@+id/imageView"

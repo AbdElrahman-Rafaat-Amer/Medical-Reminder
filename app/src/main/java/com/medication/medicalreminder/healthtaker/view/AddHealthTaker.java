@@ -1,4 +1,4 @@
-package com.medication.medicalreminder.addhealthtaker.view;
+package com.medication.medicalreminder.healthtaker.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +19,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.R;
-import com.medication.medicalreminder.addhealthtaker.persenter.AddHealthTakerPresenter;
-import com.medication.medicalreminder.addhealthtaker.persenter.AddHealthTakerPresenterInterface;
+import com.medication.medicalreminder.model.UserPojo;
+import com.medication.medicalreminder.healthtaker.persenter.AddHealthTakerPresenter;
+import com.medication.medicalreminder.healthtaker.persenter.AddHealthTakerPresenterInterface;
 import com.medication.medicalreminder.model.Repository;
-import com.medication.medicalreminder.model.RepositoryInterface;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
-import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
-import com.medication.medicalreminder.roomdatabase.LocalSource;
 
 public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerViewInterface {
 
@@ -34,6 +32,7 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
     private Button inviteFriendButton;
     private AddHealthTakerPresenterInterface presenterInterface;
     private ImageView backImageView;
+    private String TAG = "AddHealthTaker";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,8 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
             }
         });
 
-       // presenterInterface = new AddHealthTakerPresenter(AddHealthTaker.this,
-              //  Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
+        presenterInterface = new AddHealthTakerPresenter(AddHealthTaker.this,
+                Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
 
         inviteFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,32 +58,32 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
                 String email = inviteFiendEditText.getText().toString().trim();
                 if (isValidateEmail(email)) {
                     sendInvitation(email);
-                    Log.i("TAG", "showInvitationDialog onClick: email " + email);
+                    Log.i(TAG, "showInvitationDialog onClick: email " + email);
                 }
             }
         });
 
     }
 
-  /*  private void sendInvitationRequest(String email) {
-        sendInvitation(email);
+    private void sendInvitationRequest(String email) {
+        //   sendInvitation(email);
 
-        /*Log.i("TAG", "sendInvitationRequest: ");
+        Log.i(TAG, "sendInvitationRequest: ");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         Query query = reference.orderByChild("email").equalTo(email);
 
-        Log.i("TAG", "sendInvitationRequest: query " + query);
-        query.addValueEventListener(new ValueEventListener() {
+        Log.i(TAG, "sendInvitationRequest: query " + query);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.i("TAG", "onDataChange: ");
+                Log.i(TAG, "onDataChange: ");
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         UserPojo userPojo = dataSnapshot.getValue(UserPojo.class);
-                        Log.i("TAG", "onDataChange: Query\n userName : " + userPojo.getUserName() + "\tEmail : " + userPojo.getEmail()
+                        Log.i(TAG, "onDataChange: Query\n userName : " + userPojo.getUserName() + "\tEmail : " + userPojo.getEmail()
                                 + "\tPassword : " + userPojo.getPassword() + "\tAccessUID : " + userPojo.getAccessUID());
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.getKey());
-                        //   getAllData(reference);
+                        // getAllData(reference);
                         reference.child("accessUID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     }
                 } else {
@@ -95,11 +94,11 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.i("TAG", "onCancelled: " + error.getMessage());
+                Log.i(TAG, "onCancelled: " + error.getMessage());
 
             }
         });
-    }*/
+    }
 
 
     private boolean isValidateEmail(String email) {
@@ -126,6 +125,16 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
 
     @Override
     public void receiveInvitationRequest(String message) {
-        inviteFiendEditText.setError(message);
+        switch (message) {
+            case "success":
+                inviteFiendEditText.setError(getResources().getString(R.string.request_sent));
+                break;
+            case "error":
+                inviteFiendEditText.setError(getResources().getString(R.string.reserved_healthTaker));
+                break;
+            case "notfound":
+                inviteFiendEditText.setError(getResources().getString(R.string.email_not_found));
+                break;
+        }
     }
 }

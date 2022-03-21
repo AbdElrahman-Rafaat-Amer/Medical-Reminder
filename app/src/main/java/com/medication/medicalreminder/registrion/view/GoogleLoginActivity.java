@@ -1,4 +1,4 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.registrion.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.medication.medicalreminder.MainActivity;
+import com.medication.medicalreminder.R;
 
 public class GoogleLoginActivity extends AppCompatActivity {
 

@@ -22,5 +22,5 @@ public class AddMActivity extends AppCompatActivity {
             NavGraph navGraph = navHostFragment.getNavController().getNavInflater().inflate(R.navigation.nav_graph);
             navGraph.setStartDestination(R.id.firstFragment);
             navController.setGraph(navGraph);
-    }
-}}
+        }
+    }}

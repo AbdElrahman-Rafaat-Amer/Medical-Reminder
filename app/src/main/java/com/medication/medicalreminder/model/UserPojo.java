@@ -1,49 +1,57 @@
 package com.medication.medicalreminder.model;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-import java.util.List;
-
-@Entity(tableName = "user")
 public class UserPojo {
-    @NonNull
     private String userName;
-    @NonNull
     private String password;
-
-    @PrimaryKey
-    @NonNull
     private String email;
-
-   @Nullable
     private String accessUID;
+    private String requestReply;
+    private String requesterName;
+    private String isYourRequestAccepted;
 
-   @Nullable
-   List<Medicine> medicineList;
-
-
-    public UserPojo(@NonNull String userName, @NonNull String password, @NonNull String email, @Nullable String accessUID, @Nullable List<Medicine> medicineList) {
+    public UserPojo(String userName, String password, String email, String accessUID, String requestReply) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.accessUID = accessUID;
-        this.medicineList = medicineList;
+        this.requestReply = requestReply;
     }
 
-    @Nullable
-    public List<Medicine> getMedicineList() {
-        return medicineList;
-    }
-
-    public void setMedicineList(@Nullable List<Medicine> medicineList) {
-        this.medicineList = medicineList;
+    public UserPojo(String userName, String password, String email, String accessUID, String requestReply, String requesterName, String isYourRequestAccepted) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.accessUID = accessUID;
+        this.requestReply = requestReply;
+        this.requesterName = requesterName;
+        this.isYourRequestAccepted = isYourRequestAccepted;
     }
 
     public UserPojo() {
+    }
+
+    public String getRequesterName() {
+        return requesterName;
+    }
+
+    public String getIsYourRequestAccepted() {
+        return isYourRequestAccepted;
+    }
+
+    public void setIsYourRequestAccepted(String isYourRequestAccepted) {
+        this.isYourRequestAccepted = isYourRequestAccepted;
+    }
+
+    public void setRequesterName(String requesterName) {
+        this.requesterName = requesterName;
+    }
+
+    public String getRequestReply() {
+        return requestReply;
+    }
+
+    public void setRequestReply(String requestReply) {
+        this.requestReply = requestReply;
     }
 
     public String getUserName() {
@@ -70,12 +78,11 @@ public class UserPojo {
         this.email = email;
     }
 
-    @Nullable
     public String getAccessUID() {
         return accessUID;
     }
 
-    public void setAccessUID(@Nullable String accessUID) {
+    public void setAccessUID(String accessUID) {
         this.accessUID = accessUID;
     }
 }

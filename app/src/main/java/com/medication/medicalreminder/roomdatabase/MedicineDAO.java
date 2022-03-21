@@ -8,22 +8,25 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-
 import com.medication.medicalreminder.model.Medicine;
 
 import java.util.List;
 
 @Dao
 public interface MedicineDAO {
+    /*
     @Query("Select * From medicines")
     LiveData<List<Medicine>> getAllMedicine();
-    @Insert(onConflict = OnConflictStrategy.IGNORE)  // or OnConflictStrategy.IGNORE
-    long  insertMedicine (Medicine medicine);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+        // or OnConflictStrategy.IGNORE
+    long insertMedicine(Medicine medicine);
+
     @Delete
-    void  deleteMedicine (Medicine medicine);
+    void deleteMedicine(Medicine medicine);
 
     @Query("SELECT startDate FROM medicines ")
-    String  getStartDate();
+    String getStartDate();
 
     @Query("SELECT startDate FROM medicines ")
     String getEnddate();
@@ -33,9 +36,6 @@ public interface MedicineDAO {
 
     @Update
     void updateMedicine(Medicine medicine);
-
-
-
-
+*/
 
 }

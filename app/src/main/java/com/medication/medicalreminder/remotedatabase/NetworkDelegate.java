@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface NetworkDelegate {
 
-    void onSuccessInvitation(String successMessage);
+    void onInvitationResponse(String successMessage);
 
-    void onFailureInvitation(String errorMessage);
+    void onResponseLogin(String reply);
+
+    void onResponseRegister(String reply);
 
     void onSuccessGetMediciene(List<Medicine> successMessage);
 

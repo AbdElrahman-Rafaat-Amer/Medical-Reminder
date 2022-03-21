@@ -12,18 +12,19 @@ import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 
 import java.util.List;
 
-public class MedicinePresenter implements MedicinePresenterInterface , NetworkDelegate {
+public class MedicinePresenter implements MedicinePresenterInterface, NetworkDelegate {
     private RepositoryInterface repo ;
     private AllMedicinesViewInterface allMedicinesViewInterface;
 
-    public MedicinePresenter(Repository repo,AllMedicinesViewInterface allMedicinesViewInterface) {
+    public MedicinePresenter(Repository repo, AllMedicinesViewInterface allMedicinesViewInterface) {
         this.repo=repo;
         this.allMedicinesViewInterface=allMedicinesViewInterface;
     }
     @Override
     public LiveData<List<Medicine>> getAllMedicines() {
-        Log.i("TAG", "getAllMedicines: " + repo.getStoredMedicine());
-        return repo.getStoredMedicine();
+      //  Log.i("TAG", "getAllMedicines: " + repo.getStoredMedicine());
+     //   return repo.getStoredMedicine();
+        return null;
     }
 
     @Override
@@ -32,8 +33,20 @@ public class MedicinePresenter implements MedicinePresenterInterface , NetworkDe
 
          repo.getStoredMedicineFireBase(this);
     }
+
+
     @Override
-    public void onSuccessInvitation(String successMessage) {
+    public void onInvitationResponse(String successMessage) {
+
+    }
+
+    @Override
+    public void onResponseLogin(String reply) {
+
+    }
+
+    @Override
+    public void onResponseRegister(String reply) {
 
     }
 
@@ -48,8 +61,5 @@ public class MedicinePresenter implements MedicinePresenterInterface , NetworkDe
 
     }
 
-    @Override
-    public void onFailureInvitation(String errorMessage) {
 
-    }
 }

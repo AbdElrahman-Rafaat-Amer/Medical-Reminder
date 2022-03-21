@@ -1,4 +1,4 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.registrion.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +15,8 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.LoginStatusCallback;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -31,65 +27,34 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
+import com.medication.medicalreminder.MainActivity;
+import com.medication.medicalreminder.R;
 
 import java.util.Arrays;
 
 
 public class FacebookLoginActivity extends AppCompatActivity {
 
-    String TAG = "GoogleUserFragment";
+    private static final String TAG = "FacebookLoginActivity";
     private FirebaseAuth mAuth;
     private CallbackManager callbackManager;
-    private TextView name;
-    private TextView email;
-    private TextView phoneNumber;
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        Log.i(TAG, "onStart: ");
-     //   FirebaseUser currentUser = mAuth.getCurrentUser();
-     //   updateUI(currentUser);
-    }
-
-    private void updateUI(FirebaseUser currentUser) {
-        Log.i(TAG, "before updateUI: ");
-        Log.i(TAG, "updateUI: currentUser " + currentUser);
-        if (currentUser != null) {
-            name.setText(currentUser.getDisplayName());
-            phoneNumber.setText(currentUser.getPhoneNumber());
-            email.setText(currentUser.getEmail());
-        } else {
-
-            name.setText("null");
-            phoneNumber.setText("null");
-            email.setText("null");
-        }
-        Log.i(TAG, "after updateUI: ");
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_google_user);
+        setContentView(R.layout.activity_facebook_login);
 
         Log.i(TAG, "onCreate: ");
         callbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
 
-        name = findViewById(R.id.name);
-        email = findViewById(R.id.email);
-        phoneNumber = findViewById(R.id.phoneNumber);
-             AccessToken accessToken = AccessToken.getCurrentAccessToken();
-             boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
 
 
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-       // loginButton.setReadPermissions("email", "public_profile");
         loginButton.setReadPermissions("email", "public_profile", "user_friends");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -132,13 +97,13 @@ public class FacebookLoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Log.i(TAG, "onComplete: FirebaseUser " + user);
                             Log.i(TAG, "onComplete: mAuth " + mAuth);
-                            updateUI(user);
+                            startActivity(new Intent(FacebookLoginActivity.this, MainActivity.class));
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(FacebookLoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
                         }
                     }
                 });

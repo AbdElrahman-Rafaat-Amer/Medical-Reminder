@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".registrion.view.RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,17 +15,6 @@
         app:layout_constraintHeight_percent=".95"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_skip_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_11sdp"
-        android:text="@string/skip"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_15sdp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <ImageView
         android:id="@+id/image_view_back_register"
@@ -41,7 +30,7 @@
         android:id="@+id/textView_signUP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/_28sdp"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="@dimen/_35sdp"
@@ -56,7 +45,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
         android:hint="@string/user_name"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -79,7 +70,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
         android:hint="@string/email"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -101,7 +94,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
         android:hint="@string/password"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -125,7 +120,7 @@
         android:id="@+id/signin_button"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/rounded_corner_button"
         android:text="@string/sign_up"
         android:textColor="@color/black"
@@ -137,13 +132,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="@string/another_sign_up"
         android:textColor="@color/white"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signin_button" />
 

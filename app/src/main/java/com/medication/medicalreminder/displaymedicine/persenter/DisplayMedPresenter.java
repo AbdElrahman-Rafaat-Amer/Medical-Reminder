@@ -15,7 +15,7 @@ public class DisplayMedPresenter implements DisplayMedPresenterInterface {
     }
     @Override
     public void deleteMedicine(Medicine medicine) {
-        repo.deleteMedicine(medicine);
+        //repo.deleteMedicine(medicine);
     }
 
     @Override

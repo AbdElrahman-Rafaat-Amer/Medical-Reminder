@@ -20,13 +20,10 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="user_name">User name</string>
     <string name="user_name_error">User name can not be empty</string>
+    <string name="user_name_error_length"> User name must be 6 characters or more</string>
     <string name="profile_name">Profile Name</string>
     <string name="patients">Patients</string>
     <string name="friends">Friends</string>
-
-    <string name="refill_error">Remaining medicinine can not be empty</string>
-    <string name="amount_error">Medicinine amount can not be empty</string>
-    <string name="name_error">" Medicine Name can not be empty"</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="google_logout">Logout</string>
@@ -40,8 +37,10 @@
     <string name="send_invitation">Send invitation</string>
     <string name="email_badFormat">This is not valid email</string>
     <string name="email_not_found">This email is not registered or can not accept your request now</string>
-    <string name="reserved_healthTaker">This health taker is <unavailable></unavailable> now, He might take care of another person</string>
-    <string name="added_done">Success adding</string>
+    <string name="reserved_healthTaker">This health taker is unavailable now, He might take care of another person</string>
+    <string name="request_health_taker_message"> send you request to access his list of medicine and Take care of him \n So what is your answer??</string>
+    <string name="added_done">Success adding health taker</string>
+    <string name="request_sent">Waiting to his acceptance</string>
     <string name="medicineTxtView" />
     <string name="takenTime" />
     <string name="datetxtview" />
@@ -52,7 +51,7 @@
     <string name="refill">refill</string>
     <string name="PrescriptionRefill">Prescription Refill</string>
     <string name="PillsLeft">"Pills Left: "</string>
-    <string name="remindToRefill">"Remind Me to Refill When I Have Left : "</string>
+    <string name="remindToRefill">"Remind Me to Refill When I Have: "</string>
     <string name="HowToUse">How to use</string>
     <string name="addDose">add dose</string>
     <string name="med_name">Medication Name</string>
@@ -72,14 +71,11 @@
     <string name="med_icon">Med Icon</string>
     <string name="done">Done</string>
     <string name="txt">haaaaaaaaaaa</string>
-    <string name="pick_time_for_dose">"Enter your dose number "</string>
-    <string name="remind_refill_at">Remind me to refill at </string>
+    <string name="waiting_google">Connecting with google...</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+    <string name="warning_health">Be careful, if you ignore this message\n You will not be able to receive any other requests until make choice</string>
 
-    <string-array name="reminder_times">
-        <item>Once Daily</item>
-        <item>Twice Daily</item>
-        <item>3 times Daily</item>
-    </string-array>
 
     <string-array name="doseStrength">
         <item>g</item>
@@ -97,4 +93,21 @@
         <item>Other</item>
 
     </string-array>
+
+
+    <string name="refill_error">Remaining medicinine can not be empty</string>
+    <string name="amount_error">Medicinine amount can not be empty</string>
+    <string name="name_error">" Medicine Name can not be empty"</string>
+
+
+    <string name="pick_time_for_dose">"Enter your dose number "</string>
+    <string name="remind_refill_at">Remind me to refill at </string>
+
+    <string-array name="reminder_times">
+        <item>Once Daily</item>
+        <item>Twice Daily</item>
+        <item>3 times Daily</item>
+    </string-array>
+
+
 </resources>

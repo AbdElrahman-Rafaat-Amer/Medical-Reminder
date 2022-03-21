@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class DisplayMedView extends AppCompatActivity implements DisplayMedInterface{
+public class DisplayMedView extends AppCompatActivity implements DisplayMedInterface {
     private static final String TAG = "TAG";
     ImageButton editBtn, deleteBtn, backButton;
     TextView medName, reminder1, reminder2, reminder3, leftMed, refillLimit, medStrength, medForm;
@@ -51,7 +51,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         editBtn = findViewById(R.id.editButton);
         medForm = findViewById(R.id.form_text);
 
-        presenterInterface = new DisplayMedPresenter(Repository.getInstance(getApplicationContext(), ConcreteLocalSource.getInstance(getApplicationContext()),FirebaseOperation.getInstance()),
+        presenterInterface = new DisplayMedPresenter(Repository.getInstance(getApplicationContext(), ConcreteLocalSource.getInstance(getApplicationContext()), FirebaseOperation.getInstance()),
                 FirebaseOperation.getInstance());
 
         Gson gson = new Gson();

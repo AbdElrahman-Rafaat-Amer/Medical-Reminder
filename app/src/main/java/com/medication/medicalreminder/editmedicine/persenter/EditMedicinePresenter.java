@@ -19,7 +19,7 @@ public class EditMedicinePresenter implements EditMedicinePresenterInterface {
     @Override
     public void update(Medicine medicine) {
         Log.i("TAG", "inside presenter activity");
-        repo.updateMedicine(medicine);
+      //  repo.updateMedicine(medicine);
     }
 
     @Override

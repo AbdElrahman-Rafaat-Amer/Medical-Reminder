@@ -1,9 +1,6 @@
 package com.medication.medicalreminder.displaymedicine.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +35,7 @@ import java.util.Locale;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+
 public class HomeFragment extends Fragment implements AllMedicinesViewInterface {
     FloatingActionsMenu btnMenuFloating;
     FloatingActionButton btnAddMedecine;
@@ -136,7 +134,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
     private void getMedicene(String datee) {
         Log.i("TAG", "datee coming " + datee);
         spesificList.clear();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy",Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",Locale.US);
         try {
             //list.clear();
             Log.i("TAG", "size list inside getDate : " + list.size());

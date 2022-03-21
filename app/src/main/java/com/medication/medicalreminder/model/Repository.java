@@ -5,39 +5,70 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-
-import com.medication.medicalreminder.Medication;
-import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 import com.medication.medicalreminder.roomdatabase.LocalSource;
 
 import java.util.List;
 
-public class Repository implements RepositoryInterface{
+public class Repository implements RepositoryInterface {
 
-    private Context context ;
-    LocalSource localSource ;
-    private static  Repository repository = null;
+    private static Repository repository = null;
+    private Context context;
     private FirebaseOperationInterface remoteSource;
+    private LocalSource localSource;
 
-    public Repository (Context context , LocalSource localSource, FirebaseOperationInterface remoteSource) {
-        this.context = context ;
-        this.localSource = localSource ;
-        this.remoteSource =remoteSource;
-
+    private Repository(Context context, LocalSource localSource, FirebaseOperationInterface remoteSource) {
+        this.context = context;
+        this.remoteSource = remoteSource;
+        this.localSource = localSource;
     }
 
-    public static Repository getInstance(Context context, LocalSource localSource,FirebaseOperationInterface remoteSource) {
-        if(repository == null){
-            repository = new Repository(context, localSource,remoteSource);
+    public static Repository getInstance(Context context, LocalSource localSource, FirebaseOperationInterface remoteSource) {
+        if (repository == null) {
+            repository = new Repository(context, localSource, remoteSource);
         }
         return repository;
     }
 
 
+    @Override
+    public void addHealthTaker(String email, NetworkDelegate networkDelegate) {
+        remoteSource.addHealthTaker(email, networkDelegate);
+    }
 
     @Override
+    public void sendReplyAddHealthTaker(String replyMessage, String UID) {
+        remoteSource.sendReplyAddHealthTaker(replyMessage, UID);
+    }
+
+    @Override
+    public void signWithEmail(String email, String password, NetworkDelegate networkDelegate) {
+        remoteSource.signWithEmail(email, password, networkDelegate);
+
+    }
+
+    @Override
+    public void createAccount(UserPojo userPojo, NetworkDelegate networkDelegate) {
+        remoteSource.createUserWithEmailAndPassword(userPojo, networkDelegate);
+    }
+
+    @Override
+    public void sendReplyOnInvitationOfTaker(boolean isAccept) {
+        remoteSource.sendReplyOnInvitationOfTaker(isAccept);
+    }
+
+    @Override
+    public void AddMedToFirebase(Medicine medicine) {
+        remoteSource.addMedToFireBase(medicine);
+    }
+
+    @Override
+    public void getStoredMedicineFireBase(NetworkDelegate networkDelegate) {
+        remoteSource.getAllMedicine(networkDelegate);
+
+    }
+  /*  @Override
     public LiveData<List<Medicine>> getStoredMedicine() {
         return localSource.getAllMedicine();
     }
@@ -58,19 +89,10 @@ public class Repository implements RepositoryInterface{
         Log.i("TAG", "inside repo");
         localSource.update(medicine);
     }
+*/
 
-    @Override
-    public void AddMedToFirebase(Medicine medicine) {
-        remoteSource.addMedToFireBase(medicine);
-    }
 
-    @Override
-    public void getStoredMedicineFireBase(NetworkDelegate networkDelegate) {
-        remoteSource.getAllMedicine(networkDelegate);
-
-    }
-
-    @Override
+  /*  @Override
     public void getStartDate() {
         localSource.getStartDate();
     }
@@ -89,6 +111,6 @@ public class Repository implements RepositoryInterface{
     public void downloadDataLocal(List<Medicine> list) {
         localSource.downloadDataLocal(list);
     }
-
+*/
 
 }

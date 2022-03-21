@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 
@@ -14,16 +13,16 @@ import java.util.List;
 public class ConcreteLocalSource implements LocalSource {
     long id;
 
-    private MedicineDAO dao;
+   // private MedicineDAO dao;
     private static ConcreteLocalSource localSource = null;
     private LiveData<List<Medicine>> storedMedicine;
     NetworkDelegate networkDelegate;
 
 
     public ConcreteLocalSource(Context context) {
-        AppDatabase db = AppDatabase.getInstance(context.getApplicationContext());
-        dao = db.medicineDAO();
-        storedMedicine = dao.getAllMedicine();
+       // AppDatabase db = AppDatabase.getInstance(context.getApplicationContext());
+       // dao = db.medicineDAO();
+        //storedMedicine = dao.getAllMedicine();
 
     }
 
@@ -34,7 +33,7 @@ public class ConcreteLocalSource implements LocalSource {
         return localSource;
     }
 
-
+/*
     @Override
     public void insert(Medicine medicine, NetworkDelegate networkDelegate) {
 
@@ -110,5 +109,5 @@ public class ConcreteLocalSource implements LocalSource {
     @Override
     public LiveData<List<Medicine>> getAllMedicine() {
         return storedMedicine;
-    }
+    }*/
 }

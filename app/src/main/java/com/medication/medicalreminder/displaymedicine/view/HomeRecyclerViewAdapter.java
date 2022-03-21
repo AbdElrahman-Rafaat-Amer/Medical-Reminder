@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.model.Medicine;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 

@@ -27,7 +27,7 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
     @Override
     public void addMedicine(Medicine medicine) {
         Log.i("TAG", "inside insert presenter id is ");
-        repo.insertMedicine(medicine, this);
+      //  repo.insertMedicine(medicine, this);
 
     }
 
@@ -38,12 +38,17 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
 
 
     @Override
-    public void onSuccessInvitation(String successMessage) {
+    public void onInvitationResponse(String successMessage) {
 
     }
 
     @Override
-    public void onFailureInvitation(String errorMessage) {
+    public void onResponseLogin(String reply) {
+
+    }
+
+    @Override
+    public void onResponseRegister(String reply) {
 
     }
 

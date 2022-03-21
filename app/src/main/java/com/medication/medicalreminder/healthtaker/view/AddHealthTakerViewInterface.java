@@ -1,4 +1,4 @@
-package com.medication.medicalreminder.addhealthtaker.view;
+package com.medication.medicalreminder.healthtaker.view;
 
 public interface AddHealthTakerViewInterface {
 

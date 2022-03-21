@@ -1,8 +1,8 @@
-package com.medication.medicalreminder.addhealthtaker.persenter;
+package com.medication.medicalreminder.healthtaker.persenter;
 
 import android.util.Log;
 
-import com.medication.medicalreminder.addhealthtaker.view.AddHealthTakerViewInterface;
+import com.medication.medicalreminder.healthtaker.view.AddHealthTakerViewInterface;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.RepositoryInterface;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
@@ -23,26 +23,27 @@ public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface
 
     @Override
     public void sendInvitationRequest(String email) {
-       // repositoryInterface.addHealthTaker(email,this);
+        repositoryInterface.addHealthTaker(email,this);
     }
 
     @Override
-    public String receiveInvitationRequest() {
-        return null;
-    }
-
-    @Override
-    public void onSuccessInvitation(String successMessage) {
+    public void onInvitationResponse(String successMessage) {
         viewInterface.receiveInvitationRequest(successMessage);
     }
 
     @Override
-    public void onFailureInvitation(String errorMessage) {
-        viewInterface.receiveInvitationRequest(errorMessage);
+    public void onResponseLogin(String reply) {
+
+    }
+
+    @Override
+    public void onResponseRegister(String reply) {
+
     }
 
     @Override
     public void onSuccessGetMediciene(List<Medicine> successMessage) {
+
     }
 
     @Override
