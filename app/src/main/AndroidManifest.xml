@@ -45,6 +45,11 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Dialog"
             />
+        <activity
+            android:name=".reminder.ReminderDialog"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            />
 
 
         <activity

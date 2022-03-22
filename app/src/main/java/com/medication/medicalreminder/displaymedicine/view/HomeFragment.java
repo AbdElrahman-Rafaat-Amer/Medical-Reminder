@@ -22,6 +22,7 @@ import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePre
 import com.medication.medicalreminder.healthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
+import com.medication.medicalreminder.reminder.ReminderActivity;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
@@ -160,6 +161,12 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
                 }
                 recyclerViewAdapter.setList(spesificList);
                 recyclerViewAdapter.notifyDataSetChanged();
+                ///----reminders----////
+                ReminderActivity.setMedicineArrayList(spesificList);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    ReminderActivity.findNextAlarm();
+                }
+                ///----reminders----////
             }
 
         }catch(ParseException e){
