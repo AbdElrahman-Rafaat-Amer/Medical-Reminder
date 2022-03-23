@@ -25,7 +25,8 @@
         <activity android:name=".registrion.view.RegisterActivity" />
         <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity"
+        <activity
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,17 +41,15 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity
             android:name=".Dialog"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            />
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".reminder.ReminderDialog"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            />
-
+            android:theme="@style/Theme.AppCompat.Dialog" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -71,8 +70,8 @@
         <activity
             android:name=".addmedicine.view.AddMActivity"
             android:exported="false" />
-        <activity android:name=".displaymedicine.view.DisplayMedView"/>
-        <activity android:name=".editmedicine.view.EditMedicineView"/>
+        <activity android:name=".displaymedicine.view.DisplayMedView" />
+        <activity android:name=".editmedicine.view.EditMedicineView" />
 
     </application>
 

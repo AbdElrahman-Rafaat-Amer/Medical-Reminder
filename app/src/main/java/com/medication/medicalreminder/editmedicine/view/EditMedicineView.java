@@ -48,7 +48,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class EditMedicineView extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditMedicinesViewInterface {
-    private static final String TAG = "TAG";
+    private static final String TAG = "EditMedicineView";
     public static final String JSON = "json";
     NumberPicker numberPicker, numberPickerDose;
     TextView enterAmountText, enterRemainText, startDate, endDate, refillTime, refillTimeText;
@@ -64,6 +64,8 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
     EditMedicinePresenterInterface presenterInterface;
     Medicine medicine;
     int hour, minute;
+
+    private String typeOfUser = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,8 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         Gson gson = new Gson();
         String strObj = getIntent().getStringExtra("json pojo");
         medicine = gson.fromJson(strObj, Medicine.class);
+        typeOfUser = getIntent().getStringExtra("TYPE");
+        Log.i(TAG, "onCreate: typeOfUser ----------------------> " + typeOfUser);
 
 
         refillTime.setText(medicine.getTimeRefill());
@@ -164,21 +168,14 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
 
 
                 if (isValidName() && isValidAmount() && isValidRefillLimit()) {
-
-                    Toast.makeText(getApplicationContext(), "you are online", Toast.LENGTH_SHORT).show();
-
-                    updateFireBase(medicine);
-
-
-                    Toast.makeText(getApplicationContext(), "you are offline", Toast.LENGTH_SHORT).show();
-
-                    updateMedicines(medicine);
-
-                    Toast.makeText(getApplicationContext(), "Medicine have been updated", Toast.LENGTH_LONG).show();
-
+                    Log.i(TAG, "onCreate: typeOfUser ----------------------> " + typeOfUser);
+                    if (typeOfUser.equals("HT")) {
+                        Toast.makeText(getApplicationContext(), "you are in health taker mode", Toast.LENGTH_SHORT).show();
+                        updateHealthTaker(medicine);
+                    } else {
+                        updateFireBase(medicine);
+                    }
                     finish();
-
-                    Toast.makeText(getApplicationContext(), medName, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -640,14 +637,13 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
     }
 
     @Override
-    public void updateMedicines(Medicine medicine) {
-        Log.i("TAG", "inside edit view activity");
-        presenterInterface.update(medicine);
+    public void updateFireBase(Medicine medicine) {
+        presenterInterface.updateFireBase(medicine);
     }
 
     @Override
-    public void updateFireBase(Medicine medicine) {
-        presenterInterface.updateFireBase(medicine);
+    public void updateHealthTaker(Medicine medicine) {
+        presenterInterface.updateHealthTaker(medicine);
     }
 
     private boolean isNetworkAvailable() {

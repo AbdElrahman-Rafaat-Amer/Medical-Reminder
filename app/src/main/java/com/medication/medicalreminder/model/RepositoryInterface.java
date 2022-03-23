@@ -18,24 +18,20 @@ public interface RepositoryInterface {
 
     void sendReplyOnInvitationOfTaker(boolean isAccept);
 
-    ///////////////
-  //  LiveData<List<Medicine>> getStoredMedicine();//room
-
- //   void insertMedicine(Medicine medicine, NetworkDelegate networkDelegate);
-
-   // void deleteMedicine(Medicine medicine);
-
-   // void updateMedicine(Medicine medicine);
-
     void AddMedToFirebase(Medicine medicine);
+
+    void addMedicineHealthTaker(Medicine medicine);
 
     void getStoredMedicineFireBase(NetworkDelegate networkDelegate);//firebase
 
-   /* void getStartDate();
+    void getStoredMedicineFireBaseOfHealthTaker(NetworkDelegate networkDelegate);
 
-    void getEnddate();
+    void updateMedicineHealthTaker(Medicine medicine);
 
-    void getTime();
+    void updateMedicine(Medicine medicine);
 
-    void downloadDataLocal(List<Medicine> list);*/
+    void deleteMedicineHealthTaker(Medicine medicine);
+
+    void deleteFromFirebase(Medicine medicine);
+
 }

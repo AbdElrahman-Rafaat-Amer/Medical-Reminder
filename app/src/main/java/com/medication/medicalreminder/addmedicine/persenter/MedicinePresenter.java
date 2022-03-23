@@ -15,7 +15,7 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
 
 
     private RepositoryInterface repo ;
-    MedicineViewInterface medicineViewInterface;
+   private MedicineViewInterface medicineViewInterface;
 
 
     public MedicinePresenter(RepositoryInterface repo, MedicineViewInterface medicineViewInterface ){
@@ -25,10 +25,8 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
     }
 
     @Override
-    public void addMedicine(Medicine medicine) {
-        Log.i("TAG", "inside insert presenter id is ");
-      //  repo.insertMedicine(medicine, this);
-
+    public void addMedicineHealthTaker(Medicine medicine) {
+       repo.addMedicineHealthTaker(medicine);
     }
 
     @Override
@@ -57,8 +55,4 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
 
     }
 
-    @Override
-    public void onSuccessInsert(long id) {
-        medicineViewInterface.sendId(id);
-    }
 }

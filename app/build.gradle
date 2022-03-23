@@ -88,7 +88,6 @@ dependencies {
     implementation 'devs.mulham.horizontalcalendar:horizontalcalendar:1.3.4'
 
     // WorkManager
-    //def work_version =
-    implementation "androidx.work:work-runtime:2.7.1"
+    implementation 'androidx.work:work-runtime:2.7.1'
 
 }

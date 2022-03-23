@@ -39,10 +39,6 @@ public class LoginPresenter implements LoginPresenterInterface, NetworkDelegate 
 
     }
 
-    @Override
-    public void onSuccessInsert(long id) {
-
-    }
 
     @Override
     public void onInvitationResponse(String successMessage) {

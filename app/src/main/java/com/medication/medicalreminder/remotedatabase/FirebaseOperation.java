@@ -46,20 +46,20 @@ public class FirebaseOperation implements FirebaseOperationInterface {
 
     @Override
     public void addHealthTaker(String email, NetworkDelegate networkDelegate) {
-        Log.i("TAG", "sendInvitationRequest: ");
+        Log.i(TAG, "sendInvitationRequest: ");
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         Query query = databaseReference.orderByChild("email").equalTo(email);
 
-        Log.i("TAG", "sendInvitationRequest: query " + query);
+        Log.i(TAG, "sendInvitationRequest: query " + query);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.i("TAG", "onDataChange: ");
+                Log.i(TAG, "onDataChange: ");
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         UserPojo userPojo = dataSnapshot.getValue(UserPojo.class);
                         if (userPojo.getAccessUID().equals("NULL")) {
-                            Log.i("TAG", "onDataChange: Query\n userName : " + userPojo.getUserName() + "\tEmail : " + userPojo.getEmail()
+                            Log.i(TAG, "onDataChange: Query\n userName : " + userPojo.getUserName() + "\tEmail : " + userPojo.getEmail()
                                     + "\tPassword : " + userPojo.getPassword() + "\tAccessUID : " + userPojo.getAccessUID());
                             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(dataSnapshot.getKey());
                             reference.child("accessUID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -95,8 +95,8 @@ public class FirebaseOperation implements FirebaseOperationInterface {
     public void sendReplyAddHealthTaker(String replyMessage, String UID) {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(UID).child("requestReply");
         databaseReference.setValue(replyMessage);
-        Log.i("TAG", "sendReplyAddHealthTaker: UID>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + UID);
-        Log.i("TAG", "sendReplyAddHealthTaker: replyMessage >>>>>>>>>>>>>>>>>>>>>>>>> " + replyMessage);
+        Log.i(TAG, "sendReplyAddHealthTaker: UID>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + UID);
+        Log.i(TAG, "sendReplyAddHealthTaker: replyMessage >>>>>>>>>>>>>>>>>>>>>>>>> " + replyMessage);
     }
 
     @Override
@@ -178,9 +178,36 @@ public class FirebaseOperation implements FirebaseOperationInterface {
     @Override
     public void addMedToFireBase(Medicine medicine) {
         DatabaseReference referencee = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").push();
-        String  MedUid = referencee.getKey();
+        String MedUid = referencee.getKey();
         medicine.setUid(MedUid);
         referencee.setValue(medicine);
+    }
+
+    @Override
+    public void addMedicineHealthTaker(Medicine medicine) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserPojo user = snapshot.getValue(UserPojo.class);
+                String accessUID = user.getAccessUID();
+                if (accessUID.equals("NULL")) {
+                    Log.i(TAG, "addMedicineHealthTaker: accessUID " + accessUID);
+                    Log.i(TAG, "addMedicineHealthTaker: Error No data found ");
+                } else {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(accessUID).child("medicineList").push();
+                    String MedUid = reference.getKey();
+                    medicine.setUid(MedUid);
+                    reference.setValue(medicine);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -193,12 +220,12 @@ public class FirebaseOperation implements FirebaseOperationInterface {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 storedMedicine.clear();
-                for(DataSnapshot snapshot1: datasnapshot.getChildren()){
-                    Medicine medicine= snapshot1.getValue(Medicine.class);
+                for (DataSnapshot snapshot1 : datasnapshot.getChildren()) {
+                    Medicine medicine = snapshot1.getValue(Medicine.class);
                     storedMedicine.add(medicine);
                 }
-                Log.i("TAG", "onDataChange Read from Firebase: " + storedMedicine);
-                Log.i("TAG", "onDataChange Size of list " + storedMedicine.size());
+                Log.i(TAG, "onDataChange Read from Firebase: " + storedMedicine);
+                Log.i(TAG, "onDataChange Size of list " + storedMedicine.size());
 
 
                 networkDelegate.onSuccessGetMediciene(storedMedicine);
@@ -209,27 +236,103 @@ public class FirebaseOperation implements FirebaseOperationInterface {
             }
 
         });
-        Log.i("TAG", "getAllMedicine: " + storedMedicine.size());
+        Log.i(TAG, "getAllMedicine: " + storedMedicine.size());
 
     }
 
     @Override
-    public void insertMedicine() {
+    public void getAllMedicineOfHealthTaker(NetworkDelegate networkDelegate) {
+        List<Medicine> storedMedicine = new ArrayList<>();
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserPojo user = snapshot.getValue(UserPojo.class);
+                String accessUID = user.getAccessUID();
+                if (accessUID.equals("NULL")) {
+                    Log.i(TAG, "getAllMedicineOfHealthTaker: accessUID " + accessUID);
+                    Log.i(TAG, "getAllMedicineOfHealthTaker: Error No data found ");
+                } else {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(accessUID).child("medicineList");
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            storedMedicine.clear();
+                            for (DataSnapshot snapshot1 : datasnapshot.getChildren()) {
+                                Medicine medicine = snapshot1.getValue(Medicine.class);
+                                storedMedicine.add(medicine);
+                            }
+                            Log.i(TAG, "onDataChange Read from Firebase: " + storedMedicine);
+                            Log.i(TAG, "onDataChange Size of list " + storedMedicine.size());
+
+
+                            networkDelegate.onSuccessGetMediciene(storedMedicine);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
 
     @Override
     public void updateMedicine(Medicine medicine) {
-        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Ghada").child("MyUser");
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList");
         HashMap hashMap = new HashMap();
         hashMap.put(medicine.getUid(), medicine); //add to firebase using the KEY
         reference.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
-                Toast.makeText(getApplicationContext(), "Medicine have been updated",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Medicine have been updated", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void updateMedicineHealthTaker(Medicine medicine) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserPojo user = snapshot.getValue(UserPojo.class);
+                String accessUID = user.getAccessUID();
+                if (accessUID.equals("NULL")) {
+                    Log.i(TAG, "updateHealthTaker: accessUID " + accessUID);
+                    Log.i(TAG, "updateHealthTaker: Error No data found ");
+                } else {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(accessUID).child("medicineList");
+                    HashMap hashMap = new HashMap();
+                    hashMap.put(medicine.getUid(), medicine); //add to firebase using the KEY
+                    reference.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                        @Override
+                        public void onSuccess(Object o) {
+                            Log.i(TAG, "updateHealthTaker: accessUID " + accessUID);
+                            Log.i(TAG, "updateHealthTaker: Done");
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     @Override
@@ -242,7 +345,7 @@ public class FirebaseOperation implements FirebaseOperationInterface {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         Medicine pojo = snap.getValue(Medicine.class);
-                        Log.i("TAG", pojo.getName());
+                        Log.i(TAG, pojo.getName());
                         snap.getRef().removeValue();
                     }
                 }
@@ -255,21 +358,50 @@ public class FirebaseOperation implements FirebaseOperationInterface {
         });
     }
 
- /*   @Override
-    public UserPojo getUserByEmail(String email) {
-        return null;
+    @Override
+    public void deleteMedicineHealthTaker(Medicine medicine) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserPojo user = snapshot.getValue(UserPojo.class);
+                String accessUID = user.getAccessUID();
+                if (accessUID.equals("NULL")) {
+                    Log.i(TAG, "deleteMedicineHealthTaker: accessUID " + accessUID);
+                    Log.i(TAG, "deleteMedicineHealthTaker: Error No data found ");
+                } else {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(accessUID).child("medicineList");
+                    Query query = reference.orderByChild("uid").equalTo(medicine.getUid());
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                    Medicine pojo = snap.getValue(Medicine.class);
+                                    Log.i(TAG, pojo.getName());
+                                    snap.getRef().removeValue();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
-    @Override
-    public List<Medication> getAllMedicine(String UID) {
-        return null;
-    }
 
-    @Override
-    public Medication getSpecificMedicine(String UID) {
-        return null;
-    }
-*/
     private void sendReplyOnInvitationToRequester(DatabaseReference databaseReference) {
         databaseReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

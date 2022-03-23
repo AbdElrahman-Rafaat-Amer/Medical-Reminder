@@ -6,5 +6,4 @@ import com.medication.medicalreminder.model.Medicine;
 public interface OnMedicineClickListener {
 
     void showDialog(Medicine medicine);
-
 }

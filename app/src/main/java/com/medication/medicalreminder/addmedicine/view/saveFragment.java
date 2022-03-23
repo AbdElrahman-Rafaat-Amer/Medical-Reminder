@@ -1,9 +1,7 @@
 package com.medication.medicalreminder.addmedicine.view;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.medication.medicalreminder.MainActivity;
@@ -26,13 +23,12 @@ import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
 public class saveFragment extends Fragment implements MedicineViewInterface {
 
-    Button save ;
-    Medicine medicine;
-    MedicinePresenterInterface presenter;
-    Medicine medicineToFireBase;
+    private Button save;
+    private Medicine medicine;
+    private MedicinePresenterInterface presenter;
 
     public saveFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -51,27 +47,25 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        medicine= Medicine.getInstance();
+        medicine = Medicine.getInstance();
         save = view.findViewById(R.id.lastSaveButton);
-        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()),this);
+        presenter = new MedicinePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()), this);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 medicine.setUid("");
-                Medicine object = new Medicine( 0,medicine.getName(),medicine.getForm(),medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
+                medicine.setId(0);             /*   Medicine object = new Medicine(0, medicine.getName(), medicine.getForm(), medicine.getStrength(), medicine.getReason(), medicine.getIsDaily(),
                         medicine.getOften(), medicine.getTime(), medicine.getStartDate(), medicine.getEndDate(), medicine.getMedLeft(), medicine.getRefillLimit(), medicine.getImage()
-                  ,medicine.getUid(),medicine.getTimeRefill());
-                medicineToFireBase = object;
-
-                //addMed(object);
-                AddToFireBase(medicineToFireBase);
+                        , medicine.getUid(), medicine.getTimeRefill());
+         //       medicineToFireBase = object;
+*/
+                if (AddMActivity.typeofUser.equals("HT")) {
+                    presenter.addMedicineHealthTaker(medicine);
+                } else {
+                    AddToFireBase(medicine);
+                }
                 startActivity(new Intent(getContext(), MainActivity.class));
-
-              // MedicinePojoo medicinePojo = new MedicinePojoo("aya","last",7);
-
-
-
-
+                getActivity().finish();
             }
         });
 
@@ -80,9 +74,8 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
 
 
     @Override
-    public void addMed(Medicine medicine) {
-
-        presenter.addMedicine(medicine);
+    public void addMedicineHealthTaker(Medicine medicine) {
+        presenter.addMedicineHealthTaker(medicine);
 
     }
 
@@ -90,17 +83,6 @@ public class saveFragment extends Fragment implements MedicineViewInterface {
     public void AddToFireBase(Medicine medicine) {
         presenter.addMedToFireBase(medicine);
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
-    public void sendId(long id) {
-        medicineToFireBase.setId(Math.toIntExact( id));
-        Log.i("TAG","med name inside send id " + medicineToFireBase.getName());
-        Log.i("TAG"," inside send id is " + id);
-        //Toast.makeText(getActivity(), "this is the return id " + id, Toast.LENGTH_LONG).show();
-        AddToFireBase(medicineToFireBase);
-    }
-
 
 
 }

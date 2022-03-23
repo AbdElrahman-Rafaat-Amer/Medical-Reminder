@@ -7,8 +7,9 @@ import com.medication.medicalreminder.model.Medicine;
 import java.util.List;
 
 public interface HomeMedicienePresenterInterface {
-    LiveData<List<Medicine>> getAllMedicines();
+
     void getStoredMedicineFireBase();
-     void downloadLocalData(List<Medicine> medicines);
+
+    void getStoredMedicineFireBaseOfHealthTaker();
 
 }

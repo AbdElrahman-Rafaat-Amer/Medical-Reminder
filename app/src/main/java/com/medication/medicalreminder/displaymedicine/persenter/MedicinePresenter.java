@@ -56,10 +56,6 @@ public class MedicinePresenter implements MedicinePresenterInterface, NetworkDel
         allMedicinesViewInterface.showAllMedicines(successMessage);
     }
 
-    @Override
-    public void onSuccessInsert(long id) {
-
-    }
 
 
 }

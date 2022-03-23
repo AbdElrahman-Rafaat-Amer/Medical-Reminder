@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,16 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -68,6 +63,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
     ArrayList<Medicine> spesificList = new ArrayList<>();
     HorizontalCalendar horizontalCalendar;
     HomeMedicienePresenter presenter;
+    private String TAG = "HomeFragment";
     long time;
     Long finalTime;
     long currentTime;
@@ -87,20 +83,11 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        presenter = new HomeMedicienePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()),this);
+        presenter = new HomeMedicienePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()), this);
 
         // Check of internet
-         presenter.getStoredMedicineFireBase();
-        //ROOM
-        /*presenter.getAllMedicines().observe(getViewLifecycleOwner(), new Observer<List<Medicine>>() {
-            @Override
-            public void onChanged(List<Medicine> medicines) {
-                showAllMedicines(medicines);
-            }
-        });*/
+        presenter.getStoredMedicineFireBase();
 
-
-        
         Calendar startDate = Calendar.getInstance();
 
         startDate.add(Calendar.MONTH, -1);
@@ -127,7 +114,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
         btnAddMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("TAG", "onCreateView: inside add medecine button");
+                Log.i(TAG, "onCreateView: inside add medecine button");
                 Intent addMedIntent = new Intent(getActivity(), AddMActivity.class);
                 startActivity(addMedIntent);
             }
@@ -158,6 +145,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
             }
         });
     }
+
     private void getMedicene(String datee) {
         Log.i("TAG", "datee coming " + datee);
         spesificList.clear();
@@ -217,7 +205,6 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy",Locale.UK);
         Date today = new Date();
         getMedicene(formatter.format(today));
-        presenter.downloadLocalData(medicines);
     }
 
 
@@ -226,11 +213,16 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
 
     }
 
+    @Override
+    public void showDialog(Medicine medicine) {
+        showDateTimeDialog(medicine);
+    }
+
     public void showDateTimeDialog(Medicine medicine) {
 
         Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.activity_schedule);
-        reschedule =dialog.findViewById(R.id.reschedule_Button);
+        reschedule = dialog.findViewById(R.id.reschedule_Button);
         takeButton = dialog.findViewById(R.id.take_Button);
         medicineName = dialog.findViewById(R.id.med_name_dialog);
         medicineIcon = dialog.findViewById(R.id.med_icon_dialog);
@@ -266,7 +258,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
 
                                 currentTime = Calendar.getInstance().getTimeInMillis();
 
-                                finalTime = time- currentTime;
+                                finalTime = time - currentTime;
 
 
                                 OneTimeWorkRequest downloadRequest = new OneTimeWorkRequest.Builder(ScheduleWorkManger.class)
@@ -283,28 +275,19 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
                 };
 
                 new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-            dialog.dismiss();
+                dialog.dismiss();
             }
 
         });
         takeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               int medLeft =  medicine.getMedLeft();
+                int medLeft = medicine.getMedLeft();
                 medLeft--;
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").child(medicine.getUid());
                 reference.child("medLeft").setValue(medLeft);
             }
         });
 
-
-
-
-
-    }
-
-    @Override
-    public void showDialog(Medicine medicine) {
-        showDateTimeDialog(medicine);
     }
 }

@@ -6,6 +6,6 @@ import com.medication.medicalreminder.model.Medicine;
 public interface MedicinePresenterInterface {
 
 
-    void addMedicine(Medicine medicine);
+    void addMedicineHealthTaker(Medicine medicine);
     void addMedToFireBase(Medicine medicine);
 }

@@ -5,22 +5,24 @@ import com.medication.medicalreminder.model.RepositoryInterface;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
 
 public class DisplayMedPresenter implements DisplayMedPresenterInterface {
-    private RepositoryInterface repo ;
+    private RepositoryInterface repo;
     private FirebaseOperationInterface firebaseOperation;
 
-    public DisplayMedPresenter(RepositoryInterface repo, FirebaseOperationInterface firebaseOperation ){
+    public DisplayMedPresenter(RepositoryInterface repo, FirebaseOperationInterface firebaseOperation) {
         this.repo = repo;
         this.firebaseOperation = firebaseOperation;
 
     }
+
+
     @Override
-    public void deleteMedicine(Medicine medicine) {
-        //repo.deleteMedicine(medicine);
+    public void deleteMedicineHealthTaker(Medicine medicine) {
+        repo.deleteMedicineHealthTaker(medicine);
     }
 
     @Override
     public void deleteFromFirebase(Medicine medicine) {
-        firebaseOperation.deleteMedicineFB(medicine);
+        repo.deleteFromFirebase(medicine);
     }
 
 

@@ -1,8 +1,8 @@
-package com.medication.medicalreminder.displaymedicine.persenter;
+package com.medication.medicalreminder.healthtaker.displayMedicine.presnter;
 
-import androidx.lifecycle.LiveData;
-
+import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePresenterInterface;
 import com.medication.medicalreminder.displaymedicine.view.AllMedicinesViewInterface;
+import com.medication.medicalreminder.healthtaker.displayMedicine.view.HealthTakerMedicinesViewInterface;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.RepositoryInterface;
@@ -10,18 +10,17 @@ import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 
 import java.util.List;
 
-public class HomeMedicienePresenter implements HomeMedicienePresenterInterface, NetworkDelegate {
+public class HealthTakerMedicinePresenter implements HealthTakerMedicinePresenterInterface, NetworkDelegate {
     private RepositoryInterface repo;
-    private AllMedicinesViewInterface allMedicinesViewInterface;
+    private HealthTakerMedicinesViewInterface medicinesViewInterface;
 
 
-    public HomeMedicienePresenter(Repository repo, AllMedicinesViewInterface allMedicinesViewInterface) {
+    public HealthTakerMedicinePresenter(Repository repo, HealthTakerMedicinesViewInterface medicinesViewInterface) {
 
         this.repo = repo;
-        this.allMedicinesViewInterface = allMedicinesViewInterface;
+        this.medicinesViewInterface = medicinesViewInterface;
 
     }
-
 
 
     @Override
@@ -52,8 +51,9 @@ public class HomeMedicienePresenter implements HomeMedicienePresenterInterface, 
 
     @Override
     public void onSuccessGetMediciene(List<Medicine> successMessage) {
-        allMedicinesViewInterface.showAllMedicines(successMessage);
+        medicinesViewInterface.showAllMedicines(successMessage);
 
     }
+
 
 }

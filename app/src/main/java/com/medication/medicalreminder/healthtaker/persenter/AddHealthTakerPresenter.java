@@ -46,8 +46,4 @@ public class AddHealthTakerPresenter implements AddHealthTakerPresenterInterface
 
     }
 
-    @Override
-    public void onSuccessInsert(long id) {
-
-    }
 }

@@ -1,15 +1,10 @@
 package com.medication.medicalreminder.model;
 
 import android.content.Context;
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
 
 import com.medication.medicalreminder.remotedatabase.FirebaseOperationInterface;
 import com.medication.medicalreminder.remotedatabase.NetworkDelegate;
 import com.medication.medicalreminder.roomdatabase.LocalSource;
-
-import java.util.List;
 
 public class Repository implements RepositoryInterface {
 
@@ -58,9 +53,15 @@ public class Repository implements RepositoryInterface {
         remoteSource.sendReplyOnInvitationOfTaker(isAccept);
     }
 
+
     @Override
     public void AddMedToFirebase(Medicine medicine) {
         remoteSource.addMedToFireBase(medicine);
+    }
+
+    @Override
+    public void addMedicineHealthTaker(Medicine medicine) {
+        remoteSource.addMedicineHealthTaker(medicine);
     }
 
     @Override
@@ -68,49 +69,31 @@ public class Repository implements RepositoryInterface {
         remoteSource.getAllMedicine(networkDelegate);
 
     }
-  /*  @Override
-    public LiveData<List<Medicine>> getStoredMedicine() {
-        return localSource.getAllMedicine();
+
+    @Override
+    public void getStoredMedicineFireBaseOfHealthTaker(NetworkDelegate networkDelegate) {
+        remoteSource.getAllMedicineOfHealthTaker(networkDelegate);
     }
 
     @Override
-    public void insertMedicine(Medicine medicine, NetworkDelegate networkDelegate) {
-        Log.i("TAG", "inside insert repo id is "+networkDelegate.toString());
-        localSource.insert(medicine, networkDelegate);
-    }
-
-    @Override
-    public void deleteMedicine(Medicine medicine) {
-        localSource.delete(medicine);
+    public void updateMedicineHealthTaker(Medicine medicine) {
+        remoteSource.updateMedicineHealthTaker(medicine);
     }
 
     @Override
     public void updateMedicine(Medicine medicine) {
-        Log.i("TAG", "inside repo");
-        localSource.update(medicine);
-    }
-*/
-
-
-  /*  @Override
-    public void getStartDate() {
-        localSource.getStartDate();
+        remoteSource.updateMedicine(medicine);
     }
 
     @Override
-    public void getEnddate() {
-        localSource.getEnddate();
+    public void deleteMedicineHealthTaker(Medicine medicine) {
+        remoteSource.deleteMedicineHealthTaker(medicine);
     }
 
     @Override
-    public void getTime() {
-        localSource.getTime();
+    public void deleteFromFirebase(Medicine medicine) {
+        remoteSource.deleteMedicineFB(medicine);
     }
 
-    @Override
-    public void downloadDataLocal(List<Medicine> list) {
-        localSource.downloadDataLocal(list);
-    }
-*/
 
 }

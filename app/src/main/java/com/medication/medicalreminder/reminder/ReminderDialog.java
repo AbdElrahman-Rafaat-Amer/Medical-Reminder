@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.medication.medicalreminder.R;
 
-import org.w3c.dom.Text;
-
 public class ReminderDialog extends AppCompatActivity {
     Button takeButton;
     TextView medicineNameText;

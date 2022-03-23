@@ -3,13 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/drawable/shape_oval.xml" value="0.2703125" />
         <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_edit_med.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_reminder_dialog.xml" value="0.4" />
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_schedule.xml" value="0.4" />
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.25416666666666665" />
-        <entry key="..\:/androidProjectClone/app/src/main/res/layout/fragment_image.xml" value="0.13802083333333334" />
       </map>
     </option>
   </component>

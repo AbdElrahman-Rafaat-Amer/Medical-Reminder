@@ -40,11 +40,6 @@ public class RegisterPresenter implements RegisterPresenterInterface, NetworkDel
     }
 
     @Override
-    public void onSuccessInsert(long id) {
-
-    }
-
-    @Override
     public void onInvitationResponse(String successMessage) {
 
     }

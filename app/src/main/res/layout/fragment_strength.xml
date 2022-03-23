@@ -18,99 +18,99 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/mainColor">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mainColor">
 
-        <TextView
-            android:layout_width="393dp"
-            android:layout_height="39dp"
-            android:layout_margin="10dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="6dp"
-            android:fontFamily="@font/baloo_bhai"
-            android:text="what is Your Medicine Strength ?"
-            android:textColor="#ffffff"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.846" />
+            <TextView
+                android:layout_width="393dp"
+                android:layout_height="39dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="what is Your Medicine Strength ?"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.846" />
 
-        <com.google.android.material.card.MaterialCardView
-        android:id="@+id/medNameCardview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        android:elevation="20dp"
-        android:fadingEdge="horizontal|vertical"
-        android:focusable="auto"
-        android:layoutMode="clipBounds"
-        android:padding="500dp"
-        app:cardCornerRadius="10dp"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/medNameCardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="20dp"
+                android:fadingEdge="horizontal|vertical"
+                android:focusable="auto"
+                android:layoutMode="clipBounds"
+                android:padding="500dp"
+                app:cardCornerRadius="10dp"
 
-        app:cardElevation="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="p">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="360dp"
-                android:layout_height="400dp">
+                app:cardElevation="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
 
 
-                <NumberPicker
-                    android:id="@+id/strengthNumPicker"
-                    android:layout_width="75dp"
-                    android:layout_height="114dp"
-                    android:layout_marginStart="56dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/doseNumPicker"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="NotSibling" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="360dp"
+                    android:layout_height="400dp">
 
-                <NumberPicker
-                    android:id="@+id/doseNumPicker"
-                    android:layout_width="80dp"
-                    android:layout_height="114dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="124dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.455"
-                    app:layout_constraintStart_toEndOf="@id/strengthNumPicker"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="NotSibling" />
 
-                <Button
-                    android:id="@+id/bttnNext"
-                    android:layout_width="285dp"
-                    android:layout_height="38dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="104dp"
-                    android:layout_marginEnd="205dp"
-                    android:background="@drawable/button_background_shape"
-                    android:fontFamily="@font/baloo_bhai"
-                    android:text="Next"
-                    android:textColor="#ffff"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.282"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/strengthNumPicker"
-                    app:layout_constraintVertical_bias="0.938" />
+                    <NumberPicker
+                        android:id="@+id/strengthNumPicker"
+                        android:layout_width="75dp"
+                        android:layout_height="114dp"
+                        android:layout_marginStart="56dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/doseNumPicker"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="NotSibling" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <NumberPicker
+                        android:id="@+id/doseNumPicker"
+                        android:layout_width="80dp"
+                        android:layout_height="114dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="124dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.455"
+                        app:layout_constraintStart_toEndOf="@id/strengthNumPicker"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="NotSibling" />
+
+                    <Button
+                        android:id="@+id/bttnNext"
+                        android:layout_width="285dp"
+                        android:layout_height="38dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginStart="104dp"
+                        android:layout_marginEnd="205dp"
+                        android:background="@drawable/button_background_shape"
+                        android:fontFamily="@font/baloo_bhai"
+                        android:text="Next"
+                        android:textColor="#ffff"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.282"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/strengthNumPicker"
+                        app:layout_constraintVertical_bias="0.938" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 

@@ -38,6 +38,7 @@ import com.medication.medicalreminder.displaymedicine.view.MedecineFragment;
 import com.medication.medicalreminder.healthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.databinding.ActivityMainBinding;
 import com.medication.medicalreminder.healthtaker.view.EditHealthTakerRequest;
+import com.medication.medicalreminder.healthtaker.displayMedicine.view.HealthTakerFragment;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.UserPojo;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
                     replaceFragment((new MedecineFragment()));
                     break;
                 case R.id.updates:
-                    replaceFragment((new UpdatesFragment()));
+                    replaceFragment((new HealthTakerFragment()));
                     break;
             }
             return true;

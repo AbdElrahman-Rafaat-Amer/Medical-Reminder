@@ -18,19 +18,20 @@ public interface FirebaseOperationInterface {
 
     void sendReplyOnInvitationOfTaker(boolean isAccept);
 
-    //////////////
     void addMedToFireBase(Medicine medicine);
 
+    void addMedicineHealthTaker(Medicine medicine);
+
     void getAllMedicine(NetworkDelegate networkDelegate);
-    void insertMedicine();
+
+    void getAllMedicineOfHealthTaker(NetworkDelegate networkDelegate);
 
     void updateMedicine(Medicine medicine);
 
+    void updateMedicineHealthTaker(Medicine medicine);
+
     void deleteMedicineFB(Medicine medicine);
 
-   /* UserPojo getUserByEmail(String email);
+    void deleteMedicineHealthTaker(Medicine medicine);
 
-    List<Medication> getAllMedicine(String UID);
-
-    Medication getSpecificMedicine(String UID);*/
 }

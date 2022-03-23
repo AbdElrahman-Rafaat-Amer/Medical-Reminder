@@ -14,5 +14,4 @@ public interface NetworkDelegate {
 
     void onSuccessGetMediciene(List<Medicine> successMessage);
 
-    void onSuccessInsert(long id);
 }

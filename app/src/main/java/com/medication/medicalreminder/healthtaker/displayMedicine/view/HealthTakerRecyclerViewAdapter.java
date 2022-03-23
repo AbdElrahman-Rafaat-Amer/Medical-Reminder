@@ -1,6 +1,7 @@
-package com.medication.medicalreminder.displaymedicine.view;
+package com.medication.medicalreminder.healthtaker.displayMedicine.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,27 +13,28 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.displaymedicine.view.DisplayMedView;
+import com.medication.medicalreminder.editmedicine.view.EditMedicineView;
 import com.medication.medicalreminder.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
+public class HealthTakerRecyclerViewAdapter extends RecyclerView.Adapter<HealthTakerRecyclerViewAdapter.ViewHolder> {
     Context context;
-    List <Medicine>  mediceneArray = new ArrayList<>();
-    OnMedicineClickListener onMedicineClickListener;
+    List<Medicine> medicinesArray = new ArrayList<>();
 
 
-    public HomeRecyclerViewAdapter(List<Medicine> mediceneArray, Context context, OnMedicineClickListener onMedicineClickListener) {
+    public HealthTakerRecyclerViewAdapter(List<Medicine> mediceneArray, Context context) {
         this.context = context;
-        this.mediceneArray= mediceneArray;
-        this.onMedicineClickListener = onMedicineClickListener;
+        this.medicinesArray = mediceneArray;
     }
 
     public void setList(List<Medicine> spesificList) {
-        this.mediceneArray=spesificList;
+        this.medicinesArray = spesificList;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,15 +42,15 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         TextView medName;
         TextView takenDate;
         ImageView imgView;
-        ConstraintLayout constraintLayout;
+        ConstraintLayout layout;
+
         public ViewHolder(@NonNull View convertView) {
             super(convertView);
             row = convertView;
             medName = row.findViewById(R.id.medcineTxtView);
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
-            constraintLayout = row.findViewById(R.id.constraint_layout);
-            //imgView.setImageResource(700);
+            layout = row.findViewById(R.id.custom_raw_constraint_layout);
         }
 
 
@@ -68,6 +70,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             return imgView;
         }
     }
+
     @NonNull
 
     @Override
@@ -77,72 +80,60 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Medicine medicine = mediceneArray.get(position);
-        holder.getMedName().setText(mediceneArray.get(position).getName());
-        holder.getImgView().setImageResource(mediceneArray.get(position).getImage());
-        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.getMedName().setText(medicinesArray.get(position).getName());
+        holder.getImgView().setImageResource(medicinesArray.get(position).getImage());
 
-                onMedicineClickListener.showDialog(medicine);
-
-
-            }
-        });
-
-      /*  try {
-            final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
-            final Date dateObj = sdf.parse(date);
-            Log.i("TAG", "objectt: " + dateObj);
-            String newDate =new SimpleDateFormat("K:mm").format(dateObj);
-            holder.getTakenDate().setText(newDate);
-
-        } catch (final ParseException e) {
-            e.printStackTrace();
-        }
-*/
-
-
-        //String newDate="";
-
-        String date = mediceneArray.get(position).getTime();
-        StringTokenizer stringTokenizer= new StringTokenizer(date,",");
+        String date = medicinesArray.get(position).getTime();
+        StringTokenizer stringTokenizer = new StringTokenizer(date, ",");
         String newDate = "";
         while (stringTokenizer.hasMoreTokens()) {
             //StringTokenizer stringTokenizer= new StringTokenizer(date,":");
             String x = (String) stringTokenizer.nextElement();
             String[] separated = x.split(":");
             int N = Integer.parseInt(separated[0]);
-            String C =separated[1];
-            if (C.equals("0")){
-                C= "00";
+            String C = separated[1];
+            if (C.equals("0")) {
+                C = "00";
                 Log.i("TAG", "onBindViewHolder: " + C);
             }
             Log.i("TAG", "onBindViewHolder:  seperated " + separated[0]);
             Log.i("TAG", "onBindViewHolder: separated " + separated[1]);
             if (N == 24) {
-                newDate = newDate + "\n" + 12 + C +" AM";
+                newDate = newDate + "\n" + 12 + C + " AM";
 
             } else {
                 if (N > 12) {
                     N = N - 12;
 
-                    newDate = newDate + "\n" + N +":"+ C + " PM";
+                    newDate = newDate + "\n" + N + ":" + C + " PM";
 
                 } else
-                    newDate = newDate + "\n" + N +":"+C +" PM";
+                    newDate = newDate + "\n" + N + ":" + C + " PM";
 
             }
         }
         holder.getTakenDate().setText(newDate);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent displayIntent = new Intent(context, DisplayMedView.class);
+                Gson gson = new Gson();
+                String json = gson.toJson(medicinesArray.get(position));
+                displayIntent.putExtra(EditMedicineView.JSON, json);
+                displayIntent.putExtra("TYPE", "HT");
+                context.startActivity(displayIntent);
+            }
+        });
 
 
     }
+
     @Override
     public int getItemCount() {
-        Log.i("TAG", "getItemCount: " + mediceneArray.size());
-        return mediceneArray.size();
+        Log.i("TAG", "getItemCount: " + medicinesArray.size());
+        return medicinesArray.size();
     }
 }

@@ -27,12 +27,13 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class DisplayMedView extends AppCompatActivity implements DisplayMedInterface {
-    private static final String TAG = "TAG";
+    private static final String TAG = "DisplayMedView";
     ImageButton editBtn, deleteBtn, backButton;
     TextView medName, reminder1, reminder2, reminder3, leftMed, refillLimit, medStrength, medForm;
     ImageView medIcon;
     DisplayMedPresenterInterface presenterInterface;
 
+    private String typeOfUser = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +58,13 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         Gson gson = new Gson();
         Medicine medicine = gson.fromJson(getIntent().getStringExtra(EditMedicineView.JSON), Medicine.class);
 
-        //Medicine medicine = (Medicine) getIntent().getSerializableExtra("med pojo");
+        typeOfUser = getIntent().getStringExtra("TYPE");
+        Log.i(TAG, "onCreate: typeOfUser ------------------> " + typeOfUser);
+
         medName.setText(medicine.getName());
         medIcon.setImageResource(medicine.getImage());
         medForm.setText(medicine.getForm());
-       String times = medicine.getTime();
+        String times = medicine.getTime();
         Log.i("TAG", "time is " + times);
 
         //String[] timesArray = medicine.getTime().split(",");
@@ -71,14 +74,14 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
             tokens.add(tokenizer.nextToken());
         }
         Log.i(TAG, "time is " + tokens.get(0));
-        if(tokens.size() == 1){
+        if (tokens.size() == 1) {
             reminder1.setText(tokens.get(0));
         }
-        if(tokens.size() == 2){
+        if (tokens.size() == 2) {
             reminder1.setText(tokens.get(0));
             reminder2.setText(tokens.get(1));
         }
-        if(tokens.size()== 3){
+        if (tokens.size() == 3) {
             reminder1.setText(tokens.get(0));
             reminder2.setText(tokens.get(1));
             reminder3.setText(tokens.get(2));
@@ -88,15 +91,14 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         medStrength.setText(medicine.getStrength());
 
 
-
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent editIntent = new Intent(getApplicationContext(), EditMedicineView.class);
                 Gson gson = new Gson();
                 String json = gson.toJson(medicine);
+                editIntent.putExtra("TYPE", "HT");
                 editIntent.putExtra("json pojo", json);
-                //editIntent.putExtra("medicine", medicine);
                 startActivity(editIntent);
                 finish();
             }
@@ -118,10 +120,12 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                //-----room------///
-                                deleteMedicine(medicine);
-                                //----firebase---///
-                                deleteFromFirebase(medicine);
+
+                                if (typeOfUser.equals("HT")) {
+                                    deleteMedicineHealthTaker(medicine);
+                                } else {
+                                    deleteFromFirebase(medicine);
+                                }
                                 finish();
 
                             }
@@ -132,9 +136,10 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         });
     }
 
+
     @Override
-    public void deleteMedicine(Medicine medicine) {
-        presenterInterface.deleteMedicine(medicine);
+    public void deleteMedicineHealthTaker(Medicine medicine) {
+        presenterInterface.deleteMedicineHealthTaker(medicine);
     }
 
     @Override
