@@ -69,7 +69,7 @@
     <string name="get_refill_reminder">"You want to get a refill reminder when you have remaining: "</string>
     <string name="meds_remaining">meds remaining to get a reminder</string>
     <string name="med_icon">Med Icon</string>
-    <string name="done">Done</string>
+    <!--    <string name="done">Done</string>-->
     <string name="txt">haaaaaaaaaaa</string>
     <string name="waiting_google">Connecting with google...</string>
     <string name="accept">Accept</string>
@@ -102,6 +102,12 @@
 
     <string name="pick_time_for_dose">"Enter your dose number "</string>
     <string name="remind_refill_at">Remind me to refill at </string>
+    <string name="refilll" />
+    <string name="re">Refill</string>
+    <string name="ok">Skip</string>
+    <string name="btnok">Skip</string>
+    <string name="btnRefill">Refill</string>
+    <string name="done">Done</string>
 
     <string-array name="reminder_times">
         <item>Once Daily</item>

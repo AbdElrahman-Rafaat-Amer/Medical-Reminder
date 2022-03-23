@@ -27,7 +27,7 @@
             android:background="@color/mainColor">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textViewRefillNew"
                 android:layout_width="393dp"
                 android:layout_height="39dp"
                 android:layout_margin="10dp"

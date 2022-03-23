@@ -22,7 +22,9 @@ public class ReminderActivity {
     public static final String UID = "uid";
     public static final String LIMIT = "LIMIT";
     public static final String AMOUNT = "AMOUNT";
-    public static final String ICON = "ICON";
+    public static final String REFILLTIME = "REFILLTIME";
+    public static final String IMAGE = "IMAGE";
+
     static Context mContext;
 
     public static List<Medicine> getMedicineArrayList() {
@@ -32,10 +34,7 @@ public class ReminderActivity {
     public static void setMedicineArrayList(List<Medicine> medicineArrayList) {
         ReminderActivity.medicineArrayList = medicineArrayList;
     }
-
     static List<Medicine> medicineArrayList = new ArrayList<>();
-
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static void findNextAlarm() {
 
@@ -47,9 +46,11 @@ public class ReminderActivity {
         String uid = null;
         int refillLimit=0;
         int medAmount=0;
-        int medicineIcon = 0;
+        String refillDate = "";
         String scheduledAlarm = null;
+        int image = 0;
         LocalDate localDate=LocalDate.now();
+        Medicine medicine = null;
         Log.e("MedList","med list" +  medicineArrayList);
 
         for (int i = 0; i < medicineArrayList.size(); i++) {
@@ -73,8 +74,8 @@ public class ReminderActivity {
                     uid = medicineArrayList.get(i).getUid();
                     refillLimit = medicineArrayList.get(i).getRefillLimit();
                     medAmount = medicineArrayList.get(i).getMedLeft();
-                    medicineIcon = medicineArrayList.get(i).getImage();
-
+                    refillDate=medicineArrayList.get(i).getTimeRefill();
+                     image = medicineArrayList.get(i).getImage();
                 }
 
             }
@@ -89,14 +90,15 @@ public class ReminderActivity {
                     .putString(UID,uid)
                     .putInt(LIMIT,refillLimit)
                     .putInt(AMOUNT,medAmount)
-                    .putInt(ICON,medicineIcon)
+                    .putString(REFILLTIME,refillDate)
+                    .putInt(IMAGE,image)
                     .build();
             OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(ReminderWorkManager.class)
                     .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
                     .setInputData(data)
                     .addTag("alarms")
                     .build();
-            WorkManager.getInstance(mContext).enqueue(reminderRequest);
+            androidx.work.WorkManager.getInstance(mContext).enqueue(reminderRequest);
 
         }
 

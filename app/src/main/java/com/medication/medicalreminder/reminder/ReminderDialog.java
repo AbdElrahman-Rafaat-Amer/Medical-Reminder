@@ -1,43 +1,126 @@
 package com.medication.medicalreminder.reminder;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.medication.medicalreminder.R;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class ReminderDialog extends AppCompatActivity {
     Button takeButton;
-    TextView medicineNameText;
-    ImageView medicineIcon;
-
-    Intent incomeIntent = getIntent();
-    String name = incomeIntent.getExtras().getString(ReminderActivity.NAME);
-    int icon = Integer.parseInt(incomeIntent.getStringExtra(ReminderActivity.ICON));
-
-
+    String medicineName;
+    String uid;
+    int medicineLimit;
+    int medicineAmount;
+    String refillTime;
+    public static final String NAME = "NAME";
+    public static final String UID = "uid";
+    public static final String LIMIT = "LIMIT";
+    public static final String AMOUNT = "AMOUNT";
+    public static final String REFILLTIME = "REFILLTIME";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_dialog);
-        takeButton= findViewById(R.id.take_button);
-        medicineNameText = findViewById(R.id.medName);
-        medicineIcon = findViewById(R.id.med_icon);
-
-        medicineIcon.setImageResource(icon);
-        medicineNameText.setText(name);
-
+        takeButton = findViewById(R.id.take_button);
         this.setFinishOnTouchOutside(true);
+        Intent intent = getIntent();
+        medicineName = intent.getStringExtra(ReminderActivity.NAME);
+        uid = intent.getStringExtra(ReminderActivity.UID);
+        medicineLimit = intent.getIntExtra(ReminderActivity.LIMIT,-1);
+        medicineAmount = intent.getIntExtra(ReminderActivity.AMOUNT,-1);
+        refillTime = intent.getStringExtra(ReminderActivity.REFILLTIME);
+        Log.i("TAG", "onCreate: Refill time" + refillTime);
+        Log.i("TAG", "onCreate: DialogRefill name" + medicineName);
+        Log.i("TAG", "onCreate: DialogRefill limiit " + medicineLimit);
+
+
+
+
         takeButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                medicineAmount--;
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").child(uid);
+                reference.child("medLeft").setValue(medicineAmount);
+                Log.i("TAG", "onClick: "+medicineAmount);
+                if(medicineLimit>= medicineAmount)
+                {
+                    refillDialog(refillTime);
+                }
                 finish();
             }
         });
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void refillDialog(String refillTime) {
+        int x = LocalDateTime.now().getDayOfMonth();
+        int y = LocalDateTime.now().getMonthValue();
+        int z = LocalDateTime.now().getYear();
+        Log.i("TAG", "refillDialog: day " + x);
+        Log.i("TAG", "refillDialog:month " + y);
+        Log.i("TAG", "refillDialog: year" + z);
+        String[] datee = refillTime.split(":");
+        int day =x;
+        int month =y;
+        int year = z;
+        int hour = Integer.parseInt(datee[0]);
+        int minutes = Integer.parseInt(datee[1]);
+        String timeAndDate = day +"-" + month+"-" + year+" " + hour +":" + minutes ;
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        long timeInMilliseconds;
+        Date mDate = null;
+        try {
+            mDate = sdf.parse(timeAndDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Log.i("TAG", "Date m datee: " + mDate);
+
+        timeInMilliseconds = mDate.getTime();
+        System.out.println("Date in milli refill :: " + timeInMilliseconds);
+        long finalTime = timeInMilliseconds - currentTime;
+        Log.i("TAG", "final time refill " + finalTime);
+
+        Data data;
+        data = new Data.Builder()
+                .putString(WorkManagerRefill.DATA, "batoot")
+                .putString(NAME,medicineName)
+                .putString(UID,uid)
+                .putInt(LIMIT,medicineLimit)
+                .putInt(AMOUNT,medicineAmount)
+                .putString(REFILLTIME,refillTime)
+                .build();
+        OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(WorkManagerRefill.class)
+                .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
+                .setInputData(data)
+                .build();
+        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
     }
 }

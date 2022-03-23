@@ -1,10 +1,11 @@
-package com.medication.medicalreminder;
+package com.medication.medicalreminder.reminder;
 
 
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
+import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.healthtaker.view.EditHealthTakerRequest;
 
 import android.app.NotificationChannel;
@@ -42,7 +43,7 @@ public class NotficationHealthTaker extends Worker  {
             @Override
             public void run() {
 
-                displayNotification("Test");
+                displayNotification("You are invited to be a health taker");
                 Toast.makeText(mcontext, "HELLO", Toast.LENGTH_SHORT).show();
             }
         });
@@ -66,12 +67,12 @@ public class NotficationHealthTaker extends Worker  {
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "simplifiedcoding")
-                .setContentTitle("title" + keyword)
-                .setContentText("body")
+                .setContentTitle("Invitation Request")
+                .setContentText(keyword)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(R.drawable.ic_medicine8);
+                .setSmallIcon(R.drawable.ic_sick);
         assert notificationManager != null;
         notificationManager.notify(1, builder.build());
 

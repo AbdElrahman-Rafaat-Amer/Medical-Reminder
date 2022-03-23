@@ -38,6 +38,8 @@ import com.medication.medicalreminder.reminder.ReminderActivity;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,7 +72,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
     Button reschedule, takeButton;
     TextView medicineName;
     ImageView medicineIcon;
-
+    TextView selectedDate;
     public HomeFragment() {
     }
 
@@ -83,6 +85,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        selectedDate= view.findViewById(R.id.datePickerTxtView);
         presenter = new HomeMedicienePresenter(Repository.getInstance(getContext(), ConcreteLocalSource.getInstance(getContext()), FirebaseOperation.getInstance()), this);
 
         // Check of internet
@@ -130,6 +133,9 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
             public void onDateSelected(Calendar date, int position) {
                 Log.i("TAG", "onDateSelected: ");
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy",Locale.UK);
+                String selected = date.DAY_OF_MONTH + "-" + date.MONTH + "-" + date.YEAR;
+                selectedDate.setText(selected);
+                //////////////////////////
 
                 Date today = date.getTime();
                 getMedicene(formatter.format(today));

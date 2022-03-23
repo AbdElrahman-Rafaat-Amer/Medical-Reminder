@@ -227,7 +227,6 @@ public class FirebaseOperation implements FirebaseOperationInterface {
                 Log.i(TAG, "onDataChange Read from Firebase: " + storedMedicine);
                 Log.i(TAG, "onDataChange Size of list " + storedMedicine.size());
 
-
                 networkDelegate.onSuccessGetMediciene(storedMedicine);
             }
 

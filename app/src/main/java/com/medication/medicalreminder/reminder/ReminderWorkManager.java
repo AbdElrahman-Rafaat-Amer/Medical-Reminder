@@ -1,5 +1,9 @@
 package com.medication.medicalreminder.reminder;
 
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,11 +18,13 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.displaymedicine.view.DisplayMedView;
 import com.medication.medicalreminder.model.Medicine;
 
 import java.text.ParseException;
@@ -27,10 +33,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import static android.app.PendingIntent.FLAG_IMMUTABLE;
-import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class ReminderWorkManager extends Worker {
     static List<Medicine> medicineList= new ArrayList<>();
@@ -49,7 +51,8 @@ public class ReminderWorkManager extends Worker {
     String medicineUid = getInputData().getString(ReminderActivity.UID);
     int medicineLimit = getInputData().getInt(ReminderActivity.LIMIT,-1);
     int medicineAmount = getInputData().getInt(ReminderActivity.AMOUNT,-1);
-    int medicineIcon = getInputData().getInt(ReminderActivity.ICON,-1);
+    String refillTime = getInputData().getString(ReminderActivity.REFILLTIME);
+
 
 
 
@@ -96,13 +99,12 @@ public class ReminderWorkManager extends Worker {
 
         }
 
-
         Intent intent = new Intent(mContext, ReminderDialog.class);
         intent.putExtra(ReminderActivity.NAME,medicineName);
         intent.putExtra(ReminderActivity.UID, medicineUid);
         intent.putExtra(ReminderActivity.LIMIT, medicineLimit);
         intent.putExtra(ReminderActivity.AMOUNT,medicineAmount);
-        intent.putExtra(ReminderActivity.ICON, medicineIcon);
+        intent.putExtra(ReminderActivity.REFILLTIME,refillTime);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT| FLAG_IMMUTABLE);
 

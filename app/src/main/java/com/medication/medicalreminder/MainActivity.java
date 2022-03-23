@@ -41,6 +41,8 @@ import com.medication.medicalreminder.healthtaker.view.EditHealthTakerRequest;
 import com.medication.medicalreminder.healthtaker.displayMedicine.view.HealthTakerFragment;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.UserPojo;
+import com.medication.medicalreminder.reminder.NotficationHealthTaker;
+import com.medication.medicalreminder.reminder.WorkManagerRefill;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
@@ -51,7 +53,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -248,12 +249,12 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         data = new Data.Builder()
                 .putString(WorkManagerRefill.DATA,"batoot")
                 .build();
-        OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(WorkManagerRefill.class)
-                .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
-                .setInputData(data)
-                .build();
-        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
-///----------------->
+//        OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(WorkManagerRefill.class)
+//                .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
+//                .setInputData(data)
+//                .build();
+//        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
+/////----------------->
     }
 
     private void checkForHealthTaker() {

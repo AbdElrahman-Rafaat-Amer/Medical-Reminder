@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ import com.medication.medicalreminder.displaymedicine.persenter.DisplayMedPresen
 import com.medication.medicalreminder.editmedicine.view.EditMedicineView;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
+import com.medication.medicalreminder.reminder.RefillReminder;
+import com.medication.medicalreminder.reminder.ReminderActivity;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
@@ -31,6 +34,12 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
     ImageButton editBtn, deleteBtn, backButton;
     TextView medName, reminder1, reminder2, reminder3, leftMed, refillLimit, medStrength, medForm;
     ImageView medIcon;
+    Button refillButton;
+    String medicineName;
+    String uid;
+    int medicineLimit;
+    int medicineAmount;
+    String refillTime;
     DisplayMedPresenterInterface presenterInterface;
 
     private String typeOfUser = "";
@@ -51,7 +60,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         backButton = findViewById(R.id.backButton);
         editBtn = findViewById(R.id.editButton);
         medForm = findViewById(R.id.form_text);
-
+        refillButton= findViewById(R.id.refillButton);
         presenterInterface = new DisplayMedPresenter(Repository.getInstance(getApplicationContext(), ConcreteLocalSource.getInstance(getApplicationContext()), FirebaseOperation.getInstance()),
                 FirebaseOperation.getInstance());
 
@@ -134,6 +143,23 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                         .show();
             }
         });
+
+        refillButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), RefillReminder.class);
+                intent.putExtra(ReminderActivity.NAME,medicineName);
+                intent.putExtra(ReminderActivity.UID, uid);
+                intent.putExtra(ReminderActivity.LIMIT, medicineLimit);
+                intent.putExtra(ReminderActivity.AMOUNT,medicineAmount);
+                intent.putExtra(ReminderActivity.REFILLTIME,refillTime);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
 
 

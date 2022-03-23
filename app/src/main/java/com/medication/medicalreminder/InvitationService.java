@@ -11,20 +11,9 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.medication.medicalreminder.model.UserPojo;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -73,7 +62,7 @@ public class InvitationService extends Service {
     }
 
     public void showNotification(){
-        Intent intent= new Intent(getApplicationContext(),MainActivity.class);
+        Intent intent= new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent= PendingIntent.getActivity(getApplicationContext(),0,intent,0);
         NotificationCompat.Builder notificationCompat= new NotificationCompat.Builder(getApplicationContext(),"14")
