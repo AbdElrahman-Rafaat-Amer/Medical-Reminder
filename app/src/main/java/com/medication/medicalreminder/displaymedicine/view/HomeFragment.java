@@ -1,18 +1,31 @@
 package com.medication.medicalreminder.displaymedicine.view;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -33,12 +46,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
-public class HomeFragment extends Fragment implements AllMedicinesViewInterface {
+public class HomeFragment extends Fragment implements AllMedicinesViewInterface, OnMedicineClickListener {
     FloatingActionsMenu btnMenuFloating;
     FloatingActionButton btnAddMedecine;
     FloatingActionButton btnAddHealthTaker;
@@ -50,6 +64,12 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
     ArrayList<Medicine> spesificList = new ArrayList<>();
     HorizontalCalendar horizontalCalendar;
     HomeMedicienePresenter presenter;
+    long time;
+    Long finalTime;
+    long currentTime;
+    Button reschedule, takeButton;
+    TextView medicineName;
+    ImageView medicineIcon;
 
     public HomeFragment() {
     }
@@ -175,7 +195,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
     }
 
     private void initRecyclerView(View view) {
-        recyclerViewAdapter = new HomeRecyclerViewAdapter(list, getActivity());
+        recyclerViewAdapter = new HomeRecyclerViewAdapter(list, getActivity(), this);
         recyclerView = view.findViewById(R.id.recyclerViewHome);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -202,4 +222,83 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface 
 
     }
 
+    public void showDateTimeDialog(Medicine medicine) {
+
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.activity_schedule);
+        reschedule =dialog.findViewById(R.id.reschedule_Button);
+        takeButton = dialog.findViewById(R.id.take_Button);
+        medicineName = dialog.findViewById(R.id.med_name_dialog);
+        medicineIcon = dialog.findViewById(R.id.med_icon_dialog);
+
+        medicineIcon.setImageResource(medicine.getImage());
+        medicineName.setText(medicine.getName());
+
+        dialog.show();
+        reschedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Calendar calendar = Calendar.getInstance();
+                DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                calendar.set(Calendar.MINUTE, minute);
+
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+
+                                // date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+
+                                time = calendar.getTimeInMillis();
+                                Log.i("selected time ", "selected Time " + "" + time);
+
+                                currentTime = Calendar.getInstance().getTimeInMillis();
+
+                                finalTime = time- currentTime;
+
+
+                                OneTimeWorkRequest downloadRequest = new OneTimeWorkRequest.Builder(ScheduleWorkManger.class)
+                                        // .setInputData(data)
+
+                                        .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
+                                        .build();
+                                WorkManager.getInstance(getContext()).enqueue(downloadRequest);
+                            }
+                        };
+
+                        new TimePickerDialog(getContext(), timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
+                    }
+                };
+
+                new DatePickerDialog(getContext(), dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            dialog.dismiss();
+            }
+
+        });
+        takeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               int medLeft =  medicine.getMedLeft();
+               medLeft--;
+            }
+        });
+
+
+
+
+
+    }
+
+    @Override
+    public void showDialog(Medicine medicine) {
+        showDateTimeDialog(medicine);
+    }
 }

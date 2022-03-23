@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.medication.medicalreminder.R;
@@ -21,12 +22,14 @@ import java.util.StringTokenizer;
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
     Context context;
     List <Medicine>  mediceneArray = new ArrayList<>();
+    OnMedicineClickListener onMedicineClickListener;
 
 
 
-    public HomeRecyclerViewAdapter(List<Medicine> mediceneArray, Context context) {
+    public HomeRecyclerViewAdapter(List<Medicine> mediceneArray, Context context, OnMedicineClickListener onMedicineClickListener) {
         this.context = context;
         this.mediceneArray= mediceneArray;
+        this.onMedicineClickListener = onMedicineClickListener;
     }
 
     public void setList(List<Medicine> spesificList) {
@@ -38,12 +41,14 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         TextView medName;
         TextView takenDate;
         ImageView imgView;
+        ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View convertView) {
             super(convertView);
             row = convertView;
             medName = row.findViewById(R.id.medcineTxtView);
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
+            constraintLayout = row.findViewById(R.id.constraint_layout);
             //imgView.setImageResource(700);
         }
 
@@ -76,8 +81,18 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //  holder.getImgView().setImageResource(mediceneArray.get(position).getMedicineImage());
+        Medicine medicine = mediceneArray.get(position);
         holder.getMedName().setText(mediceneArray.get(position).getName());
         holder.getImgView().setImageResource(mediceneArray.get(position).getImage());
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onMedicineClickListener.showDialog(medicine);
+
+
+            }
+        });
         // String date = mediceneArray.get(position).getTime();
 
       /*  try {

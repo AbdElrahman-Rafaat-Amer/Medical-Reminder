@@ -22,6 +22,7 @@ public class ReminderActivity {
     public static final String UID = "uid";
     public static final String LIMIT = "LIMIT";
     public static final String AMOUNT = "AMOUNT";
+    public static final String ICON = "ICON";
     static Context mContext;
 
     public static List<Medicine> getMedicineArrayList() {
@@ -46,6 +47,7 @@ public class ReminderActivity {
         String uid = null;
         int refillLimit=0;
         int medAmount=0;
+        int medicineIcon = 0;
         String scheduledAlarm = null;
         LocalDate localDate=LocalDate.now();
         Log.e("MedList","med list" +  medicineArrayList);
@@ -71,6 +73,7 @@ public class ReminderActivity {
                     uid = medicineArrayList.get(i).getUid();
                     refillLimit = medicineArrayList.get(i).getRefillLimit();
                     medAmount = medicineArrayList.get(i).getMedLeft();
+                    medicineIcon = medicineArrayList.get(i).getImage();
 
                 }
 
@@ -86,6 +89,7 @@ public class ReminderActivity {
                     .putString(UID,uid)
                     .putInt(LIMIT,refillLimit)
                     .putInt(AMOUNT,medAmount)
+                    .putInt(ICON,medicineIcon)
                     .build();
             OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(ReminderWorkManager.class)
                     .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)

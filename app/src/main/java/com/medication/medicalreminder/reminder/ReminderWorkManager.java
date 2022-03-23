@@ -51,6 +51,7 @@ public class ReminderWorkManager extends Worker {
     String medicineUid = getInputData().getString(ReminderActivity.UID);
     int medicineLimit = getInputData().getInt(ReminderActivity.LIMIT,-1);
     int medicineAmount = getInputData().getInt(ReminderActivity.AMOUNT,-1);
+    int medicineIcon = getInputData().getInt(ReminderActivity.ICON,-1);
 
 
 
@@ -103,6 +104,7 @@ public class ReminderWorkManager extends Worker {
         intent.putExtra(ReminderActivity.UID, medicineUid);
         intent.putExtra(ReminderActivity.LIMIT, medicineLimit);
         intent.putExtra(ReminderActivity.AMOUNT,medicineAmount);
+        intent.putExtra(ReminderActivity.ICON, medicineIcon);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT| FLAG_IMMUTABLE);
 
