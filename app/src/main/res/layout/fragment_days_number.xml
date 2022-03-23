@@ -91,13 +91,14 @@
                 android:background="@color/mainColor" />
 
             <Button
-                android:id="@+id/threeTimesAday"
-                android:layout_width="146dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="228dp"
+                android:id="@+id/twiceDaily"
+                android:layout_width="132dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="20dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="3 times Daily"
+                android:text="Twice daily"
                 android:textColor="#3F51B5" />
 
             <View
@@ -107,15 +108,16 @@
                 android:layout_marginTop="15dp"
                 android:background="@color/mainColor" />
 
+
+
             <Button
-                android:id="@+id/twiceDaily"
-                android:layout_width="132dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="20dp"
+                android:id="@+id/threeTimesAday"
+                android:layout_width="146dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="228dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="Twice daily"
+                android:text="3 times Daily"
                 android:textColor="#3F51B5" />
 
             <View

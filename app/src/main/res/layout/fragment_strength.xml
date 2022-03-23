@@ -28,15 +28,19 @@
             android:layout_width="393dp"
             android:layout_height="39dp"
             android:layout_margin="10dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="6dp"
             android:fontFamily="@font/baloo_bhai"
             android:text="what is Your Medicine Strength ?"
             android:textColor="#ffffff"
             android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.828"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintVertical_bias="0.846" />
 
         <com.google.android.material.card.MaterialCardView
         android:id="@+id/medNameCardview"
@@ -67,23 +71,23 @@
 
                 <NumberPicker
                     android:id="@+id/strengthNumPicker"
-                    android:layout_width="69dp"
-                    android:layout_height="103dp"
+                    android:layout_width="75dp"
+                    android:layout_height="114dp"
                     android:layout_marginStart="56dp"
-                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/doseNumPicker"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
                     tools:ignore="NotSibling" />
 
                 <NumberPicker
                     android:id="@+id/doseNumPicker"
-                    android:layout_width="69dp"
-                    android:layout_height="103dp"
+                    android:layout_width="80dp"
+                    android:layout_height="114dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="124dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.455"
                     app:layout_constraintStart_toEndOf="@id/strengthNumPicker"
-                    app:layout_constraintTop_toBottomOf="@id/medStrengthTextView"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="NotSibling" />
 
                 <Button

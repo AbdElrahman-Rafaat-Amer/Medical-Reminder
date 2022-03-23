@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,7 @@ import com.medication.medicalreminder.model.Medicine;
 
 
 public class ImageFragment extends Fragment {
-   ImageButton medIcon1;
+   ImageView medIcon1;
    ImageButton medIcon2;
    ImageButton medIcon3;
    ImageButton medIcon4;
@@ -57,13 +58,13 @@ public class ImageFragment extends Fragment {
         medIcon4= view.findViewById(R.id.medIcon4);
         medIcon5= view.findViewById(R.id.medIcon5);
         medIcon6= view.findViewById(R.id.medIcon6);
-        medIcon7= view.findViewById(R.id.medIcon7);
+        medIcon7= view.findViewById(R.id.medIcon7Add);
         medIcon8= view.findViewById(R.id.medIcon8);
 
         medIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                medicine.setImage(R.id.medIcon1);
+                medicine.setImage(R.drawable.ic_medicine1);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -72,7 +73,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                medicine.setImage(R.id.medIcon2);
+                medicine.setImage(R.drawable.ic_medicine2);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -81,7 +82,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                medicine.setImage(R.id.medIcon3);
+                medicine.setImage(R.drawable.ic_medicine3);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -90,7 +91,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                medicine.setImage(R.id.medIcon4);
+                medicine.setImage(R.drawable.ic_medicine4);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -98,7 +99,7 @@ public class ImageFragment extends Fragment {
         medIcon6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                medicine.setImage(R.id.medIcon5);
+                medicine.setImage(R.drawable.ic_medicine5);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
 
@@ -107,7 +108,7 @@ public class ImageFragment extends Fragment {
         medIcon6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                medicine.setImage(R.id.medIcon6);
+                medicine.setImage(R.drawable.ic_medicine6);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -116,7 +117,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                medicine.setImage(R.id.medIcon7);
+                medicine.setImage(R.drawable.ic_medicine7);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }
@@ -125,7 +126,7 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                medicine.setImage(R.id.medIcon8);
+                medicine.setImage(R.drawable.ic_medicine8);
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.saveFragment);
             }

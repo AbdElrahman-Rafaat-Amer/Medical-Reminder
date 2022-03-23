@@ -67,37 +67,23 @@
                 android:layout_height="400dp">
 
                 <Button
-                    android:id="@+id/noBtn"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="116dp"
-                    android:layout_marginBottom="204dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:fontFamily="@font/baloo_bhai"
-                    android:text="back"
-                    android:textColor="#000000"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <Button
                     android:id="@+id/yesButton"
 
                     android:layout_width="285dp"
                     android:layout_height="38dp"
                     android:layout_margin="10dp"
 
-                    android:layout_marginTop="72dp"
                     android:background="@drawable/button_background_shape"
 
                     android:fontFamily="@font/baloo_bhai"
                     android:text="Confirm"
                     android:textColor="#ffffffff"
-                    app:layout_constraintBottom_toTopOf="@+id/noBtn"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.506"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.605" />
+                    app:layout_constraintVertical_bias="0.284" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

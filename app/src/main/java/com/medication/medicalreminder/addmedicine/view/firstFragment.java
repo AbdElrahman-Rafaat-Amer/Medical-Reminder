@@ -1,6 +1,7 @@
 package com.medication.medicalreminder.addmedicine.view;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class firstFragment extends Fragment {
 
     Button button;
     Medicine medicine;
+    EditText medName;
 
     public firstFragment() {
         // Required empty public constructor
@@ -36,7 +38,7 @@ public class firstFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.fragment_first, container, false);
-       EditText medName= view.findViewById(R.id.nameOfMed);
+       medName= view.findViewById(R.id.nameOfMed);
 
          medicine= medicine.getInstance();
 
@@ -44,14 +46,32 @@ public class firstFragment extends Fragment {
          button = view.findViewById(R.id.nameButton);
          button.setOnClickListener(btnView -> {
              if (getActivity() != null) {
+                 if (isValidateName()){
+
                  medicine.setName(medName.getText().toString());
                  NavController navController = Navigation.findNavController(btnView);
                  navController.navigate(R.id.medFormFragment);
+                 }
 
              }
 
 
          });
         return  view;
+    }
+
+    private boolean isValidateName() {
+        String nameInput = medName.getText().toString().trim();
+        boolean isValidate;
+        if (nameInput.isEmpty()) {
+            medName.setError("Enter medicine name");
+            isValidate = false;
+        } else {
+
+                medName.setError(null);
+                isValidate = true;
+            }
+
+        return isValidate;
     }
 }

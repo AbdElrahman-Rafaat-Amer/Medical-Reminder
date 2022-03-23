@@ -50,15 +50,31 @@ public class ReasonFragment extends Fragment {
 
 
         reasonButton .setOnClickListener(btnView -> {
+            if (isValidateReason()){
             if (getActivity() != null) {
                 medicine.setReason(reasonText.getText().toString());
                 NavController navController = Navigation.findNavController(btnView);
                 navController.navigate(R.id.dayilyFragment);
-
+            }
 
             }
         });
 
 
+
+    }
+    private boolean isValidateReason() {
+        String reasonInput = reasonText.getText().toString().trim();
+        boolean isValidate;
+        if (reasonInput.isEmpty()) {
+            reasonText.setError("Enter the reason");
+            isValidate = false;
+        } else {
+
+            reasonText.setError(null);
+            isValidate = true;
+        }
+
+        return isValidate;
     }
 }

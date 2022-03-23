@@ -17,6 +17,7 @@ import com.medication.medicalreminder.model.Medicine;
 
 public class pillsNumberFragment extends Fragment {
     Medicine medicine;
+    EditText pillNumber;
 
     public pillsNumberFragment() {
         // Required empty public constructor
@@ -39,21 +40,38 @@ public class pillsNumberFragment extends Fragment {
 
         medicine = Medicine.getInstance();
 
-        EditText pillNumber = view.findViewById(R.id.pillsEdit);
+         pillNumber = view.findViewById(R.id.pillsEdit);
         //String pillLeft = pillNumber.getText().toString().trim();
         //int finalValue=Integer.parseInt(pillLeft);
        // medicine.setMedLeft(Integer.parseInt(pillNumber.getText().toString()));
 
         Button pillNumberBtn = view.findViewById(R.id.pillNumberButton);
         pillNumberBtn.setOnClickListener(btnView -> {
+            if ( isValidateNumber()) {
 
                 medicine.setMedLeft(Integer.parseInt(pillNumber.getText().toString()));
                 NavController navController = Navigation.findNavController(btnView);
                 navController.navigate(R.id.refillNumberFragment);
-
+            }
 
 
         });
         return view;
+    }
+
+
+    private boolean isValidateNumber() {
+        String pillsInput = pillNumber.getText().toString().trim();
+        boolean isValidate;
+        if (pillsInput.isEmpty() ) {
+            pillNumber.setError("Enter your Amount of pills");
+            isValidate = false;
+        } else {
+
+            pillNumber.setError(null);
+            isValidate = true;
+        }
+
+        return isValidate;
     }
 }

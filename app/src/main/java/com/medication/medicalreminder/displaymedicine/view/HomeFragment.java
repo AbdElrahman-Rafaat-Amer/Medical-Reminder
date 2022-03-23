@@ -27,8 +27,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.addmedicine.view.AddMActivity;
 import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePresenter;
@@ -287,7 +291,9 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
             @Override
             public void onClick(View view) {
                int medLeft =  medicine.getMedLeft();
-               medLeft--;
+                medLeft--;
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").child(medicine.getUid());
+                reference.child("medLeft").setValue(medLeft);
             }
         });
 

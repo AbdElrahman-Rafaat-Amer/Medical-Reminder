@@ -47,13 +47,37 @@ public class RefillNumberFragment extends Fragment {
          medicine = Medicine.getInstance();
          refillButton = view.findViewById(R.id.refillNumberButton);
          refillButton.setOnClickListener(btnView -> {
+             if (isValidateNumber()) {
 
-            medicine.setRefillLimit(Integer.parseInt(refilled.getText().toString()));
-            NavController navController = Navigation.findNavController(btnView);
-            navController.navigate(R.id.refilDateFragment);
-
+                 medicine.setRefillLimit(Integer.parseInt(refilled.getText().toString()));
+                 NavController navController = Navigation.findNavController(btnView);
+                 navController.navigate(R.id.refilDateFragment);
+             }
 
 
         });
+    }
+
+    private boolean isValidateNumber() {
+        String refilledInput = refilled.getText().toString().trim();
+        boolean isValidate;
+        if (refilledInput.isEmpty()){
+            refilled.setError("Enter your refill");
+            isValidate = false;
+        }/*if ( (Integer.parseInt(  refilledInput ))>medicine.getMedLeft()){
+
+        }*/
+
+        else {
+            if ( (Integer.parseInt(  refilledInput ))>medicine.getMedLeft()){
+                refilled.setError("Enter number lower than pill amount");
+                isValidate = false;
+
+        } else {
+                refilled.setError(null);
+                isValidate = true;
+            }
+        }
+        return isValidate;
     }
 }

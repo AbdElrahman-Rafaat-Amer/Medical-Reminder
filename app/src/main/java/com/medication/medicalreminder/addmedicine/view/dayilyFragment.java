@@ -1,5 +1,6 @@
 package com.medication.medicalreminder.addmedicine.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.medication.medicalreminder.MainActivity;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.model.Medicine;
 
@@ -41,6 +43,7 @@ public class dayilyFragment extends Fragment {
           medicine = medicine.getInstance();
 
           Button isDaily = view.findViewById(R.id.yesButton);
+         // Button no = view.findViewById(R.id.noBtn);
 
          // buttonYes.setText(medicine.getStrength());
           isDaily.setOnClickListener(btnView -> {
@@ -54,6 +57,7 @@ public class dayilyFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 }

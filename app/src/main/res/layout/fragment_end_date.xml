@@ -25,13 +25,17 @@
                 android:layout_width="393dp"
                 android:layout_height="39dp"
                 android:layout_margin="10dp"
+                android:layout_marginStart="6dp"
                 android:fontFamily="@font/baloo_bhai"
                 android:text="end duration ?"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="97dp" />
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.783" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/medNameCardview"
@@ -61,8 +65,8 @@
 
                     <DatePicker
                         android:id="@+id/lastDate"
-                        android:layout_width="336dp"
-                        android:layout_height="328dp"
+                        android:layout_width="350dp"
+                        android:layout_height="394dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
@@ -72,26 +76,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
-                        android:id="@+id/lastButton"
-                        android:layout_width="285dp"
-                        android:layout_height="38dp"
-                        android:layout_margin="10dp"
-                        android:layout_marginStart="104dp"
-                        android:layout_marginEnd="205dp"
-                        android:background="@drawable/button_background_shape"
-                        android:fontFamily="@font/baloo_bhai"
-                        android:text="Next"
-                        android:textColor="#ffff"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.359"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.955" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/lastButton"
+                android:layout_width="231dp"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/button_white"
+                android:fontFamily="@font/baloo_bhai"
+                android:text="Next"
+                android:textColor="#3F51B5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/medNameCardview" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
