@@ -1,8 +1,6 @@
 package com.medication.medicalreminder.registrion.view;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +10,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.medication.medicalreminder.MainActivity;
 import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.login.view.LoginActivity;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.UserPojo;
 import com.medication.medicalreminder.registrion.persenter.RegisterPresenter;
@@ -60,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterViewI
                     String password = passwordEditTextInputLayout.getEditText().getText().toString().trim();
                     String userName = userNameEditTextInputLayout.getEditText().getText().toString().trim();
                     Log.i(TAG, "onClick: userName---------------------> " + userName.length());
-                    UserPojo userPojo = new UserPojo(userName, password, email, "NULL", "NULL", "NULL", "False");
+                    UserPojo userPojo = new UserPojo(userName, password, email, "NULL", "False", "NULL", "False");
                     presenterInterface.createAccount(userPojo);
                 }
 
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterViewI
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 Log.i(TAG, "backImageView.setOnClickListener: RegisterActivity going to LoginActivity ");
             }
         });

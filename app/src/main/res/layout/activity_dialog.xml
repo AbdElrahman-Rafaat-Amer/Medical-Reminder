@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,12 +23,12 @@
                 android:layout_height="33dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:background="#3F51B5"
                 android:text="@string/btnok"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold|italic"
-                android:layout_marginBottom="@dimen/_15sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewName" />
@@ -40,12 +39,12 @@
                 android:layout_height="33dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="15dp"
                 android:background="#3F51B5"
                 android:text="@string/btnRefill"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold|italic"
-                android:layout_marginBottom="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewName" />
@@ -54,27 +53,28 @@
                 android:id="@+id/textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="92dp"
                 android:gravity="center"
                 android:paddingTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="15dp"
                 android:paddingBottom="20dp"
+                android:textAlignment="center"
                 android:textColor="#292929"
                 android:textColorHint="#FFF"
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/refillImageView" />
 
             <ImageView
                 android:id="@+id/refillImageView"
-                android:layout_width="125dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="88dp"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="68dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_empty"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

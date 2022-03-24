@@ -1,7 +1,5 @@
 package com.medication.medicalreminder.login.persenter;
 
-import android.util.Log;
-
 import com.medication.medicalreminder.login.view.LoginViewInterface;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.RepositoryInterface;

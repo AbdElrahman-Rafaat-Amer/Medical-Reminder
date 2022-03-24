@@ -89,8 +89,6 @@
                                         android:layout_marginStart="15dp"
                                         android:layout_marginTop="10dp"
                                         android:layout_marginEnd="15dp"
-
-
                                         app:srcCompat="@drawable/ic_medicine1" />
                                 </LinearLayout>
 
@@ -235,11 +233,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="7dp"
+                            android:fontFamily="@font/baloo_bhai"
                             android:text="@string/med_icon"
                             android:textColor="@color/mainColor"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/baloo_bhai"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -272,16 +270,15 @@
                     android:layout_width="393dp"
                     android:layout_height="39dp"
                     android:layout_margin="10dp"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
                     android:fontFamily="@font/baloo_bhai"
                     android:text="Select Your Medicine Icon"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/medIconCardView"
-                    android:layout_marginStart="@dimen/_30sdp"
-                    android:layout_marginBottom="@dimen/_30sdp"
-                    />
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

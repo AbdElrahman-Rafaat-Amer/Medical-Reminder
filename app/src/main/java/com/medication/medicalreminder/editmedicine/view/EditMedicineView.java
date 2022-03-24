@@ -30,10 +30,10 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import com.google.gson.Gson;
-import com.medication.medicalreminder.model.Doses;
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.editmedicine.persenter.EditMedicinePresenter;
 import com.medication.medicalreminder.editmedicine.persenter.EditMedicinePresenterInterface;
+import com.medication.medicalreminder.model.Doses;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;

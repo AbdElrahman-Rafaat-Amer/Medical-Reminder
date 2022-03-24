@@ -57,7 +57,7 @@ import java.util.Date;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MainActivity extends AppCompatActivity implements MainViewInterface {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     private View navigationHeaderView;
     private ImageView profileImage;
     private TextView textViewCurrentUser;
-    private MainPresenterInterface mainPresenterInterface;
 
 
     //Current User
@@ -115,8 +114,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenterInterface = new MainPresenter(this,
-                Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -292,9 +289,5 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void showReplyOfHealthTaker(String reply) {
-
-    }
 
 }

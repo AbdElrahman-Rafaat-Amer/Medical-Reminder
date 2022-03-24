@@ -11,10 +11,7 @@
             <item
                 android:id="@+id/dd"
                 android:icon="@drawable/ic_profile_image"
-                android:title="@string/profile_name"
-                
-
-                ></item>
+                android:title="@string/profile_name"></item>
             <item
                 android:id="@+id/d"
                 android:icon="@drawable/ic_profile_image"

@@ -1,12 +1,12 @@
 package com.medication.medicalreminder.registrion.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -89,25 +89,33 @@ public class GoogleLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+                            Log.i("GoogleLoginActivity", "onComplete: " + (isNew ? "new user" : "old user"));
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            UserPojo testUser = new UserPojo(user.getDisplayName(), "", user.getEmail(), "NULL", "False", "NULL", "NULL");
-                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(testUser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Log.i("TAG", "signingButton.setOnClickListener: RegisterActivity going to MainActivity ");
-                                        startActivity(new Intent(GoogleLoginActivity.this, MainActivity.class));
-                                        finish();
+                            if(isNew){
+                                UserPojo testUser = new UserPojo(user.getDisplayName(), "", user.getEmail(), "NULL", "False", "NULL", "NULL");
+                                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(testUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.i("TAG", "signingButton.setOnClickListener: RegisterActivity going to MainActivity ");
+                                            startActivity(new Intent(GoogleLoginActivity.this, MainActivity.class));
+                                            finish();
 
-                                    } else {
-                                        Log.i("TAG", "signingButton for else Authentication " + task.isSuccessful());
-                                        Toast.makeText(GoogleLoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Log.i("TAG", "signingButton for else Authentication " + task.isSuccessful());
+                                            Toast.makeText(GoogleLoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }else {
+                                startActivity(new Intent(GoogleLoginActivity.this, MainActivity.class));
+                                finish();
+                            }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i("TAG", "signInWithCredential:failure", task.getException());

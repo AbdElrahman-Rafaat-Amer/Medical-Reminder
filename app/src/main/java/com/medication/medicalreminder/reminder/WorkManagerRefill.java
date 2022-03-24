@@ -82,7 +82,7 @@ public class WorkManagerRefill extends Worker {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(R.drawable.ic_medicine8);
+                .setSmallIcon(R.drawable.ic_medicine);
 
         assert notificationManager != null;
         notificationManager.notify(1, builder.build());

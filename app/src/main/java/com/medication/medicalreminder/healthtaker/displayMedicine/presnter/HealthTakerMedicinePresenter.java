@@ -1,7 +1,5 @@
 package com.medication.medicalreminder.healthtaker.displayMedicine.presnter;
 
-import com.medication.medicalreminder.displaymedicine.persenter.HomeMedicienePresenterInterface;
-import com.medication.medicalreminder.displaymedicine.view.AllMedicinesViewInterface;
 import com.medication.medicalreminder.healthtaker.displayMedicine.view.HealthTakerMedicinesViewInterface;
 import com.medication.medicalreminder.model.Medicine;
 import com.medication.medicalreminder.model.Repository;

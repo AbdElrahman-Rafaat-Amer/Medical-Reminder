@@ -1,7 +1,5 @@
 package com.medication.medicalreminder.reminder;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
@@ -19,7 +17,6 @@ import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,10 +26,8 @@ import com.medication.medicalreminder.displaymedicine.view.ScheduleWorkManger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class ReminderDialog extends AppCompatActivity {
@@ -229,7 +224,7 @@ public class ReminderDialog extends AppCompatActivity {
                 .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
                 .setInputData(data)
                 .build();
-        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
+        WorkManager.getInstance(this).enqueue(reminderRequest);
     }
 }
 

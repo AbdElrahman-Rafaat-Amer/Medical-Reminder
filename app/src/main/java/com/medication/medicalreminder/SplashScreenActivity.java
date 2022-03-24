@@ -1,10 +1,10 @@
 package com.medication.medicalreminder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,9 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        //FirebaseAuth.getInstance().signOut();
-        //FirebaseAuth.getInstance().signOut();
-        //startActivity(new Intent(SplashScreenActivity.this, InvitationService.class));
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -1,12 +1,12 @@
 package com.medication.medicalreminder.healthtaker.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.healthtaker.persenter.EditHealthTakerPresenter;

@@ -96,7 +96,7 @@ public class ReminderActivity {
                     .setInputData(data)
                     .addTag("alarms")
                     .build();
-            androidx.work.WorkManager.getInstance(mContext).enqueue(reminderRequest);
+            WorkManager.getInstance(mContext).enqueue(reminderRequest);
 
         }
 

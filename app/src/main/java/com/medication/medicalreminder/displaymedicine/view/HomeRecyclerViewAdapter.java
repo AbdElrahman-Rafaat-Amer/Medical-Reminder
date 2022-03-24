@@ -40,7 +40,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         TextView medName;
         TextView takenDate;
         ImageView imgView;
-        TextView dateTxtView;
         ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View convertView) {
             super(convertView);
@@ -48,12 +47,10 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             medName = row.findViewById(R.id.medcineTxtView);
             takenDate = row.findViewById(R.id.takenTimeTxtView);
             imgView = row.findViewById(R.id.imageView);
-            dateTxtView= row.findViewById(R.id.datePickerTxtView);
             constraintLayout = row.findViewById(R.id.constraint_layout);
-
-
             //imgView.setImageResource(700);
         }
+
 
         public View getRow() {
             return row;
@@ -85,9 +82,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         Medicine medicine = mediceneArray.get(position);
         holder.getMedName().setText(mediceneArray.get(position).getName());
         holder.getImgView().setImageResource(mediceneArray.get(position).getImage());
-
-
-
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,9 +110,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         String date = mediceneArray.get(position).getTime();
         StringTokenizer stringTokenizer= new StringTokenizer(date,",");
         String newDate = "";
-
-
-
         while (stringTokenizer.hasMoreTokens()) {
             //StringTokenizer stringTokenizer= new StringTokenizer(date,":");
             String x = (String) stringTokenizer.nextElement();
@@ -131,8 +122,8 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             }
             Log.i("TAG", "onBindViewHolder:  seperated " + separated[0]);
             Log.i("TAG", "onBindViewHolder: separated " + separated[1]);
-            if (N == 0) {
-                newDate = newDate + "\n" + 12 +":"+ C +" AM";
+            if (N == 24) {
+                newDate = newDate + "\n" + 12 + C +" AM";
 
             } else {
                 if (N > 12) {
@@ -141,11 +132,12 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
                     newDate = newDate + "\n" + N +":"+ C + " PM";
 
                 } else
-                    newDate = newDate + "\n" + N +":"+C +" AM";
+                    newDate = newDate + "\n" + N +":"+C +" PM";
 
             }
         }
         holder.getTakenDate().setText(newDate);
+
 
     }
     @Override

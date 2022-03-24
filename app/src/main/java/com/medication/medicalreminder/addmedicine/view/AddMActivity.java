@@ -1,12 +1,12 @@
 package com.medication.medicalreminder.addmedicine.view;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
 import androidx.navigation.fragment.NavHostFragment;
-
-import android.os.Bundle;
-import android.util.Log;
 
 import com.medication.medicalreminder.R;
 

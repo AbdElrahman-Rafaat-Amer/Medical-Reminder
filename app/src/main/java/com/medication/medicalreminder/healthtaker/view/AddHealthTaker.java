@@ -1,8 +1,5 @@
 package com.medication.medicalreminder.healthtaker.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,10 +19,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.medication.medicalreminder.R;
-import com.medication.medicalreminder.model.UserPojo;
 import com.medication.medicalreminder.healthtaker.persenter.AddHealthTakerPresenter;
 import com.medication.medicalreminder.healthtaker.persenter.AddHealthTakerPresenterInterface;
 import com.medication.medicalreminder.model.Repository;
+import com.medication.medicalreminder.model.UserPojo;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
@@ -128,6 +128,7 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
         switch (message) {
             case "success":
                 inviteFiendEditText.setError(getResources().getString(R.string.request_sent));
+                finish();
                 break;
             case "error":
                 inviteFiendEditText.setError(getResources().getString(R.string.reserved_healthTaker));

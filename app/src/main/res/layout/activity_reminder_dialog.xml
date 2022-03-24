@@ -1,21 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
     >
+
+
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/medNameCardview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="match_parent"
         android:elevation="20dp"
         android:padding="500dp"
         app:cardCornerRadius="10dp"
@@ -24,9 +19,13 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,61 +34,76 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/med_icon"/>
+
+
 
             <ImageView
                 android:id="@+id/med_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="64dp"
                 android:src="@drawable/ic_medicine3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
+
+
                 />
+
+
 
             <TextView
                 android:id="@+id/med_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="52dp"
                 android:text="Omega"
-                android:textSize="20sp"
                 android:textColor="@color/mainColor"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/med_icon" />
+
+
 
             <Button
                 android:id="@+id/take_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="16dp"
-                android:text="TAKE"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="44dp"
                 android:backgroundTint="@color/mainColor"
+                android:text="TAKE"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/med_name"
 
-                android:textColor="@color/white"/>
+
+
+                app:layout_constraintTop_toBottomOf="@id/med_name" />
+
+
 
             <Button
                 android:id="@+id/snooze_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="snooze"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.515"
-                app:layout_constraintStart_toEndOf="@id/take_button"
-                app:layout_constraintTop_toBottomOf="@id/med_name"
+                android:layout_marginTop="44dp"
                 android:backgroundTint="@color/mainColor"
+                android:text="snooze"
                 android:textColor="@color/white"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.687"
+                app:layout_constraintStart_toEndOf="@id/take_button"
+                app:layout_constraintTop_toBottomOf="@id/med_name" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 
-</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

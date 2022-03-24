@@ -1,11 +1,7 @@
 package com.medication.medicalreminder.login.view;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -16,14 +12,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
+import com.medication.medicalreminder.MainActivity;
+import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.login.persenter.LoginPresenter;
 import com.medication.medicalreminder.login.persenter.LoginPresenterInterface;
 import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.registrion.view.FacebookLoginActivity;
 import com.medication.medicalreminder.registrion.view.GoogleLoginActivity;
-import com.medication.medicalreminder.MainActivity;
-import com.medication.medicalreminder.R;
 import com.medication.medicalreminder.registrion.view.RegisterActivity;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
@@ -38,8 +36,6 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
     private CheckBox rememberMeCheckbox;
     private ImageButton googleImageButton, twitterImageButton, facebookImageButton;
     private ImageView backImageView;
-    private final String SHARED_PREFERENCE_NAME = "SHARED_PREFERENCE_FILE_NAME";
-    private SharedPreferences sharedPreferences;
     private LoginPresenterInterface presenterInterface;
 
     @Override
@@ -55,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
         presenterInterface = new LoginPresenter(this,
                 Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
 
-        sharedPreferences = getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+
         Log.i(TAG, "onCreate: you are in LoginActivity");
 
         forgotPasswordTextView = findViewById(R.id.forgot_password_text_view);

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+
     <queries>
         <package android:name="com.facebook.katana" />
     </queries>
@@ -17,10 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.MedicalReminder">
-        <activity
-            android:name=".reminder.MainActivity"
-            android:exported="true" />
-        <activity android:name=".healthtaker.view.EditHealthTakerRequest" />
+        <activity android:name=".healthtaker.view.EditHealthTakerRequest"></activity>
         <activity android:name=".healthtaker.view.AddHealthTaker" />
         <activity android:name=".registrion.view.GoogleLoginActivity" />
         <activity android:name=".registrion.view.FacebookLoginActivity" />
@@ -36,24 +34,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+<!--        <activity-->
+<!--            android:name=".reminder.ReminderDialog"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.AppCompat.Dialog" />-->
+
+<!--        <activity-->
+<!--            android:name=".reminder.RefillDialog"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.AppCompat.Light.Dialog" />-->
+<!--        <activity-->
+<!--            android:name=".reminder.RefillReminder"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.AppCompat.Light.Dialog" />-->
+
         <activity
             android:name=".reminder.RefillDialog"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:theme="@style/myDialog"/>
         <activity
             android:name=".reminder.RefillReminder"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:theme="@style/myDialog"/>
         <activity
             android:name=".reminder.ReminderDialog"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:theme="@style/myDialog"/>
+
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -75,6 +91,7 @@
             android:exported="false" />
         <activity android:name=".displaymedicine.view.DisplayMedView" />
         <activity android:name=".editmedicine.view.EditMedicineView" />
+
     </application>
 
 </manifest>
