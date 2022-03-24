@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -127,7 +128,8 @@ public class AddHealthTaker extends AppCompatActivity implements AddHealthTakerV
     public void receiveInvitationRequest(String message) {
         switch (message) {
             case "success":
-                inviteFiendEditText.setError(getResources().getString(R.string.request_sent));
+              //  inviteFiendEditText.setError(getResources().getString(R.string.request_sent));
+                Toast.makeText(this, "You send request success", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case "error":

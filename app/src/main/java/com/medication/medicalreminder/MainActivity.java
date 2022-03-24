@@ -39,20 +39,12 @@ import com.medication.medicalreminder.healthtaker.view.AddHealthTaker;
 import com.medication.medicalreminder.databinding.ActivityMainBinding;
 import com.medication.medicalreminder.healthtaker.view.EditHealthTakerRequest;
 import com.medication.medicalreminder.healthtaker.displayMedicine.view.HealthTakerFragment;
-import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.model.UserPojo;
 import com.medication.medicalreminder.reminder.NotficationHealthTaker;
-import com.medication.medicalreminder.reminder.WorkManagerRefill;
-import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
-import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
-import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -73,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView profileNameCurrentUser, profileEmailCurrentUser;
     private CircleImageView circleImageViewCurrentUser;
     private ImageView changeModeImageView;
+    private ArrayList<UserPojo> users = new ArrayList();
+    private AccountAdapter patientAdapter;
+    private RelativeLayout show_list_arrow_patients;
+    private ImageView showListArrowUsersImage;
+    private LinearLayout linearLayoutVisibilityCheckerPatients;
+    private CardView cardViewPatientsAnimation;
+    private RecyclerView recyclerViewPatients;
 
     // Friends
     private ConstraintLayout addNewFriendConstraintLayout;
@@ -81,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
     private CardView cardViewFiendsAnimation;
     private RecyclerView recyclerViewFriends;
     private ImageView showListArrowFriendsImage;
+    private FriendsAdapter friendsAdapter;
+    private ArrayList<UserPojo> friends = new ArrayList();
+    private UserPojo currentUser = new UserPojo();
     ActivityMainBinding binding;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -94,11 +96,15 @@ public class MainActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserPojo user = snapshot.getValue(UserPojo.class);
-                // Toast.makeText(MainActivity.this, user.getUserName(), Toast.LENGTH_SHORT).show();
-                textViewCurrentUser.setText(user.getUserName());
-                profileNameCurrentUser.setText(user.getUserName());
+                currentUser = snapshot.getValue(UserPojo.class);
+                textViewCurrentUser.setText(currentUser.getUserName());
+                profileNameCurrentUser.setText(currentUser.getUserName());
                 profileEmailCurrentUser.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                users.add(currentUser);
+                if (!currentUser.getRequesterName().equals("NULL")) {
+                    friends.add(currentUser);
+                }
+
             }
 
             @Override
@@ -140,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         navigationHeaderView = navigationView.getHeaderView(0);
         profileImage = findViewById(R.id.profile_pic);
         textViewCurrentUser = findViewById(R.id.profile_text);
-        // textViewCurrentUser.setText("Abdo Amer");
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,8 +154,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         checkForHealthTaker();
+
+        //Accounts
+        recyclerViewPatients = navigationHeaderView.findViewById(R.id.patients_recycler_view);
+        cardViewPatientsAnimation = navigationHeaderView.findViewById(R.id.card_view_patients_recycler_view);
+        showListArrowUsersImage = navigationHeaderView.findViewById(R.id.show_list_arrow_users_image);
+        linearLayoutVisibilityCheckerPatients = navigationHeaderView.findViewById(R.id.linear_layout_visibility_checker_patient);
+        show_list_arrow_patients = navigationHeaderView.findViewById(R.id.show_list_arrow_patients);
+        show_list_arrow_patients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (linearLayoutVisibilityCheckerPatients.getVisibility() == View.GONE) {
+                    linearLayoutVisibilityCheckerPatients.setVisibility(View.VISIBLE);
+                    patientAdapter = new AccountAdapter(MainActivity.this, users);
+                    LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this);
+                    manager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerViewPatients.setLayoutManager(manager);
+                    recyclerViewPatients.setAdapter(patientAdapter);
+                    showListArrowUsersImage.setImageResource(R.drawable.ic_up_arrow);
+                } else {
+                    linearLayoutVisibilityCheckerPatients.setVisibility(View.GONE);
+                    showListArrowUsersImage.setImageResource(R.drawable.ic_down_arrow);
+                }
+                TransitionManager.beginDelayedTransition(cardViewPatientsAnimation, new AutoTransition());
+            }
+        });
 
         //Friends
         addNewFriendConstraintLayout = navigationHeaderView.findViewById(R.id.add_new_friends_ConstraintLayout);
@@ -164,11 +193,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (linearLayoutVisibilityCheckerFriends.getVisibility() == View.GONE) {
                     linearLayoutVisibilityCheckerFriends.setVisibility(View.VISIBLE);
-                    // friendsAdapter = new FriendsAdapter(MainActivity.this, patients);
+                    friendsAdapter = new FriendsAdapter(MainActivity.this, friends);
                     LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this);
                     manager.setOrientation(LinearLayoutManager.VERTICAL);
                     recyclerViewFriends.setLayoutManager(manager);
-                    //  recyclerViewFriends.setAdapter(friendsAdapter);
+                    recyclerViewFriends.setAdapter(friendsAdapter);
                     showListArrowFriendsImage.setImageResource(R.drawable.ic_up_arrow);
                 } else {
                     linearLayoutVisibilityCheckerFriends.setVisibility(View.GONE);
@@ -197,8 +226,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Cirecle Clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        profileNameCurrentUser.setText("Name Clicked");
-        profileEmailCurrentUser.setText("Email Clicked");
         changeModeImageView = navigationHeaderView.findViewById(R.id.circleImageView_mode_application);
 
         changeModeImageView.setOnClickListener(new View.OnClickListener() {
@@ -214,43 +241,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ////////////////////////////// REFILL REMINDER /////////////////////
-        long currentTime = Calendar.getInstance().getTimeInMillis();
-        Log.i("TAG","current time " + currentTime);
-
-        int day =21;
-        int month =3;
-        int year = 2022;
-        int hour = 15;
-        int minutes = 04;
-        String timeAndDate = day +"-" + month+"-" + year+" " + hour +":" + minutes ; ;// /-03-2022 12:34";//
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-        long timeInMilliseconds;
-
-        Date mDate = null;
-        try {
-            mDate = sdf.parse(timeAndDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Log.i("TAG", "Date m datee: " + mDate);
-
-        timeInMilliseconds = mDate.getTime();
-        System.out.println("Date in milli :: " + timeInMilliseconds);
-        long finalTime = timeInMilliseconds - currentTime;
-        Log.i("TAG", "final time " + finalTime);
-
-        Data data;
-        data = new Data.Builder()
-                .putString(WorkManagerRefill.DATA,"batoot")
-                .build();
-//        OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(WorkManagerRefill.class)
-//                .setInitialDelay(finalTime, TimeUnit.MILLISECONDS)
-//                .setInputData(data)
-//                .build();
-//        androidx.work.WorkManager.getInstance(this).enqueue(reminderRequest);
-/////----------------->
     }
 
     private void checkForHealthTaker() {
@@ -289,5 +279,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        users.clear();
+        friends.clear();
+    }
 }

@@ -77,6 +77,7 @@
 
                 <!-- To mange text view  Accounts and arrow -->
                 <RelativeLayout
+                    android:id="@+id/show_list_arrow_patients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -90,7 +91,7 @@
                         android:textStyle="bold"></TextView>
 
                     <ImageView
-                        android:id="@+id/show_list_arrow_patients"
+                        android:id="@+id/show_list_arrow_users_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -111,39 +112,6 @@
                         android:id="@+id/patients_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/add_new_patient_ConstraintLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/circleImageView"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_margin="@dimen/_5sdp"
-                            android:src="@drawable/ic_add"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/add_new_account"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_15sdp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.096"
-                            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41"></TextView>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </LinearLayout>
 

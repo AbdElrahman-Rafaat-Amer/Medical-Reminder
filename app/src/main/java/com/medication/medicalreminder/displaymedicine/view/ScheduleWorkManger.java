@@ -21,6 +21,7 @@ import androidx.work.WorkerParameters;
 
 import com.medication.medicalreminder.R;
 
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -48,7 +49,7 @@ public class ScheduleWorkManger extends Worker {
                 // mcontext.startActivity(intent);
                 //showAlertDialog();
                 //    if(medicine.getRefillLimit()>= medicine.getMedLeft())
-                displayNotification("aya");
+                displayNotification("Reschedule Time");
             }
         });
         return Result.success();
@@ -68,11 +69,11 @@ public class ScheduleWorkManger extends Worker {
 
 
         Intent intent = new Intent(mcontext, Dialog.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT| FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "simplifiedcoding")
-                .setContentTitle("title" + keyword)
-                .setContentText("body")
+                .setContentTitle(keyword)
+                .setContentText("This is the time for the scheduling medicine")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
