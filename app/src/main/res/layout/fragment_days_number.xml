@@ -8,8 +8,6 @@
     tools:context=".DaysNumberFragment">
 
 
-
-
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="729dp"
@@ -17,122 +15,105 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/mainColor">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:fontFamily="@font/baloo_bhai"
-            android:text="How often do you take this medicine?"
-            android:textColor="#ffffff"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.728" />
-
-        <com.google.android.material.card.MaterialCardView
-        android:id="@+id/medNameCardview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        android:elevation="20dp"
-        android:fadingEdge="horizontal|vertical"
-        android:focusable="auto"
-        android:layoutMode="clipBounds"
-        android:padding="500dp"
-        app:cardCornerRadius="10dp"
-
-        app:cardElevation="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="p">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="360dp"
-        android:layout_height="400dp">
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="290dp"
+            android:layout_height="wrap_content"
+            android:background="@color/mainColor">
 
-            android:orientation="vertical"
-            app:backgroundTint="@null">
-
-
-            <Button
-                android:id="@+id/onceDaily"
-                android:layout_width="125dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="Once daily"
-                android:textColor="#3F51B5" />
+                android:text="How often do you take this medicine?"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.728" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/mainColor" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/medNameCardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="20dp"
+                android:fadingEdge="horizontal|vertical"
+                android:focusable="auto"
+                android:layoutMode="clipBounds"
+                android:padding="500dp"
+                app:cardCornerRadius="10dp"
 
-            <Button
-                android:id="@+id/twiceDaily"
-                android:layout_width="132dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="20dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:fontFamily="@font/baloo_bhai"
-                android:text="Twice daily"
-                android:textColor="#3F51B5" />
+                app:cardElevation="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
 
-            <View
-                android:id="@+id/viewe"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/mainColor" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="360dp"
+                    android:layout_height="400dp">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="290dp"
 
-
-            <Button
-                android:id="@+id/threeTimesAday"
-                android:layout_width="146dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="228dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:fontFamily="@font/baloo_bhai"
-                android:text="3 times Daily"
-                android:textColor="#3F51B5" />
-
-            <View
-                android:id="@+id/vieww"
-                android:layout_width="326dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/mainColor" />
+                        android:orientation="vertical"
+                        app:backgroundTint="@null">
 
 
-        </LinearLayout>
+                        <Button
+                            android:id="@+id/onceDaily"
+                            android:layout_width="346dp"
+                            android:layout_height="52dp"
+                            android:layout_marginTop="36dp"
+                            android:background="@drawable/button_white"
+                            android:fontFamily="@font/baloo_bhai"
+                            android:text="Once daily"
+                            android:textColor="#3F51B5"
+                            app:layout_constraintStart_toStartOf="@+id/twiceDaily"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <Button
+                            android:id="@+id/twiceDaily"
+                            android:layout_width="352dp"
+                            android:layout_height="51dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/button_white"
+                            android:fontFamily="@font/baloo_bhai"
+                            android:text="Twice daily"
+                            android:textColor="#3F51B5"
+                            app:layout_constraintStart_toStartOf="@+id/threeTimesAday"
+                            app:layout_constraintTop_toBottomOf="@+id/onceDaily" />
+
+                        <Button
+                            android:id="@+id/threeTimesAday"
+                            android:layout_width="349dp"
+                            android:layout_height="57dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/button_white"
+                            android:fontFamily="@font/baloo_bhai"
+                            android:text="3 times Daily"
+                            android:textColor="#3F51B5"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/twiceDaily"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:layout_editor_absoluteX="4dp" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 

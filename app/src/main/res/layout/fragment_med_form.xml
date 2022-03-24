@@ -57,114 +57,84 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:targetApi="p">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="444dp"
                     android:orientation="vertical"
                     app:backgroundTint="@null">
 
 
+
+
                     <Button
                         android:id="@+id/pill"
-                        android:layout_width="125dp"
-                        android:layout_height="42dp"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="28dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:background="@drawable/button_white"
                         android:fontFamily="@font/baloo_bhai"
+
                         android:text="Pill"
                         android:textColor="#3F51B5"
-
-                        />
-
-                    <View
-                        android:id="@+id/view"
-                        android:layout_width="326dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/mainColor" />
+                        app:layout_constraintStart_toStartOf="@+id/Solution"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
                         android:id="@+id/Solution"
-                        android:layout_width="146dp"
-                        android:layout_height="44dp"
-                        android:layout_marginEnd="228dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:background="@drawable/button_white"
+
                         android:fontFamily="@font/baloo_bhai"
                         android:text="Solution"
+
                         android:textColor="#3F51B5"
-
-                        />
-
-                    <View
-                        android:id="@+id/viewe"
-                        android:layout_width="326dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/mainColor" />
+                        app:layout_constraintStart_toStartOf="@+id/injection"
+                        app:layout_constraintTop_toBottomOf="@+id/pill" />
 
                     <Button
                         android:id="@+id/injection"
-                        android:layout_width="132dp"
-                        android:layout_height="39dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:background="@drawable/button_white"
                         android:fontFamily="@font/baloo_bhai"
                         android:text="Injection"
+
                         android:textColor="#3F51B5"
-
-                        />
-
-                    <View
-                        android:id="@+id/vieww"
-                        android:layout_width="326dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/mainColor" />
+                        app:layout_constraintStart_toStartOf="@+id/Poweder"
+                        app:layout_constraintTop_toBottomOf="@+id/Solution" />
 
                     <Button
                         android:id="@+id/Poweder"
-                        android:layout_width="125dp"
-                        android:layout_height="42dp"
-                        android:layout_marginTop="28dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:background="@drawable/button_white"
                         android:fontFamily="@font/baloo_bhai"
                         android:text="Powder"
+
                         android:textColor="#3F51B5"
-
-                        />
-
-                    <View
-                        android:id="@+id/viewt"
-                        android:layout_width="326dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/mainColor" />
+                        app:layout_constraintStart_toStartOf="@+id/Drops"
+                        app:layout_constraintTop_toBottomOf="@+id/injection" />
 
                     <Button
                         android:id="@+id/Drops"
-                        android:layout_width="125dp"
-                        android:layout_height="42dp"
-                        android:layout_marginTop="28dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:background="@drawable/button_white"
                         android:fontFamily="@font/baloo_bhai"
                         android:text="Drops"
+
                         android:textColor="#3F51B5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Poweder"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="7dp" />
 
-                        />
-
-                    <View
-                        android:id="@+id/viewy"
-                        android:layout_width="326dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/mainColor" />
-
-
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
