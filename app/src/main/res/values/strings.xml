@@ -109,6 +109,9 @@
     <string name="btnRefill">Refill</string>
     <string name="done">Done</string>
 
+    <string name="date_error">End date must come after start date</string>
+    <string name="refill_and_amount_error">Refill Limit Can\'t Be More Than Tha Actual Medicine Amount</string>
+
     <string-array name="reminder_times">
         <item>Once Daily</item>
         <item>Twice Daily</item>

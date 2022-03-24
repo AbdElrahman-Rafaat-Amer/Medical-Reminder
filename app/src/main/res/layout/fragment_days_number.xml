@@ -24,20 +24,20 @@
         android:background="@color/mainColor">
 
         <TextView
-            android:layout_width="393dp"
-            android:layout_height="39dp"
-            android:layout_margin="10dp"
-            android:layout_marginStart="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/baloo_bhai"
-            android:text="How Many time  ?"
+            android:text="How often do you take this medicine?"
             android:textColor="#ffffff"
             android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.738" />
+            app:layout_constraintVertical_bias="0.728" />
 
         <com.google.android.material.card.MaterialCardView
         android:id="@+id/medNameCardview"

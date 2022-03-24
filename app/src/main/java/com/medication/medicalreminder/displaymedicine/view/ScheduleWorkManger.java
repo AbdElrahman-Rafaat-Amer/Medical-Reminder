@@ -1,7 +1,11 @@
 package com.medication.medicalreminder.displaymedicine.view;
 
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,9 +24,6 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.medication.medicalreminder.R;
-
-import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class ScheduleWorkManger extends Worker {
     Context mcontext;
@@ -48,7 +49,7 @@ public class ScheduleWorkManger extends Worker {
                 // mcontext.startActivity(intent);
                 //showAlertDialog();
                 //    if(medicine.getRefillLimit()>= medicine.getMedLeft())
-                displayNotification("aya");
+                displayNotification("SNOOZE");
             }
         });
         return Result.success();

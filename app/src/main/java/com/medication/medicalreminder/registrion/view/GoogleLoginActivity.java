@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,8 +20,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 import com.medication.medicalreminder.MainActivity;
 import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.model.UserPojo;
 
 public class GoogleLoginActivity extends AppCompatActivity {
 
@@ -89,9 +92,22 @@ public class GoogleLoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(GoogleLoginActivity.this, MainActivity.class));
-                            finish();
-                            // updateUI(user);
+                            UserPojo testUser = new UserPojo(user.getDisplayName(), "", user.getEmail(), "NULL", "False", "NULL", "NULL");
+                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(testUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.i("TAG", "signingButton.setOnClickListener: RegisterActivity going to MainActivity ");
+                                        startActivity(new Intent(GoogleLoginActivity.this, MainActivity.class));
+                                        finish();
+
+                                    } else {
+                                        Log.i("TAG", "signingButton for else Authentication " + task.isSuccessful());
+                                        Toast.makeText(GoogleLoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i("TAG", "signInWithCredential:failure", task.getException());

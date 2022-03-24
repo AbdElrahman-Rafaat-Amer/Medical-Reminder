@@ -39,14 +39,17 @@ import com.medication.medicalreminder.model.Repository;
 import com.medication.medicalreminder.remotedatabase.FirebaseOperation;
 import com.medication.medicalreminder.roomdatabase.ConcreteLocalSource;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class EditMedicineView extends AppCompatActivity implements AdapterView.OnItemSelectedListener, EditMedicinesViewInterface {
     private static final String TAG = "EditMedicineView";
     public static final String JSON = "json";
     NumberPicker numberPicker, numberPickerDose;
-    TextView enterAmountText, enterRemainText, startDate, endDate, refillTime, refillTimeText;
+    TextView enterAmountText, enterRemainText, startDate, endDate, refillTime, refillTimeText, dateErrorText;
     CardView cardView;
     ImageView refillArrow, instructionArrow, strengthArrow, remindersArrow, iconsArrow, icon1, icon2, icon3, icon4,
             icon5, icon6, icon7, icon8;
@@ -134,6 +137,7 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isValidName() && isValidAmount() && isValidRefillLimit() && isValidEndDate(medicine.getStartDate(), medicine.getEndDate())&&isValidLimitAndAmount()) {
                 pressed = true;
                 medName = medNameEditText.getText().toString().trim();
                 medicine.setName(medName);
@@ -159,10 +163,10 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
                 medicine.setTime(time);
                 medicine.setStartDate(startDate.getText().toString().trim());
                 medicine.setEndDate(endDate.getText().toString().trim());
-                medicine.setTimeRefill(refillTimeText.getText().toString());
+                medicine.setTimeRefill(refillTime.getText().toString());
 
 
-                if (isValidName() && isValidAmount() && isValidRefillLimit()) {
+
                     Log.i(TAG, "onCreate: typeOfUser ----------------------> " + typeOfUser);
                     if (typeOfUser.equals("HT")) {
                         Toast.makeText(getApplicationContext(), "you are in health taker mode", Toast.LENGTH_SHORT).show();
@@ -300,6 +304,7 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         endDate = findViewById(R.id.end_date_text);
         refillTime = findViewById(R.id.refill_time);
         refillTimeText = findViewById(R.id.refill_time_text);
+        dateErrorText = findViewById(R.id.date_error);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -313,9 +318,9 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
             public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
 
                 medicine.setStrengthNum(newValue);
-                medicine.setStrength(medicine.getStrengthNum() + " " + medicine.getStrengthDose());
+                /*medicine.setStrength(medicine.getStrengthNum() + " " + medicine.getStrengthDose());*/
                 Log.i("TAG", "" + medicine.getStrength());
-                Toast.makeText(getApplicationContext(), "" + medicine.getStrength(), Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getApplicationContext(), "" + medicine.getStrength(), Toast.LENGTH_SHORT).show();*/
 
             }
         });
@@ -570,8 +575,8 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-
-                startDate.setText(day + "-" + (month + 1) + "-" + year);                             //sets the selected date as test for button
+                String start = day + "-" + (month + 1) + "-" + year;
+                isValidEndDate(start, medicine.getEndDate());
             }
         }, year, month, day);
         datePickerDialog.show();
@@ -585,8 +590,9 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-
-                endDate.setText(day + "-" + (month + 1) + "-" + year);                             //sets the selected date as test for button
+                String  dateSelected = (day + "-" + (month + 1) + "-" + year);
+                isValidEndDate(medicine.getStartDate(), dateSelected);
+                //sets the selected date as test for button
             }
         }, year, month, day);
         datePickerDialog.show();
@@ -639,6 +645,53 @@ public class EditMedicineView extends AppCompatActivity implements AdapterView.O
     @Override
     public void updateHealthTaker(Medicine medicine) {
         presenterInterface.updateHealthTaker(medicine);
+    }
+
+    private boolean isValidEndDate(String start, String end) {
+        boolean isValidate;
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+        Date date= null;
+        Date date2 = null;
+        try {
+            date = format.parse(start);
+            System.out.println("parsed date" + date);
+            date2 = format.parse(end);
+            System.out.println("parsed date" + date2);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (date2.compareTo(date) <= 0) {
+            dateErrorText.setVisibility(View.VISIBLE);
+            dateErrorText.setText(R.string.date_error);
+            isValidate = false;
+        } else {
+            endDate.setText(end);
+            medicine.setEndDate(end);
+            startDate.setText(start);
+            medicine.setStartDate(start);
+            dateErrorText.setVisibility(View.GONE);
+            isValidate = true;
+        }
+        return isValidate;
+    }
+
+    private boolean isValidLimitAndAmount() {
+        int refillInput = Integer.parseInt(medRemainingEditText.getText().toString().trim());
+        int amountInput = Integer.parseInt(medAmountEditText.getText().toString().trim());
+        boolean isValidate;
+        if (amountInput < refillInput) {
+            medRemainingEditText.setError(getResources().getString(R.string.refill_and_amount_error));
+            medAmountEditText.setError(getResources().getString(R.string.refill_and_amount_error));
+
+            isValidate = false;
+        } else {
+            medRemainingEditText.setError(null);
+            medAmountEditText.setError(null);
+            isValidate = true;
+        }
+        return isValidate;
     }
 
     private boolean isNetworkAvailable() {

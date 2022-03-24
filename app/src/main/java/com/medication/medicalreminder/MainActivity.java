@@ -90,22 +90,23 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     @Override
     protected void onStart() {
         super.onStart();
-      /*  Toast.makeText(this, FirebaseAuth.getInstance().getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserPojo user = snapshot.getValue(UserPojo.class);
-                Toast.makeText(MainActivity.this, user.getUserName(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, user.getUserName(), Toast.LENGTH_SHORT).show();
+                textViewCurrentUser.setText(user.getUserName());
+                profileNameCurrentUser.setText(user.getUserName());
+                profileEmailCurrentUser.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
 
     }
@@ -116,22 +117,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         setContentView(R.layout.activity_main);
         mainPresenterInterface = new MainPresenter(this,
                 Repository.getInstance(this, ConcreteLocalSource.getInstance(this), FirebaseOperation.getInstance()));
-
-        navigationView = findViewById(R.id.nav_view);
-        drawer = findViewById(R.id.drawer_layout);
-        drawer.open();
-        navigationHeaderView = navigationView.getHeaderView(0);
-        profileImage = findViewById(R.id.profile_pic);
-        textViewCurrentUser = findViewById(R.id.profile_text);
-        textViewCurrentUser.setText("Abdo Amer");
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
-                drawer.open();
-            }
-        });
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -152,6 +137,20 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             }
             return true;
         });
+
+        navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationHeaderView = navigationView.getHeaderView(0);
+        profileImage = findViewById(R.id.profile_pic);
+        textViewCurrentUser = findViewById(R.id.profile_text);
+        // textViewCurrentUser.setText("Abdo Amer");
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.open();
+            }
+        });
+
 
 
         checkForHealthTaker();

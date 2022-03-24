@@ -74,6 +74,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         medIcon.setImageResource(medicine.getImage());
         medForm.setText(medicine.getForm());
         String times = medicine.getTime();
+        uid = medicine.getUid();
         Log.i("TAG", "time is " + times);
 
         //String[] timesArray = medicine.getTime().split(",");
@@ -103,10 +104,15 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent editIntent = new Intent(getApplicationContext(), EditMedicineView.class);
                 Gson gson = new Gson();
                 String json = gson.toJson(medicine);
-                editIntent.putExtra("TYPE", "HT");
+                if (typeOfUser != null && typeOfUser.equals("HT")) {
+                    editIntent.putExtra("TYPE", "HT");
+                } else {
+                    editIntent.putExtra("TYPE", "user");
+                }
                 editIntent.putExtra("json pojo", json);
                 startActivity(editIntent);
                 finish();
@@ -130,7 +136,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
-                                if (typeOfUser.equals("HT")) {
+                                if (typeOfUser != null && typeOfUser.equals("HT")) {
                                     deleteMedicineHealthTaker(medicine);
                                 } else {
                                     deleteFromFirebase(medicine);
@@ -144,7 +150,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
             }
         });
 
-        refillButton.setOnClickListener(new View.OnClickListener() {
+       /* refillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -157,7 +163,7 @@ public class DisplayMedView extends AppCompatActivity implements DisplayMedInter
                 startActivity(intent);
 
             }
-        });
+        });*/
 
 
     }

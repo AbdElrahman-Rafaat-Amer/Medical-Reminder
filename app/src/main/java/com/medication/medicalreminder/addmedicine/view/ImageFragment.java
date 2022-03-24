@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -18,15 +19,17 @@ import com.medication.medicalreminder.model.Medicine;
 
 
 public class ImageFragment extends Fragment {
-   ImageView medIcon1;
-   ImageButton medIcon2;
-   ImageButton medIcon3;
-   ImageButton medIcon4;
-   ImageButton medIcon5;
-   ImageButton medIcon6;
-   ImageButton medIcon7;
-   ImageButton medIcon8;
-   Medicine medicine;
+    ImageView medIcon1;
+    ImageView medIcon2;
+    ImageView medIcon3;
+    ImageView medIcon4;
+    ImageView medIcon5;
+    ImageView medIcon6;
+    ImageView medIcon7;
+    ImageView medIcon8;
+    Medicine medicine;
+
+    Button save;
 
 
     public ImageFragment() {
@@ -46,21 +49,25 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image, container, false);
+        View view = inflater.inflate(R.layout.fragment_image, container, false);
+        medIcon1= view.findViewById(R.id.medIcon11);
+        medIcon2= view.findViewById(R.id.medIcon22);
+        medIcon3= view.findViewById(R.id.medIcon33);
+        medIcon4= view.findViewById(R.id.medIcon44);
+        medIcon5= view.findViewById(R.id.medIcon55);
+        medIcon6= view.findViewById(R.id.medIcon66);
+        medIcon7= view.findViewById(R.id.medIcon77);
+        medIcon8= view.findViewById(R.id.medIcon88);
+
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        medIcon1= view.findViewById(R.id.medIcon1);
-        medIcon2= view.findViewById(R.id.medIcon2);
-        medIcon3= view.findViewById(R.id.medIcon3);
-        medIcon4= view.findViewById(R.id.medIcon4);
-        medIcon5= view.findViewById(R.id.medIcon5);
-        medIcon6= view.findViewById(R.id.medIcon6);
-        medIcon7= view.findViewById(R.id.medIcon7Add);
-        medIcon8= view.findViewById(R.id.medIcon8);
 
+        medicine= Medicine.getInstance();
         medIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,5 +138,6 @@ public class ImageFragment extends Fragment {
                 navController.navigate(R.id.saveFragment);
             }
         });
+
     }
 }

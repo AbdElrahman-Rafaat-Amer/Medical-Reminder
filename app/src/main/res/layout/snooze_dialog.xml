@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/medNameCardview"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="331dp"
+        android:layout_height="245dp"
+        android:elevation="20dp"
+        android:focusable="auto"
+        android:padding="500dp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="31dp"
+        tools:targetApi="p">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/five_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="27dp"
+                android:text="5"
+
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_goneMarginTop="25dp" />
+
+            <TextView
+                android:id="@+id/ten_button"
+
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="35dp"
+                android:text="10"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintEnd_toStartOf="@+id/fifteen_button"
+                app:layout_constraintStart_toEndOf="@+id/five_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fifteen_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="68dp"
+                android:text="15"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/ten_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/thirty_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="34dp"
+                android:text="30"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/five_button" />
+
+            <TextView
+                android:id="@+id/sixty_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="34dp"
+                android:text="60"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintStart_toEndOf="@+id/thirty_button"
+                app:layout_constraintTop_toBottomOf="@+id/ten_button" />
+
+            <TextView
+                android:id="@+id/hundred_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="34dp"
+                android:text="120"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.187"
+                app:layout_constraintStart_toEndOf="@+id/sixty_button"
+                app:layout_constraintTop_toBottomOf="@+id/fifteen_button" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Snooze for the coming minutes"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/mainColor"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

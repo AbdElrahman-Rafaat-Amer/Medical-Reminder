@@ -3,21 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_edit_med.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/ic_sick.xml" value="0.2203125" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/drawable/shape_oval.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_dialog.xml" value="0.22" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_display_med.xml" value="0.17527173913043478" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_main2.xml" value="0.16530797101449277" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_refill_reminder.xml" value="0.25" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_reminder_dialog.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/activity_schedule.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.22" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_med_info.xml" value="0.17527173913043478" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.12545289855072464" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_refill.xml" value="0.17798913043478262" />
-        <entry key="..\:/Users/USER/Documents/GitHub/Medical-Reminder/app/src/main/res/layout/fragment_reminder_info.xml" value="0.17527173913043478" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/drawable/ic_healthcare.xml" value="0.2703125" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/drawable/shape_oval.xml" value="0.2703125" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_edit_health_taker_request.xml" value="0.13020833333333334" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_edit_med.xml" value="0.5264293419633226" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_refill_reminder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_reminder_dialog.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_schedule.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/activity_snooze_dialog.xml" value="0.1640625" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/custom_row_show_medicine_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_all_time.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_dayily.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_days_number.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_end_date.xml" value="0.264" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_first.xml" value="0.2" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_image.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_med_form.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_medecine.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_pills_number.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_reason2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_refil_date.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_refill_number.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_start_date.xml" value="0.34627831715210355" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/fragment_strength.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/reminder_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/layout/snooze_dialog.xml" value="0.536" />
+        <entry key="..\:/Ghada/ITI/AndroidMedicalProject/Medical-Reminder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

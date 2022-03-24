@@ -10,11 +10,11 @@
         android:title="Home">
     </item>
         <item android:id="@+id/updates"
-            android:icon="@drawable/ic_profile_image"
+            android:icon="@drawable/healthcare"
             android:title="Health Taker">
         </item>
         <item android:id="@+id/medicine"
-            android:icon="@drawable/ic_bottle_medicine"
+            android:icon="@drawable/ic_medicine"
             android:title="Medicine">
 
         </item>

@@ -53,6 +53,8 @@ btnDone.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("medicineList").child(uid);
         reference.child("medLeft").setValue(Integer.parseInt(newRefillAmount.getText().toString())+ medicineAmount);
+        finish();
+
 
     }
 });

@@ -119,6 +119,7 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
             public void onClick(View view) {
                 Log.i(TAG, "onCreateView: inside add medecine button");
                 Intent addMedIntent = new Intent(getActivity(), AddMActivity.class);
+                addMedIntent.putExtra("TYPE","USER");
                 startActivity(addMedIntent);
             }
         });
@@ -133,8 +134,8 @@ public class HomeFragment extends Fragment implements AllMedicinesViewInterface,
             public void onDateSelected(Calendar date, int position) {
                 Log.i("TAG", "onDateSelected: ");
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy",Locale.UK);
-                String selected = date.DAY_OF_MONTH + "-" + date.MONTH + "-" + date.YEAR;
-                selectedDate.setText(selected);
+                //String selected = date.DAY_OF_MONTH + "-" + date.MONTH + "-" + date.YEAR;
+               // selectedDate.setText(selected);
                 //////////////////////////
 
                 Date today = date.getTime();

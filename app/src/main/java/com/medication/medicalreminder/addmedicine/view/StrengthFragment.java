@@ -12,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.medication.medicalreminder.R;
+import com.medication.medicalreminder.model.Doses;
 import com.medication.medicalreminder.model.Medicine;
 
 
@@ -54,27 +55,29 @@ public class StrengthFragment extends Fragment {
 
             @Override
             public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
-             value= String.valueOf(newValue);
+                // value= String.valueOf(newValue);
+                medicine.setStrengthNum(newValue);
             }
         });
+        Doses.initDoses();
         numberPickerOne = view.findViewById(R.id.doseNumPicker);
-       numberPickerOne.setMinValue(0);
-        numberPickerOne.setMaxValue(2);
-        numberPickerOne.setDisplayedValues( new String[] { "g", "IU", "mcg","meq","mg" } );
-       numberPickerOne.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        numberPickerOne.setMaxValue(Doses.getDosesArrayList().size() - 1);
+        numberPickerOne.setMinValue(0);
+        numberPickerOne.setDisplayedValues(Doses.DosesNames());
+        numberPickerOne.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
 
-           @Override
-           public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
-               valueS= String.valueOf(newValue);
-           }
-       });
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                medicine.setStrengthDose(Doses.getDosesArrayList().get(newValue).getName());
+                medicine.setStrength(medicine.getStrengthNum() + " " + medicine.getStrengthDose());
+            }
+        });
 
 
 
         Button strength = view.findViewById(R.id.bttnNext);
         strength.setOnClickListener(btnView -> {
             if (getActivity() != null) {
-                medicine.setStrength(value+valueS);
 
                 NavController navController = Navigation.findNavController(btnView);
                 navController.navigate(R.id.reasonFragment);
@@ -82,8 +85,8 @@ public class StrengthFragment extends Fragment {
 
             }
         });
-   return view;
-}
+        return view;
+    }
 
 
 }

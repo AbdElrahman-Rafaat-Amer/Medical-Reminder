@@ -22,30 +22,29 @@
             android:background="@color/mainColor">
 
             <TextView
-                android:layout_width="393dp"
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
                 android:layout_height="39dp"
-                android:layout_margin="10dp"
-                android:layout_marginStart="6dp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="end duration ?"
+                android:text="Set End Date"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.783" />
+                app:layout_constraintVertical_bias="0.783"
+                android:layout_marginBottom="15dp"
+                />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/medNameCardview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="155dp"
                 android:elevation="20dp"
                 android:fadingEdge="horizontal|vertical"
                 android:focusable="auto"
@@ -71,7 +70,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="9dp"
-                        app:layout_constraintBottom_toTopOf="@+id/lastButton"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +91,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/medNameCardview" />
+
+            <TextView
+                android:id="@+id/date_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_error"
+                android:textColor="@color/color_dark_primary"
+                app:layout_constraintBottom_toTopOf="@+id/medNameCardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                android:textSize="@dimen/_15sdp"
+             android:visibility="gone"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

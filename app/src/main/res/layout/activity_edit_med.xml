@@ -216,6 +216,21 @@
                         app:layout_constraintStart_toEndOf="@id/start_date_text"
                         app:layout_constraintTop_toBottomOf="@id/timeButton1" />
 
+                    <TextView
+                        android:id="@+id/date_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="error date"
+                        android:visibility="gone"
+                        android:textStyle="bold"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginBottom="9dp"
+                        android:textColor="@color/quantum_googred"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/end_date_text" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -418,8 +433,7 @@
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/refill_time_text"
-                        app:layout_constraintTop_toBottomOf="@id/remainEditText"
-                        tools:text="15:00" />
+                        app:layout_constraintTop_toBottomOf="@id/remainEditText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

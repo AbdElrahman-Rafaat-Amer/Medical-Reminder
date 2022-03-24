@@ -26,11 +26,10 @@
 
             <TextView
                 android:layout_width="393dp"
-                android:layout_height="39dp"
-                android:layout_margin="10dp"
-                android:layout_marginStart="6dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:fontFamily="@font/baloo_bhai"
-                android:text="Reminder you when there is how many left?"
+                android:text="when should we remind you to refill your prescription?"
                 android:textColor="#ffffff"
                 android:textSize="23dp"
                 android:textStyle="bold"

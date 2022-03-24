@@ -15,17 +15,21 @@
         android:layout_marginTop="108dp"
         android:text="YOUR ALL MEDICINE "
         android:textSize="20sp"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MedicineRecsyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_anchorGravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView1" />
+        app:layout_constraintTop_toTopOf="@id/textView1"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
